@@ -1,0 +1,12 @@
+# Ignorovat node_modules (závislosti projektu)
+node_modules/
+
+# Ignorovat složku s výstupy z build procesu
+dist/
+
+# Ignorovat soubory, které vytváří systém a editor
+.DS_Store
+.vscode/
+
+# Ignorovat log soubory
+npm-debug.log
