@@ -8,9 +8,34 @@ body, html {
     background-size: cover;
     background-position: center;
 }
+#startGame {
+    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-shadow: 3px 3px 5px rgba(143, 13, 13, 0.7);
+    text-transform: uppercase;
+    font-size: 7em;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: color 0.3s, transform 0.2s ease; 
+} 
 
+#starGame:hover {
+    color: black;
+    transform: scale(1.1);
+}
 
-#welcomeTitle {
+#starGame:active {
+    color: rgb(182, 43, 43);
+    transform: scale(1.1);
+}
+
+/* #welcomeTitle {
     text-align: center;
     margin: 0;
     position: absolute;
@@ -22,6 +47,6 @@ body, html {
     text-transform: uppercase;
     font-size: 9em;
     cursor: col-resize;
-} 
+}  */
 
 
