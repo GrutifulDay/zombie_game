@@ -27,7 +27,7 @@ body, html {
 
 #starGame:hover {
     color: #0056b3;             
-  transform: scale(1.1);
+    transform: scale(1.1);
 }
 
 #starGame:active {
