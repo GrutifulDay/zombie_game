@@ -21,6 +21,7 @@ body, html {
     text-shadow: 3px 3px 5px rgba(143, 13, 13, 0.7);
     text-transform: uppercase;
     font-size: 9em;
+    cursor: col-resize;
 } 
 
 
