@@ -26,13 +26,13 @@ body, html {
 } 
 
 #starGame:hover {
-    color: black;
-    transform: scale(1.1);
+    color: #0056b3;             
+  transform: scale(1.1);
 }
 
 #starGame:active {
-    color: rgb(182, 43, 43);
-    transform: scale(1.1);
+    color: #003366;              
+    transform: scale(1);
 }
 
 /* #welcomeTitle {
