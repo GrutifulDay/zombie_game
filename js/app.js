@@ -11,8 +11,8 @@
     
 // })
 
+// pridani fce skore po kliknuti 
 let shotImage = document.getElementById("shotImage");
-
 
     shotImage.addEventListener("click", function () {
         
