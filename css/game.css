@@ -1,0 +1,8 @@
+
+/* opravit pozdeji cursor na strileci - zatim crosshair */
+#terminator {
+    width: 70px; 
+    height: auto; 
+    background-color: transparent;
+    cursor: crosshair;
+}
