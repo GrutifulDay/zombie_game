@@ -4,3 +4,4 @@ const startGame = document.getElementById("startGame")
 function startGame() {
     
 }
+
