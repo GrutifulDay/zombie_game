@@ -22,18 +22,15 @@ body, html {
     background: none;
     border: none;
     cursor: pointer;
-    /* transition: color 0.3s, transform 0.2s ease;  */
 } 
 
-/* #starGame:hover {
-    color: #0056b3;             
-    transform: scale(1.1);
-} */
+#startGame:hover,
+#startGame:focus {
+    transition: .2s;
+    
+    color: rgb(187, 1, 32);   
+}
 
-/* #starGame:active {
-    color: #003366;              
-    transform: scale(1);
-} */
 
 /* #welcomeTitle {
     text-align: center;
