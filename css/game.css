@@ -1,9 +1,13 @@
 /* opravit pozdeji cursor na strileci - zatim crosshair */
-#terminator {
-    width: 70px; 
+#shotImage {
+    width: 100px; 
     height: auto; 
     background-color: transparent;
     cursor: crosshair;
+}
+p {
+    font-size: 4em;
+    list-style-type: none;
 }
 
 
