@@ -1,0 +1,28 @@
+/* opravit pozdeji cursor na strileci - zatim crosshair */
+#shotImage {
+    width: 100px; 
+    height: auto; 
+    background-color: transparent;
+    cursor: crosshair;
+}
+
+/* pozdeji smazat */
+p {
+    font-size: 4em;
+    list-style-type: none;
+}
+
+/* score, zivot, cas, pocet sestreleni- bude se odecitat-udelat pozdeji */
+.header-info {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: #333;
+    color: white;
+  }
+
+  .info-item {
+    margin-right: 20px;
+  }
+
+

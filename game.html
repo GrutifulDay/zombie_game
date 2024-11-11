@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/game.css">
+    <link rel="stylesheet" href="./css/main.css">
 
 
     <script type="module" src="./js/script.js"></script>
@@ -15,12 +15,19 @@
 </head>
 <body>
 
-   <header>
-    <ul>
-        <li class="score">0</li>
-    </ul>
+    <header>
+        <div class="header-info">
+          <div class="info-item">Život: <span id="life">3</span></div>
+          <div class="info-item">Čas: <span id="time">00:00</span></div>
+          <div class="info-item">Score: <span id="score">0</span></div>
+          <div class="info-item">Počet sestřelení: <span id="hits">0</span></div>
+        </div>
+    </header>
+       
 
-    
+
+    </main>
+
         <div>
             <img src="image/uaaa.jpeg" alt="Terminátor" id="shotImage">
             
@@ -28,9 +35,7 @@
             
         </div>
     
-    
-
-   </header>
+   </main>
 
 
 

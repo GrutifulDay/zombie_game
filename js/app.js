@@ -1,17 +1,4 @@
-// let shotImage = document.getElementById("shotImage")
-
-// shotImage.addEventListener("click", function () {
-    
-//     let scoreElement = this.nextElementSibling
-//         score = Number(scoreElement.textContent)
-
-//     score = score + 1
-//     scoreElement.textContent = score
-
-    
-// })
-
-// pridani fce skore po kliknuti 
+// SKORE uzivatele 
 let shotImage = document.getElementById("shotImage");
 
     shotImage.addEventListener("click", function () {
@@ -24,4 +11,5 @@ let shotImage = document.getElementById("shotImage");
             score = score + 1
             scoreElement.textContent = score
         }
-    });
+});
+

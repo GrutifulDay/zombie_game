@@ -1,5 +1,6 @@
 import { gsap } from 'gsap'
 
+
 const startGame = document.getElementById("startGame")
 
 // presmerovani na stranku game.html
