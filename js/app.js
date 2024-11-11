@@ -13,3 +13,25 @@ let shotImage = document.getElementById("shotImage");
         }
 });
 
+const images = [
+    'image/obrazekhlavy.jpeg'
+]
+
+function displayRandomImage() {
+    
+    const randomImage = images[Math.floor(Math.random() * images.length)]
+
+    const imgElement = document.createElement('img')
+          imgElement.src = randomImage
+
+    const randomX = Math.random() * window.innerWidth
+    const randomY = Math.random() * window.innerHeight
+
+    imgElement.style.left = randomX + 'px';
+    imgElement.style.top = randomY + 'px';
+
+    document.body.appendChild(imgElement);
+
+    setInterval(displayRandomImage, 2000);
+}
+
