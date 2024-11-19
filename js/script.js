@@ -10,6 +10,7 @@ function clickStart(params) {
     window.location.href = "game.html"
 }
 
+console.log(main);
 
 
 
