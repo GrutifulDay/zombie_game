@@ -9,14 +9,13 @@
     cursor: crosshair;
     
     display: flex;
-    /* opacity: 0; */
-    transition: opacity 0.5s ease-in-out;
+    
 
     border: 2px solid black;
 }
 
 .show {
-  opacity: 1;
+  opacity: .8;
 }
 
 /* pozdeji smazat jen pro ukazku velka 0 */

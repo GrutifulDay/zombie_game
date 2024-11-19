@@ -1,42 +1,42 @@
-const shotImage = document.getElementById("shotImage");
+const shotImage = document.getElementById("shotImage")
 
 // SKORE uzivatele po kliknuti na obrazek je pricteno +1 za klik
 shotImage.addEventListener("click", function () {
     // 1. Přičteme skóre
-    let scoreElement = this.nextElementSibling;
+    let scoreElement = this.nextElementSibling
     if (scoreElement && scoreElement.textContent) {
-        let score = Number(scoreElement.textContent);
-        score = score + 1;
-        scoreElement.textContent = score;
+        let score = Number(scoreElement.textContent)
+        score = score + 1
+        scoreElement.textContent = score
     }
     
    
-    clickToggle();
-});
+    clickToggle()
+})
 
 
 function clickToggle() {
     
-    shotImage.classList.add("show");
+    shotImage.classList.add("show")
 
     
     setTimeout(() => {
-        shotImage.classList.remove("show");
+        shotImage.classList.remove("show")
 
        
-        moveImageToNewPosition();
-    }, .3);
+        moveImageToNewPosition()
+    }, .1)
 }
 
 // Funkce pro přesunutí obrázku na nové místo
 function moveImageToNewPosition() {
-    // Příklad: obrázek se přesune na náhodné místo na obrazovce
-    const randomX = Math.random() * window.innerWidth;
-    const randomY = Math.random() * window.innerHeight;
+    
+    const randomX = Math.random() * window.innerWidth
+    const randomY = Math.random() * window.innerHeight
 
-    shotImage.style.position = "absolute";  // Zajistíme, že obrázek je absolutně pozicovaný
-    shotImage.style.left = randomX + "px";
-    shotImage.style.top = randomY + "px";
+    shotImage.style.position = "absolute" 
+    shotImage.style.left = randomX + "px"
+    shotImage.style.top = randomY + "px"
 }
 
 
