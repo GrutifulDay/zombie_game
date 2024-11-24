@@ -2,7 +2,7 @@ const shotImage = document.getElementById("shotImage")
 
 // SKORE uzivatele po kliknuti na obrazek je pricteno +1 za klik
 shotImage.addEventListener("click", function () {
-    // 1. Přičteme skóre
+    
     let scoreElement = this.nextElementSibling
     if (scoreElement && scoreElement.textContent) {
         let score = Number(scoreElement.textContent)
@@ -10,8 +10,9 @@ shotImage.addEventListener("click", function () {
         scoreElement.textContent = score
     }
     
-   
     clickToggle()
+
+    moveImageToNewPosition()
 })
 
 
