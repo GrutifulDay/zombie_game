@@ -14,31 +14,8 @@
 
 
 
-/* ODPOCET start hry - POZDEJI PRIDAT DO FCE*/
-
-/* @keyframes countDown {
-  0%   {top: 0; background: #0D6AB7}
-  100% {background: #DA3F94; top: -250px;}
-}
-@-webkit-keyframes countDown {
-  0%   {top: 0; background: #0D6AB7}
-  100% {background: #DA3F94; top: -250px;}
-}
-.countDown span {
-  display: block; background: blue; width: 50px; height: 50px;
-  line-height: 50px;
-  text-align: center; color: white;
-  position: relative;
-  animation: 5s linear infinite;
-  -webkit-animation: 5s linear;
-}
-.countDown {
-  height: 50px; overflow: hidden
-} */
-
-
 /* opravit pozdeji cursor na strileci - zatim crosshair */
-#shotImage {
+/* #shotImage {
     width: 90px; 
     height: auto; 
     border: 2px solid black;
@@ -47,21 +24,23 @@
 
     position: absolute;
     transition: all 0.3s ease;  
-}
+} */
 
 
 
 /* score, zivot, cas, pocet sestreleni */
 .header-info {
     display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    background-color: #333;
-    color: white;
+    justify-content: space-around;
+    padding: .6em;
+    background-color: #a95353;
+    color: rgb(244, 239, 239);
+    
+    
 }
 
 .info-item {
-    margin-right: 60px;
+    margin: 1%;
 }
 
 
