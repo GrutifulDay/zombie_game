@@ -1,3 +1,4 @@
+
 /* #gameArea {
   position: relative;
   width: 100%;
@@ -30,9 +31,14 @@
 
 /* score, zivot, cas, pocet sestreleni */
 .header-info {
-    display: flex;
-    justify-content: space-around;
-    padding: .6em;
+  font-weight: normal;
+  display: flex;
+
+
+
+    /* display: flex; */
+    /* justify-content: space-around; */
+    /* padding: .6em; */
     background-color: #a95353;
     color: rgb(244, 239, 239);
     
@@ -42,5 +48,7 @@
 .info-item {
     margin: 1%;
 }
+
+
 
 

@@ -1,13 +1,35 @@
-body, html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    background-image: url(/IMAGE/pozadi.png);
-    background-size: cover;
-    background-position: center;
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
 }
+
+
+body {
+    background-image: url(/image/pozadi.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+    font-family: "Merriweather", serif;
+    display: flex;
+    flex-direction: column;
+
+    /* align-items: center;
+    justify-content: center; */
+
+    text-align: center;
+    margin: 0;
+    overflow: hidden;
+}
+
+#startGame:hover,
+#startGame:focus {
+    transition: .2s;
+    
+    color: rgb(187, 1, 32);   
+}
+
 #startGame {
     text-align: center;
     margin: 0;
@@ -22,28 +44,22 @@ body, html {
     background: none;
     border: none;
     cursor: pointer;
-} 
 
-#startGame:hover,
-#startGame:focus {
-    transition: .2s;
-    
-    color: rgb(187, 1, 32);   
+    align-items: center;
+    justify-content: center;
+
+  
 }
 
 
-/* #welcomeTitle {
-    text-align: center;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    text-shadow: 3px 3px 5px rgba(143, 13, 13, 0.7);
-    text-transform: uppercase;
-    font-size: 9em;
-    cursor: col-resize;
-}  */
+
+
+
+
+
+
+
+
+
 
 
