@@ -12,7 +12,7 @@ const timeElement = document.getElementById('time')
 const shotImage = document.getElementById('shotImage')
 const startGameBtn = document.getElementById('startGameBtn')
 
-// Funkce pro start hry
+// Fce pro start hry
 function startGame() {
     if (gameStarted) return
 
@@ -20,7 +20,7 @@ function startGame() {
     hits = 10
     hitsElement.textContent = hits
 
-    // Spustit odpočet 3, 2, 1
+    // Spustit odpocet 3, 2, 1
     let countdownNum = 3
     let countdownText = setInterval(() => {
         if (countdownNum > 0) {
@@ -33,13 +33,13 @@ function startGame() {
     }, 1000)
 }
 
-// Funkce pro začátek kola
+// Funkce pro zacatek kola
 function startRound() {
     // Resetovat čas na 10 sekund
     timeRemaining = 10
     updateTimeDisplay()
 
-    // Po kliknutí na obrázek, zpracovat zásah
+    // Po kliknuti, pricits zasah
     shotImage.addEventListener('click', handleHit)
 
     // Start odpočtu
@@ -52,11 +52,11 @@ function startRound() {
         }
     }, 1000)
 
-    // Zobrazit obrázek na náhodném místě
+    // random obrazek na hodnem miste
     moveShotImage()
 }
 
-// Funkce pro přesunutí obrázku na náhodnou pozici
+// Fce obrazek na nahodnem miste
 function moveShotImage() {
     const gameArea = document.getElementById('gameArea')
     const maxX = gameArea.clientWidth - shotImage.offsetWidth
@@ -69,7 +69,7 @@ function moveShotImage() {
     shotImage.style.top = `${randomY}px`
 }
 
-// Funkce pro aktualizaci zobrazení času
+// zobrazeni casu 
 function updateTimeDisplay() {
     if (timeRemaining < 10) {
         timeElement.textContent = `00:0${timeRemaining}`
@@ -78,7 +78,7 @@ function updateTimeDisplay() {
     }
 }
 
-// Funkce pro zásah
+// Funkce pro zasah
 function handleHit() {
     if (hits > 0) {
         score += 10
