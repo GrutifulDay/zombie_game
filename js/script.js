@@ -17,7 +17,7 @@ const countDown = setInterval(() => {
 
     if (timeLeft <= 0) {
         clearInterval(countDown)
-        timerElement.textContent = "jddiii"
+        timerElement.textContent = "GO!"
        
         setTimeout(() => {
             window.location.href = "game.html"
@@ -29,26 +29,6 @@ const countDown = setInterval(() => {
 
 
 
-
-
-
-
-
-
-
-let timeL = 3
-
-const countDownStart = document.getElementById("countDownStart")
-
-const countD = setInterval(() => {
-    timeL--
-    countDownStart.textContent = timeL
-
-    if (timeLeft <= 0) {
-        clearInterval(countDown)
-        countDownStart.textContent = "GO"
-    }
-}, 1000)
 
 
 
