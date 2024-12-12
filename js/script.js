@@ -1,12 +1,13 @@
 import { gsap } from 'gsap'
 
-
+// UVODNI STRANKA
 const startGame = document.getElementById("startGame")
-const timeDown = 3
 const timeGO = document.getElementById("time")
 
+let timeDown = 3
 
-// presmerovani na stranku game.html + interval na 3,2,1 GO 
+
+// PRESMEROVANI NA game.html + ODPOCET 3,2,1 GO 
 startGame.addEventListener("click", clickStart)
 
 function clickStart() {
