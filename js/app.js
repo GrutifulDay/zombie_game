@@ -29,17 +29,17 @@ function moveImageToNewPosition() {
 setInterval(moveImageToNewPosition, moveInterval)
 
 
-function clickToggle() {
+// function clickToggle() {
     
-    shotImage.classList.add("show")
+//     shotImage.classList.add("show")
 
     
-    setTimeout(() => {
-        shotImage.classList.remove("show")
+//     setTimeout(() => {
+//         shotImage.classList.remove("show")
 
-        moveImageToNewPosition()
-    },1000)
-}
+//         moveImageToNewPosition()
+//     },1000)
+// }
 
 
 
