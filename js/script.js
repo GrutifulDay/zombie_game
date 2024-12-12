@@ -6,6 +6,18 @@ const timeGO = document.getElementById("time")
 
 let timeDown = 3
 
+// GAME
+const shotsImage = document.getElementById("shotImage")
+
+const life = document.getElementById("life")
+const time = document.getElementById("time")
+const score = document.getElementById("score")
+const shots = document.getElementById("shots")
+const level = document.getElementById("level")
+
+
+
+
 
 // PRESMEROVANI NA game.html + ODPOCET 3,2,1 GO 
 startGame.addEventListener("click", clickStart)
@@ -22,11 +34,13 @@ const countDown = setInterval(() => {
        
         setTimeout(() => {
             window.location.href = "game.html"
-        }, 1000)
+        },500)
     }
-}, 1000)
-      
+},1000)  
+
 }
+
+
 
 
 

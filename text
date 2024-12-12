@@ -1,13 +1,122 @@
+//1//
+const shotsImage = document.getElementById("shotImage")
+const life = document.getElementById("life")
+const score = document.getElementById("score")
+const shots = document.getElementById("shots")
+const remainingTime = document.getElementById("time")
+
+let lives = 3
+let score = 0
+let hitsNeeded = 10
+let timeLeft = 20
+let timerInterval = null
+let hitCount = 0
+let gameStarted = false
+
+startGame.addEventListener("click", startGame)
+
+function startGame() {
+    if (gameStarted) return
+    gameStarted = true
+    lives = 3
+    score = 0
+    hitCount = 0
+    hitsNeeded = 10 // Počet sestřelení na začátku
+    updateInfo()
+
+    startCountdown()
+    moveImageToNewPosition()
+}
+
+function startCountdown() {
+    timerInterval = setInterval(() => {
+        timeLeft--
+        remainingTime.textContent = formatTime(timeLeft)
+
+        if (timeLeft <= 0 || lives <= 0) {
+            clearInterval(timerInterval)
+            endGame()
+        }
+    }, 1000)
+}
+
+function formatTime(seconds) {
+    let minutes = Math.floor(seconds / 60)
+    let secs = seconds % 60
+    return `${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`
+}
+
+shotImage.addEventListener("click", function () {
+    if (!gameStarted) return
+
+    // Při kliknutí na obrázek
+    score += 10 // Přičítá 10 bodů
+    hitCount++ // Počet úspěšných zásahů
+    shots.textContent = hitsNeeded - hitCount // Počet zbývajících sestřelení
+
+    updateInfo()
+    moveImageToNewPosition()
+
+    if (hitCount >= hitsNeeded) {
+        // Když uživatel sestřelí všechny cíle, zvýší se level
+        hitsNeeded += 5 // Zvyšte počet cílů pro další level
+        hitCount = 0
+        moveImageToNewPosition()
+    }
+})
+
+function moveImageToNewPosition() {
+    // Získání šířky a výšky okna prohlížeče
+    const windowWidth = window.innerWidth;
+    const windowHeight = window.innerHeight;
+    
+    // Získání rozměrů obrázku
+    const imageWidth = shotImage.offsetWidth;
+    const imageHeight = shotImage.offsetHeight;
+
+    // Ověření, zda máme správné rozměry obrázku
+    if (!imageWidth || !imageHeight) return;  // Pokud obrázek ještě není načtený, neprovádíme přesun.
+
+    // Generování náhodné pozice pro obrázek s ohledem na jeho velikost
+    const randomX = Math.random() * (windowWidth - imageWidth); // Zajišťuje, že obrázek nezajede za pravý okraj
+    const randomY = Math.random() * (windowHeight - imageHeight); // Zajišťuje, že obrázek nezajede za dolní okraj
+
+    // Nastavení nové pozice obrázku
+    shotImage.style.left = `${randomX}px`;
+    shotImage.style.top = `${randomY}px`;
+}
+
+
+
+function updateInfo() {
+    life.textContent = lives
+    score.textContent = score
+    shots.textContent = hitsNeeded - hitCount
+}
+
+function endGame() {
+    alert(`Hra skončila! Vaše skóre je: ${score}`)
+    startGame.disabled = false
+    gameStarted = false
+    score = 0
+    hitsNeeded = 10
+    hitCount = 0
+    updateInfo()
+}
+
+// 2//
+
+
 const shotImage = document.getElementById("shotImage")
 
 // SKORE uzivatele po kliknuti na obrazek je pricteno +1 za klik
 shotImage.addEventListener("click", function () {
     
-    let scoreElement = this.nextElementSibling
-    if (scoreElement && scoreElement.textContent) {
-        let score = Number(scoreElement.textContent)
+    let score = this.nextElementSibling
+    if (score && score.textContent) {
+        let score = Number(score.textContent)
         score = score + 1
-        scoreElement.textContent = score
+        score.textContent = score
     }
     
     clickToggle()
@@ -39,3 +148,60 @@ function moveImageToNewPosition() {
     shotImage.style.left = randomX + "px"
     shotImage.style.top = randomY + "px"
 }
+
+
+// DALSI MOZNOST
+
+// Nastavení počátečních hodnot
+let score = 0;
+let shots = 10;
+let life = 3;
+let level = 0;
+
+// Funkce pro změnu pozice obrázku
+function changeImagePosition() {
+    const gameArea = document.getElementById('gameArea');
+    const image = document.getElementById('shotImage');
+
+    // Získání rozměrů herní oblasti
+    const areaWidth = gameArea.offsetWidth;
+    const areaHeight = gameArea.offsetHeight;
+
+    // Generování náhodné pozice pro obrázek
+    const randomX = Math.floor(Math.random() * (areaWidth - image.offsetWidth));
+    const randomY = Math.floor(Math.random() * (areaHeight - image.offsetHeight));
+
+    // Nastavení nové pozice obrázku
+    image.style.position = 'absolute';
+    image.style.left = randomX + 'px';
+    image.style.top = randomY + 'px';
+}
+
+// Funkce pro zpracování kliknutí na obrázek
+function handleImageClick() {
+    if (shots > 0) {
+        // Zvyšování skóre
+        score += 1;
+        document.getElementById('score').textContent = score;
+
+        // Snížení počtu sestřelení
+        shots -= 1;
+        document.getElementById('shots').textContent = shots;
+
+        // Změna pozice obrázku po kliknutí
+        changeImagePosition();
+    }
+
+    // Kontrola, zda jsou k dispozici ještě "sestřelení"
+    if (shots <= 0) {
+        alert("Konec hry! Skóre: " + score);
+        // Můžeme přidat možnost restartu hry nebo jinou logiku
+    }
+}
+
+// Při načtení stránky změň pozici obrázku a přidej event listener
+document.addEventListener('DOMContentLoaded', () => {
+    changeImagePosition();  // Nastavení počáteční pozice obrázku
+    const image = document.getElementById('shotImage');
+    image.addEventListener('click', handleImageClick);
+});
