@@ -2,22 +2,22 @@ import { gsap } from 'gsap'
 
 
 const startGame = document.getElementById("startGame")
-let timeLeft = 3
-const timerElement = document.getElementById("timer")
+const timeDown = 3
+const timeGO = document.getElementById("time")
 
 
-// presmerovani na stranku game.html
+// presmerovani na stranku game.html + interval na 3,2,1 GO 
 startGame.addEventListener("click", clickStart)
 
 function clickStart() {
 
 const countDown = setInterval(() => {
-    timeLeft--
-    timerElement.textContent = timeLeft
+    timeDown--
+    timeGO.textContent = timeDown
 
-    if (timeLeft <= 0) {
+    if (timeDown <= 0) {
         clearInterval(countDown)
-        timerElement.textContent = "GO!"
+        timeGO.textContent = "GO!"
        
         setTimeout(() => {
             window.location.href = "game.html"
