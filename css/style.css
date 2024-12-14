@@ -6,8 +6,10 @@
 
 
 
+
+
 body {
-    background-image: url(/image/pozadi.png);
+    background-image: url(/image/background.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -45,6 +47,7 @@ body {
     background: none;
     border: none;
     cursor: pointer;
+   
 
     align-items: center;
     justify-content: center;

@@ -20,7 +20,8 @@
     width: 90px; 
     height: auto; 
     border: 2px solid black;
-    cursor: crosshair;
+    cursor: url(/image/cursor2.png), pointer;
+    /* cursor: crosshair; */
     background-color: transparent;
 
     position: absolute;
