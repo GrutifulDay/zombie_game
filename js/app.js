@@ -1,10 +1,9 @@
 const shotImage = document.getElementById("shotImage")
+
 let scoreElement = document.getElementById("score")
-let shotsElement = document.getElementById("shots")
+let shotsElementSC = document.getElementById("shots")
 
-// let moveInterval = 3000
-
-
+// let moveInterval = 1000
 
 
 
@@ -18,13 +17,13 @@ shotImage.addEventListener("click", function clickScore () {
     }
 })
 
-// -1 za pocet sestreleni
+// -1 za pocet sestreleni - zacatek 10 
 shotImage.addEventListener("click", function shotsDown () {
     
-    if (shotsElement && shotsElement.textContent) {
-        let shots = Number(shotsElement.textContent)
+    if (shotsElementSC && shotsElementSC.textContent) {
+        let shots = Number(shotsElementSC.textContent)
         shots = shots - 1
-        shotsElement.textContent = shots
+        shotsElementSC.textContent = shots
 
         if (shots === 0) {
             alert("Game over")
@@ -46,17 +45,17 @@ function moveImageToNewPosition() {
 setInterval(moveImageToNewPosition, moveInterval)
 
 
-function clickToggle() {
+// function clickToggle() {
     
-    shotImage.classList.add("show")
+//     shotImage.classList.add("show")
 
     
-    setTimeout(() => {
-        shotImage.classList.remove("show")
+//     setTimeout(() => {
+//         shotImage.classList.remove("show")
 
-        moveImageToNewPosition()
-    },1000)
-}
+//         moveImageToNewPosition()
+//     },1000)
+// }
 
 
 
