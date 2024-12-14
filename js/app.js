@@ -3,7 +3,7 @@ let scoreElement = document.getElementById("score")
 let shotsElement = document.getElementById("shots")
 
 // let moveInterval = 3000
-let shots = 10
+
 
 
 
