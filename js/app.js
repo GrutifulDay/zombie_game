@@ -8,17 +8,23 @@ let shotsElementSC = document.getElementById("shots")
 
 
 // SKORE uzivatele po kliknuti na obrazek je pricteno +1 za klik
-shotImage.addEventListener("click", function clickScore () {
+// shotImage.addEventListener("click", function clickScore () {
     
+//     if (scoreElement && scoreElement.textContent) {
+//         let score = Number(scoreElement.textContent)
+//         score = score + 1
+//         scoreElement.textContent = score
+//     }
+// })
+
+// -1 za pocet sestreleni - zacatek 10 + SKORE uzivatele po kliknuti na obrazek je pricteno +1 za klik
+shotImage.addEventListener("click", function shotsDown () {
+
     if (scoreElement && scoreElement.textContent) {
         let score = Number(scoreElement.textContent)
         score = score + 1
         scoreElement.textContent = score
     }
-})
-
-// -1 za pocet sestreleni - zacatek 10 
-shotImage.addEventListener("click", function shotsDown () {
     
     if (shotsElementSC && shotsElementSC.textContent) {
         let shots = Number(shotsElementSC.textContent)

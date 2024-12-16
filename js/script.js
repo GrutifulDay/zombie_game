@@ -9,11 +9,7 @@ let timeDown = 3
 // GAME
 const shotsImage = document.getElementById("shotImage")
 
-const life = document.getElementById("life")
-const time = document.getElementById("time")
-const score = document.getElementById("score")
-const shots = document.getElementById("shots")
-const level = document.getElementById("level")
+
 
 
 
