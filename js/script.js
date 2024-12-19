@@ -2,17 +2,12 @@ import { gsap } from 'gsap'
 
 // UVODNI STRANKA
 const startGame = document.getElementById("startGame")
-const timeGO = document.getElementById("time")
+const timeGO = document.getElementById("timeGO")
 
-let timeDown = 3
+let timeDown = 4
 
 // GAME
 const shotsImage = document.getElementById("shotImage")
-
-
-
-
-
 
 
 // PRESMEROVANI NA game.html + ODPOCET 3,2,1 GO 
@@ -33,7 +28,6 @@ const countDown = setInterval(() => {
         },500)
     }
 },1000)  
-
 }
 
 

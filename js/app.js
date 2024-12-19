@@ -2,9 +2,9 @@ const shotImage = document.getElementById("shotImage")
 
 let scoreElement = document.getElementById("score")
 let shotsElementSC = document.getElementById("shots")
+let timeOut = document.getElementById("time")
 
 // let moveInterval = 1000
-
 
 
 // SKORE uzivatele po kliknuti na obrazek je pricteno +1 za klik
@@ -24,6 +24,9 @@ shotImage.addEventListener("click", function shotsDown () {
         let score = Number(scoreElement.textContent)
         score = score + 1
         scoreElement.textContent = score
+        if (score === 10) {
+            alert("Game over")
+        }
     }
     
     if (shotsElementSC && shotsElementSC.textContent) {
