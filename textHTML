@@ -4,7 +4,7 @@
           <div class="info-item">Score: <span id="score">0</span></div>
           <div class="info-item">Počet sestřelení: <span id="shots">0</span></div>
         </div>
-    </header> 
+</header> 
   
       
     <main>
