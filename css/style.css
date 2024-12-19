@@ -3,7 +3,7 @@
 * {
     box-sizing: border-box;
 }
-
+/* obecne */
 body {
     background-image: url(/image/background.png);
     background-repeat: no-repeat;
@@ -18,7 +18,7 @@ body {
     overflow: hidden;
 }
 
-
+/* horni panel */
 .header-info {
     color:var(--infoItemColor);
     text-shadow: 2px 2px 4px rgba(239, 228, 228, 0.5);
@@ -31,6 +31,14 @@ body {
     display: flex;
     gap: 24%;
     justify-content: center;
+}
+
+/* herni plocha */
+#gameArea {
+    width: 95%;
+    height: 90%;
+    margin: 20px auto;
+    border: 5px solid;
 }
 
 
