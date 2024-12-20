@@ -10,12 +10,16 @@ function mainImage(src) {
     gameArea.appendChild(img)
     
     movePicture(img, gameArea)
+
+    //zavolam fci scoreShoot aby fungovala
+    img.addEventListener("click", function () {
+        scoreShoot(img)
+    })
 }
 
 
 // nahodne zobrazeni obrazku v herni plose
 function movePicture(img, gameArea) {
-
     const gameAreaRect = gameArea.getBoundingClientRect()
     
     const randomX = Math.random() * (gameAreaRect.width - img.width)
@@ -27,18 +31,28 @@ function movePicture(img, gameArea) {
 }
 mainImage("image/hlava.png")
 
-// pripocteni skore po kiknuti na obrazek 
 
+//fce pro pripocteni skore po kiknuti na obrazek vc efekt strelby gsap
+function scoreShoot(img) {
+    let scoreItem = document.getElementById("score")
+    let currentScore = parseInt(scoreItem.textContent) || 0
 
-
-function getImageSizeInPixels() {
-    const img = document.querySelector(".gamePicture"); // Získej obrázek pomocí třídy nebo jiného selektoru
-    const widthInPixels = img.clientWidth;  // Aktuální šířka obrázku v pixelech
-    const heightInPixels = img.clientHeight;  // Aktuální výška obrázku v pixelech
-    
-    console.log(`Šířka obrázku: ${widthInPixels}px`);
-    console.log(`Výška obrázku: ${heightInPixels}px`);
+    currentScore++
+    scoreItem.textContent = currentScore
 }
 
+   
+
+
+// fce pro nacteni rozmeru obrazku
+// function getImageSizeInPixels() {
+//     const img = document.querySelector(".gamePicture"); // Získej obrázek pomocí třídy nebo jiného selektoru
+//     const widthInPixels = img.clientWidth;  // Aktuální šířka obrázku v pixelech
+//     const heightInPixels = img.clientHeight;  // Aktuální výška obrázku v pixelech
+    
+//     console.log(`Šířka obrázku: ${widthInPixels}px`);
+//     console.log(`Výška obrázku: ${heightInPixels}px`);
+// }
+
 // Zavolání funkce po přidání obrázku na stránku
-getImageSizeInPixels();
+// getImageSizeInPixels();
