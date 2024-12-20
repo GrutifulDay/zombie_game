@@ -11,9 +11,11 @@ function mainImage(src) {
     
     movePicture(img, gameArea)
 
-    //zavolam fci scoreShoot aby fungovala
+    //slouceni a zavolani funkci
     img.addEventListener("click", function () {
-        scoreShoot(img)
+        scoreShoot()
+        hitsShoot()
+        movePicture(img, gameArea)
     })
 }
 
@@ -29,17 +31,35 @@ function movePicture(img, gameArea) {
     img.style.left = randomX + "px"
     img.style.top = randomY + "px"
 }
-mainImage("image/hlava.png")
+mainImage("image/head.png")
 
 
-//fce pro pripocteni skore po kiknuti na obrazek
+//fce pro pripocteni skore +1
 function scoreShoot(img) {
     let scoreItem = document.getElementById("score")
-    let currentScore = parseInt(scoreItem.textContent) || 0
+    let actualScore = parseInt(scoreItem.textContent) || 0
 
-    currentScore++
-    scoreItem.textContent = currentScore
+    actualScore++
+    scoreItem.textContent = actualScore
 }
+
+// fce hits snizovani po kiknuti 
+function hitsShoot(img) {
+    let hitItem = document.getElementById("hit")
+    let actualHit = parseInt(hitItem.textContent) || 10
+
+    actualHit--
+    hitItem.textContent = actualHit
+
+    if (actualHit === 0) {
+        alert("Game over")
+    }
+}
+
+
+
+
+
 
    
 
