@@ -32,7 +32,7 @@ function movePicture(img, gameArea) {
 mainImage("image/hlava.png")
 
 
-//fce pro pripocteni skore po kiknuti na obrazek vc efekt strelby gsap
+//fce pro pripocteni skore po kiknuti na obrazek
 function scoreShoot(img) {
     let scoreItem = document.getElementById("score")
     let currentScore = parseInt(scoreItem.textContent) || 0
