@@ -1,6 +1,19 @@
-//
-
 import { gsap } from 'gsap'
+
+// casovac 
+function timeForShoots() {
+    let timeDeduction = 10
+    let timeItem = document.getElementById("time")
+
+    let timer = setInterval(function () {
+        timeItem.textContent = timeDeduction
+        timeDeduction--
+
+        if (timeDeduction < 0) {
+            clearInterval(timer)
+        }
+    }, 1000)
+}
 
 // UVODNI STRANKA
 const startGame = document.getElementById("startGame")

@@ -1,3 +1,24 @@
+function timeOut() {
+    let timeDown = 10
+    const timeItem = document.getElementById("time")
+
+    function formatTime(seconds) {
+        let minutes = Math.floor(seconds / 60)
+        let remainingSeconds = seconds % 60
+        return `${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
+    }
+
+    const countDownInterval = setInterval(() => {
+        timeItem.textContent= formatTime(timeDown)
+        timeDown--
+
+        if (timeDown < 0) {
+            clearInterval(countDownInterval)
+            timeItem.textContent = "00:00"
+        }
+    }, 1000)
+}
+
 //1//
 const shotsImage = document.getElementById("shotImage")
 const life = document.getElementById("life")

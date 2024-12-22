@@ -1,5 +1,8 @@
 import { gsap } from 'gsap'
 
+let timer = 10
+// let moveIntervalImg = 500
+
 // fce pro pridani obrazku do herni plochy
 function mainImage(src) {
     const img = document.createElement("img")
@@ -12,7 +15,7 @@ function mainImage(src) {
     movePicture(img, gameArea)
 
     //slouceni a zavolani funkci
-    img.addEventListener("click", function () {
+    img.addEventListener("click", () => {
         scoreShoot()
         hitsShoot()
         movePicture(img, gameArea)
@@ -20,17 +23,29 @@ function mainImage(src) {
 }
 
 
-// nahodne zobrazeni obrazku v herni plose
+// nahodne zobrazeni obrazku v herni plose + casovac 
 function movePicture(img, gameArea) {
     const gameAreaRect = gameArea.getBoundingClientRect()
-    
-    const randomX = Math.random() * (gameAreaRect.width - img.width)
-    const randomY = Math.random() * (gameAreaRect.height - img.height)
 
-    img.style.position = "absolute"
-    img.style.left = randomX + "px"
-    img.style.top = randomY + "px"
+    
+    function moveRandom() {
+        const randomX = Math.random() * (gameAreaRect.width - img.width)
+        const randomY = Math.random() * (gameAreaRect.height - img.height)
+
+        img.style.position = "absolute"
+        img.style.left = randomX + "px"
+        img.style.top = randomY + "px"
+    }
+
+    
+    const intervalImage = setInterval(moveRandom, moveIntervalImg)
+
+    // zatim nechat, pote smazat, nastaveni do fce pro vsechny prvky 
+    setTimeout(() => {
+        clearInterval(intervalImage)
+    },10000)
 }
+
 mainImage("image/head.png")
 
 
@@ -46,7 +61,7 @@ function scoreShoot(img) {
 // fce hits snizovani po kiknuti 
 function hitsShoot(img) {
     let hitItem = document.getElementById("hit")
-    let actualHit = parseInt(hitItem.textContent) || 10
+    let actualHit = parseInt(hitItem.textContent) || 11
 
     actualHit--
     hitItem.textContent = actualHit
@@ -56,17 +71,28 @@ function hitsShoot(img) {
     }
 }
 
+// casovac 
+function timeOut() {
+    let timeDown = 10
+    let timeItem = document.getElementById("time")
+
+    const timer = setInterval(() => {
+        timeItem.innerText = timeDown
+        timeDown--
+
+        if (timeDown < 0) {
+            clearInterval(timer)
+        }
+    }, 1000)
+}
+timeOut()
 
 
-
-
-
-   
 
 
 // fce pro nacteni rozmeru obrazku
 // function getImageSizeInPixels() {
-//     const img = document.querySelector(".gamePicture"); // Získej obrázek pomocí třídy nebo jiného selektoru
+//     const img = document.querySelector(".gamePicture") // Získej obrázek pomocí třídy nebo jiného selektoru
 //     const widthInPixels = img.clientWidth;  // Aktuální šířka obrázku v pixelech
 //     const heightInPixels = img.clientHeight;  // Aktuální výška obrázku v pixelech
     
