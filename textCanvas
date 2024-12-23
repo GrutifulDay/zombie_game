@@ -22,7 +22,7 @@ function animateBlood(x, y) {
 
     ctx.beginPath();
     ctx.arc(x, y, 3, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(255, 0, 0, ${life})`;
+    ctx.fillStyle = `rgba(186, 148, 188, ${life})`;
     ctx.fill();
     ctx.closePath();
 

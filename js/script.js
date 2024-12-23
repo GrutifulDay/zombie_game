@@ -1,7 +1,11 @@
 import { gsap } from 'gsap'
+import '@fontsource/vt323'
+
+
+
 
 let timer = 10
-// let moveIntervalImg = 500
+//let moveIntervalImg = 1000
 
 // fce pro pridani obrazku do herni plochy
 function mainImage(src) {
@@ -46,7 +50,23 @@ function movePicture(img, gameArea) {
     },10000)
 }
 
-mainImage("image/head.png")
+mainImage("image/pumpkin.png")
+
+// casovac 
+function timeOut() {
+    let timeDown = 10
+    let timeItem = document.getElementById("time")
+
+    const timer = setInterval(() => {
+        timeItem.innerText = timeDown
+        timeDown--
+
+        if (timeDown < 0) {
+            clearInterval(timer)
+        }
+    }, 1000)
+}
+timeOut()
 
 
 //fce pro pripocteni skore +1
@@ -71,21 +91,7 @@ function hitsShoot(img) {
     }
 }
 
-// casovac 
-function timeOut() {
-    let timeDown = 10
-    let timeItem = document.getElementById("time")
 
-    const timer = setInterval(() => {
-        timeItem.innerText = timeDown
-        timeDown--
-
-        if (timeDown < 0) {
-            clearInterval(timer)
-        }
-    }, 1000)
-}
-timeOut()
 
 
 
