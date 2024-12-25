@@ -1,6 +1,7 @@
 import { gsap } from 'gsap'
 
 let timer = 10
+mainImage("image/zaporak.png")
 // let moveIntervalImg = 500
 
 // fce pro pridani obrazku do herni plochy
@@ -46,7 +47,7 @@ function movePicture(img, gameArea) {
     },10000)
 }
 
-mainImage("image/head.png")
+
 
 
 //fce pro pripocteni skore +1
