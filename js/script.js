@@ -1,8 +1,7 @@
 import { gsap } from 'gsap'
 import '@fontsource/vt323'
 
-
-
+mainImage("image/duchsmile.png")
 
 let timer = 10
 //let moveIntervalImg = 1000
@@ -25,7 +24,7 @@ function mainImage(src) {
         movePicture(img, gameArea)
     })
 }
-
+// hra po kliknuti presune obrazek - musi se zmenit na pouze interval 
 
 // nahodne zobrazeni obrazku v herni plose + casovac 
 function movePicture(img, gameArea) {
@@ -50,7 +49,7 @@ function movePicture(img, gameArea) {
     },10000)
 }
 
-mainImage("image/pumpkin.png")
+
 
 // casovac 
 function timeOut() {
