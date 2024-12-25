@@ -1,7 +1,7 @@
 import { gsap } from 'gsap'
 
 let timer = 10
-mainImage("image/zaporak.png")
+mainImage("image/scorenormal.png")
 // let moveIntervalImg = 500
 
 // fce pro pridani obrazku do herni plochy
