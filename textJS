@@ -50,6 +50,20 @@ const countDown = setInterval(() => {
 
 
 
+// fce pro nacteni rozmeru obrazku
+// function getImageSizeInPixels() {
+//     const img = document.querySelector(".gamePicture") // Získej obrázek pomocí třídy nebo jiného selektoru
+//     const widthInPixels = img.clientWidth;  // Aktuální šířka obrázku v pixelech
+//     const heightInPixels = img.clientHeight;  // Aktuální výška obrázku v pixelech
+    
+//     console.log(`Šířka obrázku: ${widthInPixels}px`);
+//     console.log(`Výška obrázku: ${heightInPixels}px`);
+// }
+
+// Zavolání funkce po přidání obrázku na stránku
+// getImageSizeInPixels();
+
+
 const shotImage = document.getElementById("shotImage")
 
 let scoreElement = document.getElementById("score")

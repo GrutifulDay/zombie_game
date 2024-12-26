@@ -1,109 +1,123 @@
 import { gsap } from 'gsap'
 import '@fontsource/vt323'
 
-mainImage("image/duchsmile.png")
 
-let timer = 10
+let timer = 20
 //let moveIntervalImg = 1000
 
-// fce pro pridani obrazku do herni plochy
-function mainImage(src) {
-    const img = document.createElement("img")
-    img.src = src
-    img.classList.add("gamePicture")
 
-    const gameArea = document.getElementById("gameArea")
+// konfigurace obrazku
+const imageConfigs = [
+    { src: 'image/dyneHF.png', score: 10 }, 
+    { src: 'image/hezknet.png', score: -1000 }, 
+    { src: 'image/pumpkin.png', score: 30 }, 
+]
+
+
+let currentImage = null
+let gameInterval = null
+let timerInterval = null
+let isPaused = false
+let timeRemaining = timer
+
+// fce pro pridani random img
+function addRandomImage() {
+    const gameArea = document.getElementById('gameArea')
+
+    if (currentImage) {
+        gameArea.removeChild(currentImage)
+        currentImage = null
+    }
+
+    const randomIndex = Math.floor(Math.random() * imageConfigs.length)
+    const config = imageConfigs[randomIndex]
+
+    const img = document.createElement('img')
+    img.src = config.src
+    img.classList.add('gamePicture')
+
     gameArea.appendChild(img)
-    
-    movePicture(img, gameArea)
+    currentImage = img
 
-    //slouceni a zavolani funkci
-    img.addEventListener("click", () => {
-        scoreShoot()
-        hitsShoot()
-        movePicture(img, gameArea)
+    img.addEventListener('click', () => {
+        if (config.score > 0) {
+            scoreShoot(config.score)
+        } else {
+            resetScore()
+        }
     })
-}
-// hra po kliknuti presune obrazek - musi se zmenit na pouze interval 
 
-// nahodne zobrazeni obrazku v herni plose + casovac 
+    movePicture(img, gameArea)
+}
+
+// pohyb obrazku v gameArea
 function movePicture(img, gameArea) {
     const gameAreaRect = gameArea.getBoundingClientRect()
 
-    
-    function moveRandom() {
-        const randomX = Math.random() * (gameAreaRect.width - img.width)
-        const randomY = Math.random() * (gameAreaRect.height - img.height)
+    const randomX = Math.random() * (gameAreaRect.width - img.width)
+    const randomY = Math.random() * (gameAreaRect.height - img.height)
 
-        img.style.position = "absolute"
-        img.style.left = randomX + "px"
-        img.style.top = randomY + "px"
-    }
-
-    
-    const intervalImage = setInterval(moveRandom, moveIntervalImg)
-
-    // zatim nechat, pote smazat, nastaveni do fce pro vsechny prvky 
-    setTimeout(() => {
-        clearInterval(intervalImage)
-    },10000)
+    img.style.position = 'absolute'
+    img.style.left = randomX + 'px'
+    img.style.top = randomY + 'px'
 }
 
+// casovac
+function startTimer() {
+    const timeItem = document.getElementById('time')
+    timeItem.innerText = timeRemaining
 
+    timerInterval = setInterval(() => {
+        if (!isPaused) {
+            timeRemaining--
+            timeItem.innerText = timeRemaining
 
-// casovac 
-function timeOut() {
-    let timeDown = 10
-    let timeItem = document.getElementById("time")
-
-    const timer = setInterval(() => {
-        timeItem.innerText = timeDown
-        timeDown--
-
-        if (timeDown < 0) {
-            clearInterval(timer)
+            if (timeRemaining <= 0) {
+                clearInterval(timerInterval)
+                clearInterval(gameInterval)
+                alert('Game over')
+            }
         }
     }, 1000)
 }
-timeOut()
 
-
-//fce pro pripocteni skore +1
-function scoreShoot(img) {
-    let scoreItem = document.getElementById("score")
+// pricteni score
+function scoreShoot(points) {
+    const scoreItem = document.getElementById('score')
     let actualScore = parseInt(scoreItem.textContent) || 0
 
-    actualScore++
+    actualScore += points
     scoreItem.textContent = actualScore
 }
 
-// fce hits snizovani po kiknuti 
-function hitsShoot(img) {
-    let hitItem = document.getElementById("hit")
-    let actualHit = parseInt(hitItem.textContent) || 11
-
-    actualHit--
-    hitItem.textContent = actualHit
-
-    if (actualHit === 0) {
-        alert("Game over")
-    }
+// reset score
+function resetScore() {
+    const scoreItem = document.getElementById('score')
+    scoreItem.textContent = 0
 }
 
+// fce pro spusteni hry
+function startGame() {
+    gameInterval = setInterval(() => {
+        if (!isPaused) {
+            addRandomImage()
+        }
+    }, moveIntervalImg)
+
+    startTimer()
+}
+
+// fce pro pozastaveni/obnoveni hry
+function togglePause() {
+    isPaused = !isPaused // prepinac
+
+    const stopButton = document.querySelector('.stop-item button')
+    stopButton.textContent = isPaused ? '▶️' : '||' // zmena textu na tlacitku
+}
+
+// pauza tlacitko
+document.querySelector('.stop-item button').addEventListener('click', togglePause)
 
 
+startGame()
 
-
-
-// fce pro nacteni rozmeru obrazku
-// function getImageSizeInPixels() {
-//     const img = document.querySelector(".gamePicture") // Získej obrázek pomocí třídy nebo jiného selektoru
-//     const widthInPixels = img.clientWidth;  // Aktuální šířka obrázku v pixelech
-//     const heightInPixels = img.clientHeight;  // Aktuální výška obrázku v pixelech
-    
-//     console.log(`Šířka obrázku: ${widthInPixels}px`);
-//     console.log(`Výška obrázku: ${heightInPixels}px`);
-// }
-
-// Zavolání funkce po přidání obrázku na stránku
-// getImageSizeInPixels();
