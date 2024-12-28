@@ -4,15 +4,17 @@
 }
 /* html {
     cursor: url(/image/cursor.png), crosshair; 
+    font-family: var(--fontFamilyStyle);
+
 } */
 
-/* obecne */
+/* OBECNE */
 body {
     background-image: url(/image/redisanj.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    font-family: 'VT323', monospace;
+    font-family: var(--fontFamilyStyle);
     height: 100vh;
     width: 100%;  
     justify-content: center; 
@@ -23,7 +25,32 @@ body {
     text-align: center;
 }
 
-/* horni panel */
+/* WELCOME */
+#welcomeSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background: linear-gradient(135deg, #b26d70, #3a160d);
+}
+#welcomeBtn {
+    font-family: var(--fontFamilyStyle);
+    font-size: 12em;
+    border: none;
+    background: none;
+
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    color: rgb(16, 10, 10);
+}
+
+#welcomeBtn:hover {
+    color: rgb(159, 178, 195);
+}
+
+/* HORNI PANEL */
 .header-info,
 .stop-item {
     color:var(--infoItemColor);
@@ -46,8 +73,7 @@ body {
 }
 
 
-
-/* herni plocha */
+/* HERNI PLOCHA */
 #gameArea {
     width: 95%;
     height: 90vh;
@@ -78,31 +104,3 @@ body {
         width: 20%; 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
