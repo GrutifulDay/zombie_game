@@ -7,10 +7,20 @@
     text-align: center;
     
     background-color: #1a1a1a;
+    flex-direction: column;
 }
+
+h2 {
+    font-family: var(--fontUniversal);
+    font-size: 5em;
+    border: none;
+    background: none;
+    color: #00d1b2;
+}
+
 #welcomeBtn {
     font-family: var(--fontUniversal);
-    font-size: 12em;
+    font-size: 5em;
     border: none;
     background: none;
     /* text-transform: uppercase; */
@@ -19,7 +29,7 @@
     cursor: pointer;
     transition: color 0.3s ease;
 
-    color: #00d1b2;
+    color: #0dedcc;
 }
 
 #welcomeBtn:hover {

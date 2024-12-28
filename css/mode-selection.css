@@ -10,6 +10,8 @@
     padding: 20px;
 }
 
+
+
 #modeSelection h2 {
     text-transform: uppercase;
     text-align: center;
@@ -25,6 +27,9 @@
     gap: 7%;
 }
 
+.mode h3 {
+    letter-spacing: 2px;
+}
 
 .mode button {
     position: relative;
@@ -54,7 +59,7 @@
 }
 
 
-
+/* zmenseni obrazovky */
 @media (max-width: 1222px) {
     #modeSelection {
         display: flex;
@@ -65,17 +70,13 @@
     }
 
     #modeSelection h2 {
-        font-size: 3.5rem;
-        
+        font-size: 3.5rem;   
     }
-
-   
 
     .mode button {
         width: 444px;
         height: 258px;
     }
-
 }
 
 
@@ -89,8 +90,7 @@
     }
 
     #modeSelection h2 {
-        font-size: 2.5rem;
-        
+        font-size: 2.5rem;   
     }
 
     .mode-container {

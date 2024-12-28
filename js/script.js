@@ -3,14 +3,43 @@ import '@fontsource/vt323'
 import "@fontsource/orbitron"
 
 
-// WELCOME - zkryti 
+// WELCOME + REGISTRACE
 const welcomeSection = document.getElementById("welcomeSection")
 const welcomeBtn = document.getElementById("welcomeBtn")
+const nameInput = document.getElementById('nameInput')
+const usernameField = document.getElementById('username')
+const submitUsernameBtn = document.getElementById('submitUsername')
+
+let playerName = ''
 
 welcomeBtn.addEventListener("click", () => {
     welcomeSection.style.display = "none"
-    console.log("welcom byla zkryta");
+    nameInput.style.display = 'flex'
 })
+
+submitUsernameBtn.addEventListener('click', () => {
+    const username = usernameField.value.trim();
+    if (username) {
+        playerName = username;
+        alert(`Welcome, ${playerName}!`);
+        // Přechod na další sekci nebo logiku
+    } else {
+        alert('Please enter a valid name.');
+    }
+});
+
+
+// VYBER HERNIHO MODU A PRESMEROVANI NA HRU
+const pixelGameButton = document.getElementById("modePixelGame")
+const postApoButton = document.getElementById("modePostApo")
+
+function chooseGame(mode) {
+    console.log(`Spouštím herní mód: ${mode}`);
+    alert(`Herní mód ${mode} byl vybrán!`); 
+}
+
+pixelGameButton.addEventListener("click", () => chooseGame('Pixel Scary World'))
+postApoButton.addEventListener("click", () => chooseGame('Post-Apocalyptic Adventure'))
 
 
 

@@ -20,21 +20,26 @@
 
 <body>
 
-    <!-- UVOD -->
-    <!-- <aside id="welcomeSection">
-        <button id="welcomeBtn">Welcome</button>
-    </aside> -->
+    <!-- UVOD WELCOME + REGISTRACE -->
+    <aside id="welcomeSection">
+        <h2>Welcome in your Game.</h2>
+        <button id="welcomeBtn">What is your name?</button>
+    </aside>
+
+    <div id="nameInput" style="display: none;">
+        <input type="text" id="username" placeholder="Enter your name">
+        <button id="submitUsername">Submit</button>
+    </div>
 
     <!-- VYBER ZE DVOU HERNICH MODU -->
     <nav id="modeSelection">
 
             <h2>Choose Your Game Mode:</h2>
 
-
         <div class="mode-container">
 
             <div class="mode">
-                    <h3>Pixel Scary World (Kids Friendly):</h3>
+                    <h3>Pixel World (Kids Friendly):</h3>
                 <button id="modePixelGame"></button>
             </div>
         
@@ -49,27 +54,23 @@
 
 
     <!-- HLAVNI HORNI PANEL -->
-    <article style="display: none;">
-    <header>
-        <ul class="header-info">
-            <li class="stop-item"><button id="stop-button">||</button></li>
-            <li class="info-item">Time: <span id="time">00:00</span></li>
-            <li class="info-item">Score: <span id="score">0</span></li>
-            <li class="info-item">Hit: <span id="hit">0</span></li>
-            <li class="info-item">Live: <span id="live">3</span></li>
-        </ul>
-    </header>
+    <section id="gameSection" style="display: none;">
+        <header>
+            <ul class="header-info">
+                <li class="stop-item"><button id="stop-button">||</button></li>
+                <li class="info-item">Time: <span id="time">00:00</span></li>
+               <li class="info-item">Score: <span id="score">0</span></li>
+               <li class="info-item">Hit: <span id="hit">0</span></li>
+               <li class="info-item">Live: <span id="live">3</span></li>
+          </ul>
+        </header>
 
     <!-- HERNI CAST -->
-    <main id="gameArea">
-     
-      
+        <main id="gameArea">
 
-    </main>
+        </main>
 
-</article>
+    </section>
       
-    
-    
 </body>
 </html>
