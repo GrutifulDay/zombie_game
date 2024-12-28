@@ -1,0 +1,27 @@
+/* WELCOME - uvodni cast */
+#welcomeSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    
+    background-color: #1a1a1a;
+}
+#welcomeBtn {
+    font-family: var(--fontUniversal);
+    font-size: 12em;
+    border: none;
+    background: none;
+    /* text-transform: uppercase; */
+
+
+    cursor: pointer;
+    transition: color 0.3s ease;
+
+    color: #00d1b2;
+}
+
+#welcomeBtn:hover {
+    color: #ff007f;;
+}
