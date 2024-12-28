@@ -6,10 +6,10 @@ let timer = 20
 //let moveIntervalImg = 1000
 
 
-// seznam obrazku + score
+// konfigurace obrazku
 const imageConfigs = [
     { src: 'image/dyneHF.png', score: 10 }, 
-    { src: 'image/hezknet.png', score: -100 }, 
+    { src: 'image/hezknet.png', score: -1 }, 
     { src: 'image/pumpkin.png', score: 30 }, 
 ]
 
@@ -24,20 +24,17 @@ let timeRemaining = timer
 function addRandomImage() {
     const gameArea = document.getElementById('gameArea')
 
-    
     if (currentImage) {
         gameArea.removeChild(currentImage)
         currentImage = null
     }
 
-    
     const randomIndex = Math.floor(Math.random() * imageConfigs.length)
     const config = imageConfigs[randomIndex]
 
     const img = document.createElement('img')
     img.src = config.src
     img.classList.add('gamePicture')
-
 
     gameArea.appendChild(img)
     currentImage = img
