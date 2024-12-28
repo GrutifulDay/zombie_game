@@ -1,9 +1,13 @@
 import { gsap } from 'gsap'
 import '@fontsource/vt323'
+import "@fontsource/orbitron"
+
+// WELCOME
 
 
+// GAME 
 let timer = 20
-let moveIntervalImg = 1000
+//let moveIntervalImg = 1000
 
 
 // seznam obrazku + score

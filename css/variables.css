@@ -1,3 +1,5 @@
 :root {
     --infoItemColor: rgb(109, 5, 5);
+    --fontFamilyStylePixel:'VT323', monospace;
+    --fontUniversal:'orbitron', monospace;
 }

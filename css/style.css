@@ -14,7 +14,6 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
-    font-family: var(--fontFamilyStyle);
     height: 100vh;
     width: 100%;  
     justify-content: center; 
@@ -32,28 +31,31 @@ body {
     align-items: center;
     height: 100vh;
     text-align: center;
-    background: linear-gradient(135deg, #b26d70, #3a160d);
+    background-color: #1a1a1a;
 }
 #welcomeBtn {
-    font-family: var(--fontFamilyStyle);
+    font-family: var(--fontUniversal);
     font-size: 12em;
     border: none;
     background: none;
+    /* text-transform: uppercase; */
+
 
     cursor: pointer;
     transition: color 0.3s ease;
 
-    color: rgb(16, 10, 10);
+    color: #00d1b2;
 }
 
 #welcomeBtn:hover {
-    color: rgb(159, 178, 195);
+    color: #ff007f;;
 }
 
 /* HORNI PANEL */
 .header-info,
 .stop-item {
     color:var(--infoItemColor);
+    font-family: var(--fontFamilyStylePixel);
     text-shadow: 2px 2px 4px rgba(200, 156, 156, 0.5);
     font-size: 1.5em;
     font-weight: bold;
