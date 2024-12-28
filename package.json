@@ -19,6 +19,7 @@
   "dependencies": {
     "@fontsource/orbitron": "^5.1.0",
     "@fontsource/vt323": "^5.1.0",
-    "gsap": "^3.12.5"
+    "gsap": "^3.12.5",
+    "webfontloader": "^1.6.28"
   }
 }
