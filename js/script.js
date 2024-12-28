@@ -3,7 +3,7 @@ import '@fontsource/vt323'
 
 
 let timer = 20
-//let moveIntervalImg = 1000
+let moveIntervalImg = 1000
 
 
 // seznam obrazku + score
