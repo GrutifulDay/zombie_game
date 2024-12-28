@@ -3,7 +3,15 @@ import '@fontsource/vt323'
 import "@fontsource/orbitron"
 
 
-// WELCOME
+// WELCOME - zkryti 
+const welcomeSection = document.getElementById("welcomeSection")
+const welcomeBtn = document.getElementById("welcomeBtn")
+
+welcomeBtn.addEventListener("click", () => {
+    welcomeSection.style.display = "none"
+    console.log("welcom byla zkryta");
+})
+
 
 
 // GAME 
