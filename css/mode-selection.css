@@ -1,0 +1,115 @@
+#modeSelection {
+    font-family: var(--fontUniversal);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: white;
+    background: var(--colorBG-Universal); 
+    padding: 20px;
+}
+
+#modeSelection h2 {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 4em;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+
+.mode-container {
+    display: flex;
+    justify-content: center;
+    gap: 7%;
+}
+
+
+.mode button {
+    position: relative;
+    border-radius: 10px;
+    background-position: center;
+
+    width: 544px;
+    height: 308px;
+    cursor: pointer;
+    background-size: cover;
+}
+
+
+#modePixelGame {
+    background-image: url(../image/redisanj.png);
+}
+
+#modePostApo {
+    background-image: url(../image/post-apo.png);
+}
+
+#modePixelGame:hover,
+#modePostApo:hover {
+    transform: scale(1.05);
+    opacity: .8;
+    border-color: var(--highlightColor);
+}
+
+
+
+@media (max-width: 1222px) {
+    #modeSelection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; 
+        text-align: center;
+    }
+
+    #modeSelection h2 {
+        font-size: 3.5rem;
+        
+    }
+
+   
+
+    .mode button {
+        width: 444px;
+        height: 258px;
+    }
+
+}
+
+
+@media (max-width: 1032px) {
+    #modeSelection {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start; 
+        text-align: center;
+    }
+
+    #modeSelection h2 {
+        font-size: 2.5rem;
+        
+    }
+
+    .mode-container {
+        flex-direction: column; 
+        align-items: center;
+        gap: 15px;
+    }
+
+    .mode {
+        width: 90%; 
+        max-width: 300px;
+    }
+
+    .mode button {
+        height: 150px; 
+        width: 100%; 
+    }
+}
+
+
+
+
