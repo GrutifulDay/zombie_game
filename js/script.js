@@ -1,7 +1,6 @@
 import { gsap } from 'gsap'
 import '@fontsource/vt323'
-import "@fontsource/orbitron"
-
+import '@fontsource/orbitron'
 
 // WELCOME + REGISTRACE
 const welcomeBtn = document.getElementById("welcomeBtn")
@@ -11,87 +10,87 @@ const welcomeSection = document.getElementById("welcomeSection")
 const modeSelection = document.getElementById("modeSelection")
 const greeting = document.getElementById("greeting")
 
+let stopAnimation = false
+
+// Pri nacteni stranky
 window.addEventListener("load", () => {
-    animateText("welcomeText", 0); // Animace nadpisu Welcome in the Game
-    animateText("welcomeBtn", 2); // Animace tlačítka What is your name? (se zpožděním 2 sekundy)
-});
-
-// FCE PRO ZOBRAZENI SUBMIT
-welcomeBtn.addEventListener("click", () => {
-    nameInput.style.display = "block"
-    
-    gsap.from("#nameInput", { opacity: 0, duration: .8 })
-
+    stopAnimation = false // Reset stop animace
+    animateText("welcomeText", 0)
+    animateText("welcomeBtn", 2) 
 })
 
-// PRESMEROVANI NA VYBER HERNIHO MODU =>doplneni textu do dalsi casti
-// + animace textu
-submitUsername.addEventListener("click", () => {
-    const username = document.getElementById("username").value.trim()
-
-    if (username) {
-        welcomeSection.style.display = "none"
-
-        modeSelection.style.display = "block"
-
-        greeting.innerHTML = `Hello <span class="nameHL">${username}</span>, <br>Choose Your Game Mode:`
-
-        animateText("greeting", 0);
-  
-    } 
-    else {
-        alert("Please enter you name")
+// Zastaveni animace pri stisku ESC
+document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+        stopAnimation = true // Zastaveni animace
+        const activeSpans = document.querySelectorAll("span") // Najde vsechny span prvky
+        activeSpans.forEach(span => {
+            span.style.opacity = "1" // Zobrazi vsechny span najednou
+        })
     }
 })
 
+// Funkce pro zobrazeni formulare na zadani jmena
+welcomeBtn.addEventListener("click", () => {
+    stopAnimation = false // Reset stop animace
+    nameInput.style.display = "block" // Zobrazeni formulare
+    
+    gsap.from("#nameInput", { opacity: 0, duration: 0.8 }) // Animace formulare
+})
 
-// VYBER HERNIHO MODU A PRESMEROVANI NA HRU
+// Presmerovani na vyber herniho modu
+submitUsername.addEventListener("click", () => {
+    const username = document.getElementById("username").value.trim() // Nacteni hodnoty uzivatelskeho jmena
+
+    if (username) {
+        welcomeSection.style.display = "none" // Skryje sekci welcome
+        modeSelection.style.display = "block" // Zobrazi sekci herniho modu
+
+        greeting.innerHTML = `Hello <span class="nameHL">${username}</span>, <br> Choose Your Game Mode:` // Nastavi text s pozdravem
+
+        animateText("greeting", 0)
+    } else {
+        alert("Please enter your name")
+    }
+})
+
+// Vyber herniho modu
 const pixelGameButton = document.getElementById("modePixelGame")
 const postApoButton = document.getElementById("modePostApo")
 
-
 function chooseGame(mode) {
-    console.log(`Spouštím herní mód: ${mode}`)
-    alert(`Herní mód ${mode} byl vybrán!`) 
+    console.log(`Spoustim herni mod: ${mode}`) // Log vybraneho herniho modu
+    alert(`Herni mod ${mode} byl vybran!`) // Upozorneni o vyberu herniho modu
 }
 
 pixelGameButton.addEventListener("click", () => chooseGame('Pixel Scary World'))
 postApoButton.addEventListener("click", () => chooseGame('Post-Apocalyptic Adventure'))
 
-
-// ANIMACE VESKEREHO TEXTU - POSTUPNE
+// Funkce pro animaci textu - postupne zobrazeni
 /**
  * 
- * @param {string} elementId - ID elementu, jehož text chcete animovat
- * @param {number} delay - Zpoždění před začátkem animace (v sekundách)
+ * @param {string} elementId
+ * @param {number} delay 
  */
 function animateText(elementId, delay = 0) {
-    const element = document.getElementById(elementId);
-    const textContent = element.textContent; // Původní text
-    element.innerHTML = ""; // Vyčištění obsahu
+    const element = document.getElementById(elementId)
+    const textContent = element.textContent
+    element.innerHTML = "" // Vymaze obsah elementu
 
-    // Rozdělení textu na jednotlivá písmena
+    // Rozdeleni textu na jednotliva pismena
     textContent.split("").forEach(letter => {
-        const span = document.createElement("span");
-        span.textContent = letter === " " ? "\u00A0" : letter; // Zachování mezer
-        span.style.opacity = "0"; // Výchozí stav neviditelnosti
-        element.appendChild(span);
-    });
+        const span = document.createElement("span")
+        span.textContent = letter === " " ? "\u00A0" : letter // Zachovani mezer
+        span.style.opacity = "0" // Vychozi viditelnost
+        element.appendChild(span)
+    })
 
-    // Animace jednotlivých písmen
-    const spans = element.querySelectorAll("span");
+    // Animace jednotlivych pismen
+    const spans = element.querySelectorAll("span")
     spans.forEach((span, index) => {
         setTimeout(() => {
-            span.style.opacity = "1"; // Postupné zobrazení písmen
-        }, index * 100 + delay * 1000); // Zpoždění mezi písmeny a celkové zpoždění
-    });
+            if (stopAnimation) return // Stop animace
+            span.style.opacity = "1" // Postupne zobrazeni pismen
+        }, index * 100 + delay * 1000)
+    })
 }
-
-
-
-
-
-
-
-
-
