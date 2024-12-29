@@ -2,11 +2,6 @@
     box-sizing: border-box;
     cursor: crosshair;
 }
-/* html {
-    cursor: url(/image/cursor.png), crosshair; 
-    font-family: var(--fontFamilyStyle);
-
-} */
 
 /* OBECNE */
 body {

@@ -1,12 +1,13 @@
 /* WELCOME - uvodni cast */
 #welcomeSection {
+    padding-top: 50px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     height: 100vh;
     text-align: center;
     
-    background-color: #1a1a1a;
+    background-color: var(--colorBG-Universal);
     flex-direction: column;
 }
 
@@ -15,7 +16,7 @@ h2 {
     font-size: 5em;
     border: none;
     background: none;
-    color: #00d1b2;
+    color: var(--colorFont);
 }
 
 #welcomeBtn {
@@ -29,9 +30,63 @@ h2 {
     cursor: pointer;
     transition: color 0.3s ease;
 
-    color: #0dedcc;
+    color: var(--colorFont);
 }
 
 #welcomeBtn:hover {
-    color: #ff007f;
+    color: var(--highlightColor);
 }
+
+
+/* INPUT */
+#nameInput {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 50px;
+    text-align: center;
+}
+
+#nameInput input {
+    padding: 10px;
+    font-family: var(--fontUniversal);
+    font-size: 1.2em;
+    border: 2px solid var(--colorFont);
+    border-radius: 5px;
+    color: var(--highlightColor);
+    background-color: #1a1a1a;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    width: 250px;
+}
+
+#nameInput input::placeholder {
+    color: var(--colorFont);
+    opacity: 0.7;
+}
+
+#nameInput input:focus {
+    border-color: var(--highlightColor);
+    box-shadow: 0 0 8px rgba(255, 0, 127, 0.5);
+    outline: none;
+    color: var(--highlightColor);
+}
+
+#nameInput button {
+    font-family: var(--fontUniversal);
+    font-size: 1.5em;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    color: var(--colorFont);
+    background: none;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+}
+
+#nameInput button:hover {
+    color: var(--highlightColor);
+    transform: scale(1.05);
+}
+

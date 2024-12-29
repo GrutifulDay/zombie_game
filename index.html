@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link href="https://fonts.googleapis.com/css2?family=Destroyed+Font&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/mode-selection.css">
@@ -22,39 +23,41 @@
 
     <!-- UVOD WELCOME + REGISTRACE -->
     <aside id="welcomeSection">
-        <h2>Welcome in your Game.</h2>
+
+        <h2 id="welcomeText">Welcome in the Game!</h2>
         <button id="welcomeBtn">What is your name?</button>
-    </aside>
 
-    <div id="nameInput" style="display: none;">
-        <input type="text" id="username" placeholder="Enter your name">
-        <button id="submitUsername">Submit</button>
-    </div>
 
-    <!-- VYBER ZE DVOU HERNICH MODU -->
-    <nav id="modeSelection">
+        <div id="nameInput" style="display: none;">
 
-            <h2>Choose Your Game Mode:</h2>
-
-        <div class="mode-container">
-
-            <div class="mode">
-                    <h3>Pixel World (Kids Friendly):</h3>
-                <button id="modePixelGame"></button>
-            </div>
-        
-            <div class="mode">
-                    <h3>Post-Apocalyptic Adventure:</h3>
-                <button id="modePostApo"></button>
-            </div>
+            <input type="text" id="username" placeholder="Your username">
+            <button id="submitUsername">Submit</button>
 
         </div>
 
+    </aside>
+
+  
+
+    <!-- VYBER ZE DVOU HERNICH MODU -->
+    <nav id="modeSelection" style="display: none;">
+        <h2 id="greeting">Choose Your Game Mode:</h2>
+        <div class="mode-container">
+            <div class="mode">
+                <h3>Pixel World (Kids Friendly):</h3>
+                <button id="modePixelGame"></button>
+            </div>
+            <div class="mode">
+                <h3>Post-Apocalyptic Adventure:</h3>
+                <button id="modePostApo"></button>
+            </div>
+        </div>
     </nav>
 
 
     <!-- HLAVNI HORNI PANEL -->
     <section id="gameSection" style="display: none;">
+
         <header>
             <ul class="header-info">
                 <li class="stop-item"><button id="stop-button">||</button></li>

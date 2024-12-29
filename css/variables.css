@@ -1,11 +1,13 @@
 :root {
     --infoItemColor: rgb(109, 5, 5);
     --colorBG-Universal:#1a1a1a;
+    --colorFont:#00d1b2;
     --highlightColor: #ff007f;
+
 
     --fontFamilyStylePixel:'VT323', monospace;
     --fontUniversal:'orbitron', monospace;
-
-
 }
+
+
 

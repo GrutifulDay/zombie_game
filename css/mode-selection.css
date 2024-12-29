@@ -1,3 +1,9 @@
+.nameHL {
+    color: pink;
+}
+
+
+
 #modeSelection {
     font-family: var(--fontUniversal);
     display: flex;
@@ -11,9 +17,8 @@
 }
 
 
-
 #modeSelection h2 {
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     text-align: center;
     font-size: 4em;
     letter-spacing: 2px;
