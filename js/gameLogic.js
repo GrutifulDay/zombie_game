@@ -1,15 +1,22 @@
+document.getElementById('testButton').addEventListener('click', () => {
+    startGame('Pixel Game'); // Nebo 'Post-Apocalyptic Adventure'
+});
+
+
+// JSON
+async function loadImageConfigs(mode) {
+    const response = await fetch('data/images.json') 
+    const data = await response.json()
+    return mode === 'Pixel Game' ? data.pixelGame : data.postApoGame 
+}
+
 
 // GAME 
 let timer = 20
 //let moveIntervalImg = 1000
 
-
 // seznam obrazku + score
-const imageConfigs = [
-    { src: 'image/dyneHF.png', score: 10 }, 
-    { src: 'image/hezknet.png', score: -100 }, 
-    { src: 'image/pumpkin.png', score: 30 }, 
-]
+let imageConfigs = []
 
 
 let currentImage = null
@@ -41,15 +48,30 @@ function addRandomImage() {
     currentImage = img
 
     img.addEventListener('click', () => {
-        if (config.score > 0) {
-            scoreShoot(config.score)
-        } else {
-            resetScore()
-        }
+        config.score === -100 ? resetScore() : scoreShoot(config.score)
     })
 
     movePicture(img, gameArea)
 }
+
+// nacitani img pri spusteni hry 
+async function startGame(mode) {
+    imageConfigs = await loadImageConfigs(mode)
+    gameInterval = setInterval(() => {
+        if(!isPaused) {
+            addRandomImage()
+        }
+    }, 1000)
+    startGame()
+}
+
+document.getElementById("modePixelGame").addEventListener("click", () => {
+    startGame("pixel Game")
+})
+
+document.getElementById("modePostApo").addEventListener("click", () => {
+    startGame("Post-Apocalyptic Adveture")
+})
 
 // pohyb obrazku v gameArea
 function movePicture(img, gameArea) {
@@ -96,6 +118,8 @@ function resetScore() {
     const scoreItem = document.getElementById('score')
     scoreItem.textContent = 0
 }
+
+
 
 // fce pro spusteni hry
 function startGame() {
