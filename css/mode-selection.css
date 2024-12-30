@@ -47,11 +47,11 @@
 
 
 #modePixelGame {
-    background-image: url(../image/pixelGame/pixelBG.png);
+    background-image: url(../images/pixelGame/pixelBG.png);
 }
 
 #modePostApo {
-    background-image: url(../image/postApoGame/paBG.png);
+    background-image: url(../images/postApoGame/bg-postApo.png);
 }
 
 #modePixelGame:hover,

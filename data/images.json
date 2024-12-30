@@ -1,0 +1,28 @@
+{
+    "pixelGame": [
+        { "src": "images/pixelGame/img1.png" },
+        { "src": "images/pixelGame/img2.png" },
+        { "src": "images/pixelGame/img3.png" },
+        { "src": "images/pixelGame/img4.png" },
+        { "src": "images/pixelGame/img5.png" },
+        { "src": "images/pixelGame/img6.png" },
+        { "src": "images/pixelGame/img7.png" },
+        { "src": "images/pixelGame/img8.png" },
+        { "src": "images/pixelGame/img9.png" },
+        { "src": "images/pixelGame/img10.png" },
+        { "src": "images/pixelGame/img11.png" }
+    ],
+    "postApoGame": [
+        { "src": "images/postApoGame/img1.png" },
+        { "src": "images/postApoGame/img2.png" },
+        { "src": "images/postApoGame/img3.png" },
+        { "src": "images/postApoGame/img4.png" },
+        { "src": "images/postApoGame/img5.png" },
+        { "src": "images/postApoGame/img6.png" },
+        { "src": "images/postApoGame/img7.png" },
+        { "src": "images/postApoGame/img8.png" },
+        { "src": "images/postApoGame/img9.png" },
+        { "src": "images/postApoGame/img10.png" },
+        { "src": "images/postApoGame/img11.png" }
+    ]
+}
