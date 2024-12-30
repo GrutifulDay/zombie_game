@@ -12,14 +12,14 @@ const greeting = document.getElementById("greeting")
 
 let stopAnimation = false
 
-// Pri nacteni stranky
+// SPUSTENI PRO NACTENI STRANKY
 window.addEventListener("load", () => {
     stopAnimation = false // Reset stop animace
     animateText("welcomeText", 0)
     animateText("welcomeBtn", 2) 
 })
 
-// Zastaveni animace pri stisku ESC
+// ZASTAVENI ANIMACE pri stisku ESC
 document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
         stopAnimation = true // Zastaveni animace
@@ -30,23 +30,23 @@ document.addEventListener("keydown", (event) => {
     }
 })
 
-// Funkce pro zobrazeni formulare na zadani jmena
+// FCE PRO ZOBRAZENI FORMULARE ANIMACE
 welcomeBtn.addEventListener("click", () => {
-    stopAnimation = false // Reset stop animace
-    nameInput.style.display = "block" // Zobrazeni formulare
+    stopAnimation = false 
+    nameInput.style.display = "block"
     
-    gsap.from("#nameInput", { opacity: 0, duration: 0.8 }) // Animace formulare
+    gsap.from("#nameInput", { opacity: 0, duration: 0.8 }) 
 })
 
-// Presmerovani na vyber herniho modu
+// PRESMEROVANI NA VYBER HERNIHO MODU
 submitUsername.addEventListener("click", () => {
-    const username = document.getElementById("username").value.trim() // Nacteni hodnoty uzivatelskeho jmena
+    const username = document.getElementById("username").value.trim() 
 
     if (username) {
-        welcomeSection.style.display = "none" // Skryje sekci welcome
-        modeSelection.style.display = "block" // Zobrazi sekci herniho modu
+        welcomeSection.style.display = "none" 
+        modeSelection.style.display = "block"
 
-        greeting.innerHTML = `Hello <span class="nameHL">${username}</span>, <br> Choose Your Game Mode:` // Nastavi text s pozdravem
+        greeting.innerHTML = `Hello <span class="nameHL">${username}</span>, <br>Choose Your Game Mode:` 
 
         animateText("greeting", 0)
     } else {
@@ -54,19 +54,19 @@ submitUsername.addEventListener("click", () => {
     }
 })
 
-// Vyber herniho modu
+// VYBER HERNIHO MODU
 const pixelGameButton = document.getElementById("modePixelGame")
 const postApoButton = document.getElementById("modePostApo")
 
 function chooseGame(mode) {
-    console.log(`Spoustim herni mod: ${mode}`) // Log vybraneho herniho modu
-    alert(`Herni mod ${mode} byl vybran!`) // Upozorneni o vyberu herniho modu
+    console.log(`Spoustim herni mod: ${mode}`) 
+    alert(`Herni mod ${mode} byl vybran!`)
 }
 
 pixelGameButton.addEventListener("click", () => chooseGame('Pixel Scary World'))
 postApoButton.addEventListener("click", () => chooseGame('Post-Apocalyptic Adventure'))
 
-// Funkce pro animaci textu - postupne zobrazeni
+// FCE PRO POSTUPNE ZOBRAZENI TEXTU
 /**
  * 
  * @param {string} elementId
@@ -75,13 +75,13 @@ postApoButton.addEventListener("click", () => chooseGame('Post-Apocalyptic Adven
 function animateText(elementId, delay = 0) {
     const element = document.getElementById(elementId)
     const textContent = element.textContent
-    element.innerHTML = "" // Vymaze obsah elementu
+    element.innerHTML = "" 
 
     // Rozdeleni textu na jednotliva pismena
     textContent.split("").forEach(letter => {
         const span = document.createElement("span")
         span.textContent = letter === " " ? "\u00A0" : letter // Zachovani mezer
-        span.style.opacity = "0" // Vychozi viditelnost
+        span.style.opacity = "0" 
         element.appendChild(span)
     })
 
@@ -89,8 +89,8 @@ function animateText(elementId, delay = 0) {
     const spans = element.querySelectorAll("span")
     spans.forEach((span, index) => {
         setTimeout(() => {
-            if (stopAnimation) return // Stop animace
-            span.style.opacity = "1" // Postupne zobrazeni pismen
+            if (stopAnimation) return
+            span.style.opacity = "1" 
         }, index * 100 + delay * 1000)
     })
 }
