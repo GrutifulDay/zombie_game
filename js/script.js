@@ -61,10 +61,26 @@ const postApoButton = document.getElementById("modePostApo")
 function chooseGame(mode) {
     console.log(`Spoustim herni mod: ${mode}`) 
     alert(`Herni mod ${mode} byl vybran!`)
+
+    if (mode === 'Pixel Scary World') {
+        startPixelGame()
+    } else if (mode === 'Post-Apocalyptic Adventure') {
+        startPostApoGame()
+    }
 }
 
 pixelGameButton.addEventListener("click", () => chooseGame('Pixel Scary World'))
 postApoButton.addEventListener("click", () => chooseGame('Post-Apocalyptic Adventure'))
+
+function startPixelGame() {
+    console.log("Pixel Scary World se načítá...");
+    // Načtení JSON dat, zobrazení obrázků atd.
+}
+
+function startPostApoGame() {
+    console.log("Post-Apocalyptic Adventure se načítá...");
+    // Načtení JSON dat, zobrazení obrázků atd.
+}
 
 // FCE PRO POSTUPNE ZOBRAZENI TEXTU
 /**
