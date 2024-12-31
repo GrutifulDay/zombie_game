@@ -7,6 +7,9 @@
 
     --fontFamilyStylePixel:'VT323', monospace;
     --fontUniversal:'orbitron', monospace;
+
+    --BG_PixelGame:url(../images/pixelGame/bg-pixel.png);
+    --BG_PostApoGame:url(../images/postApoGame/bg-postApo.png);
 }
 
 

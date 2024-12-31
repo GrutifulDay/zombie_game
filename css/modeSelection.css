@@ -46,16 +46,16 @@
 }
 
 
-#modePixelGame {
-    background-image: url(../images/pixelGame/pixelBG.png);
+.modePixelGame {
+    background-image: 
 }
 
-#modePostApo {
+.modePostApo {
     background-image: url(../images/postApoGame/bg-postApo.png);
 }
 
-#modePixelGame:hover,
-#modePostApo:hover {
+.modePixelGame:hover,
+.modePostApo:hover {
     transform: scale(1.05);
     opacity: .8;
     border-color: var(--highlightColor);

@@ -1,0 +1,11 @@
+/* HLAVNI HRA  */
+
+/* pozadi pro hlavni hru */
+.gamePixel{
+    background-image:var(--BG_PixelGame);
+}
+
+.gamePostApo {
+    background-image:var(--BG_PostApoGame);
+}
+

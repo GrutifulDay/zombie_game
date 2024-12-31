@@ -7,7 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Destroyed+Font&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/mode-selection.css">
+    <link rel="stylesheet" href="./css/gameSection.css">
+    <link rel="stylesheet" href="./css/modeSelection.css">
     <link rel="stylesheet" href="./css/aside.css">
     <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/main.css">
@@ -21,11 +22,10 @@
 </head>
 
 <body>
-    <button id="testButton">Test Game</button>
 
 
     <!-- UVOD WELCOME + REGISTRACE -->
-    <aside id="welcomeSection">
+    <aside id="welcomeSection" style="display: none;">
 
         <h2 id="welcomeText">Welcome in the Game!</h2>
         <button id="welcomeBtn">What is your name?</button>
@@ -40,29 +40,26 @@
 
     </aside>
 
-
-
-  
-
     <!-- VYBER ZE DVOU HERNICH MODU -->
-    <nav id="modeSelection" style="display: none;">
+    <nav id="modeSelection" >
         <h2 id="greeting">Choose Your Game Mode:</h2>
         <div class="mode-container">
+
             <div class="mode">
                 <h3>Pixel World (Kids Friendly):</h3>
-                <button id="modePixelGame"></button>
+                <button class="modePixel"></button>
             </div>
+
             <div class="mode">
                 <h3>Post-Apocalyptic Adventure:</h3>
-                <button id="modePostApo"></button>
+                <button class="modePostApo"></button>
             </div>
         </div>
     </nav>
 
 
     <!-- HLAVNI HORNI PANEL -->
-    <section id="gameSection" style="display: none;">
-
+    <section class="gamePixel">
         <header>
             <ul class="header-info">
                 <li class="stop-item"><button id="stop-button">||</button></li>
@@ -77,7 +74,25 @@
         <main id="gameArea">
 
         </main>
+    </section>
 
+
+
+    <section class="gamePostApo">
+        <header>
+            <ul class="header-info">
+                <li class="stop-item"><button id="stop-button">||</button></li>
+                <li class="info-item">Time: <span id="time">00:00</span></li>
+               <li class="info-item">Score: <span id="score">0</span></li>
+               <li class="info-item">Hit: <span id="hit">0</span></li>
+               <li class="info-item">Live: <span id="live">3</span></li>
+          </ul>
+        </header>
+
+    <!-- HERNI CAST -->
+        <main id="gameArea">
+
+        </main>
     </section>
       
 </body>
