@@ -1,11 +1,17 @@
+@font-face {
+    font-family: 'Destroyed Font';
+    src: url('../fonts/Broken-Detroit.ttf') format('truetype');
+}
+
 :root {
-    --infoItemColor: rgb(109, 5, 5);
     --colorBG-Universal:#1a1a1a;
     --colorFont:#00d1b2;
     --highlightColor: #ff007f;
 
 
-    --fontFamilyStylePixel:'VT323', monospace;
+    --fontFamily_Pixel:'VT323', monospace;
+    --fontFamily_PostApo:'Destroyed Font', monospace;
+    
     --fontUniversal:'orbitron', monospace;
 
     --BG_PixelGame:url(../images/pixelGame/bg-pixel.png);

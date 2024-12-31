@@ -1,11 +1,102 @@
-/* HLAVNI HRA  */
-
-/* pozadi pro hlavni hru */
-.gamePixel{
-    background-image:var(--BG_PixelGame);
+/* HLAVNÍ HRA */
+section {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .gamePostApo {
-    background-image:var(--BG_PostApoGame);
+    background-image: var(--BG_PostApoGame);
+    font-family: var(--fontFamily_PostApo);
+    display: flex;
+    flex-direction: column; 
+    
 }
+
+.gamePostApo li {
+   font-size: 1.5em;
+    background: linear-gradient(45deg, #B8860B, #FFD700, #DAA520); /* Zlaty efekt */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8), 0 0 10px #FFD700;
+    text-align: center;
+}
+
+.gamePixel {
+    background-image: url(../images/pixelGame/bg-pixel.png);
+    font-family: var(--fontFamily_Pixel);
+    display: flex;
+    flex-direction: column; 
+}
+
+.gamePixel li {
+    font-size: 2.5em;
+    color: #DDA0DD;
+    text-transform: uppercase;
+
+}
+
+
+
+.gamePixel li {
+    /* background: linear-gradient(45deg, #9400D3, #DDA0DD, #8A2BE2); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    text-align: center; /* Zarovnání */
+    text-transform: uppercase;
+}
+
+
+/* HORNÍ PANEL */
+header {
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    height: 100px; 
+    width: 100%;
+}
+
+.header-info {
+    display: flex;
+    justify-content: center; /* na stred */
+    align-items: center; /* vertikálni zarovnani */
+    gap: 20px; /* mezera mezi polozkami */
+    list-style-type: none; 
+    padding: 0;
+    margin: 0;
+}
+
+
+/* HERNÍ OBLAST */
+main#gameArea {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+/* RESPONZIVNI DIZAJN */
+@media (max-width: 768px) {
+    header {
+        height: auto;
+        padding: 10px;
+    }
+
+    .header-info {
+        gap: 10px;
+    }
+
+    .info-item {
+        font-size: 1.2em;
+    }
+
+    main#gameArea {
+        padding: 10px;
+    }
+}
+
 
