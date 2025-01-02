@@ -58,21 +58,16 @@ submitUsername.addEventListener("click", () => {
 const modePixelButton = document.querySelector(".modePixel");
 const gamePixel = document.getElementById("gamePixel");
 
+modePixelButton.addEventListener("click", () => {
+    modeSelection.style.display = "none";
+    gamePixel.style.display = "block";
+})
+
 const modePostApoButton = document.querySelector(".modePostApo")
 const gamePostApo = document.getElementById("gamePostApo")
 
-
-modePixelButton.addEventListener("click", () => {
-    // Skryje modeSelection
-    modeSelection.style.display = "none";
-    // Zobrazi gamePixel
-    gamePixel.style.display = "block";
-
-})
-
 modePostApoButton.addEventListener("click", () => {
     modeSelection.style.display = "none"
-
     gamePostApo.style.display = "block"
 })
 

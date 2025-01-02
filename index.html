@@ -28,7 +28,7 @@
 
 
     <!-- UVOD WELCOME + REGISTRACE -->
-    <aside id="welcomeSection" style="display: none;" >
+    <aside id="welcomeSection" style="display: none;">
 
         <h2 id="welcomeText">Welcome in the Game!</h2>
         <button id="welcomeBtn">What is your name?</button>
@@ -63,62 +63,50 @@
 
     <!-- HLAVNI HRA -->
 
-    <!-- game PIXEL -->
-    <!-- <section id="gamePixel" style="display: none;" >
-        <header>
-            <ul class="header-info"> 
-
-                <li class="start-item">
-                <button id="start-button" class="image-buttonPX">                      
+   <section id="gamePixel" data-game="pixel" style="display: none;">
+    <header>
+        <ul class="header-info">
+            <li class="start-item">
+                <button class="image-buttonPX">                      
                     <img src="images/pixelGame/startDuch.png" alt="Start" />
-                </button> </li> 
+                </button>
+            </li>
+            <li class="info-item">Time: <span class="time">00:00</span></li>
+            <li class="info-item">Score: <span class="score">0</span></li>
+            <li class="info-item">Hits: <span class="hit">0</span></li>
+            <li class="info-item">Live: <span class="live">3</span></li>
+            <li class="stop-item">
+                <button class="image-buttonPX">                      
+                    <img src="images/pixelGame/stopDuch.png" alt="Stop" />
+                </button>
+            </li>          
+        </ul>
+    </header>
+    <main class="gameArea"></main>
+</section>
 
-                <li class="info-item">Time: <span id="time">00:00</span></li>
-                <li class="info-item">Score: <span id="score">0</span></li>
-                <li class="info-item">Hits: <span id="hit">0</span></li>
-                <li class="info-item">Live: <span id="live">3</span></li>
+<section id="gamePostApo" data-game="postApo">
+    <header>
+        <ul class="header-info">
+            <li class="start-item">
+                <button class="image-buttonPA">                      
+                    <img src="images/postApoGame/start.png" alt="Start" />
+                </button>
+            </li>
+            <li class="info-item">Time: <span class="time">00:00</span></li>
+            <li class="info-item">Score: <span class="score">0</span></li>
+            <li class="info-item">Hits: <span class="hit">0</span></li>
+            <li class="info-item">Live: <span class="live">3</span></li>
+            <li class="stop-item">
+                <button class="image-buttonPA">                      
+                    <img src="images/postApoGame/stop.png" alt="Stop" />
+                </button>
+            </li> 
+        </ul>
+    </header>
+    <main class="gameArea"></main>
+</section>
 
-                <li class="stop-item">
-                    <button id="stop-button" class="image-buttonPX">                      
-                        <img src="images/pixelGame/stopDuch.png" alt="Stop" />
-                    </button> </li>          
-          </ul>
-        </header> -->
-
-    <!-- HERNI CAST -->
-        <!-- <main id="gameArea">
-
-        </main>
-    </section> -->
-
-
-    <!-- game postApo -->
-    <section id="gamePostApo">
-        <header>
-            <ul class="header-info">
-                       
-                    <li class="start-item">
-                        <button id="start-button" class="image-buttonPA">                      
-                            <img src="images/postApoGame/start.png" alt="Start" >
-                    </li>         
-                    <li class="info-item">Time: <span id="time">00:00</span></li>
-                    <li class="info-item">Score: <span id="score">0</span></li>
-                    <li class="info-item">Hits: <span id="hit">0</span></li>
-                    <li class="info-item">Live: <span id="live">3</span></li>
-
-                    <li class="stop-item">
-                        <button id="stop-button" class="image-buttonPA">                      
-                           <img src="images/postApoGame/stop.png" alt="Stop" />
-                       </button>
-                    </li> 
-          </ul>
-        </header>
-
-    <!-- HERNI CAST -->
-        <main id="gameArea">
-
-        </main>
-    </section>
       
 </body>
 </html>
