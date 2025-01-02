@@ -16,6 +16,9 @@
 
     <script type="module" src="./js/script.js"></script>
     <script type="module" src="./js/gameLogic.js"></script>
+    <script type="module" src="./js/pixelGame.js"></script>
+    <script type="module" src="./js/postApoGame.js"></script>
+
     
     <title>GAME</title>
 
@@ -58,7 +61,8 @@
     </nav>
 
 
-    <!-- HLAVNI HORNI PANEL -->
+    <!-- HLAVNI HRA -->
+
     <!-- game PIXEL -->
     <section id="gamePixel">
         <header>
@@ -71,7 +75,7 @@
 
                 <li class="info-item">Time: <span id="time">00:00</span></li>
                 <li class="info-item">Score: <span id="score">0</span></li>
-                <li class="info-item">Hit: <span id="hit">0</span></li>
+                <li class="info-item">Hits: <span id="hit">0</span></li>
                 <li class="info-item">Live: <span id="live">3</span></li>
 
                 <li class="stop-item">
@@ -90,21 +94,21 @@
 
 
     <!-- game postApo -->
-    <section id="gamePostApo" style="display: none;">
+    <section id="gamePostApo">
         <header>
             <ul class="header-info">
                        
                     <li class="start-item">
-                        <button id="stop-button" class="image-buttonPA">                      
+                        <button id="start-button" class="image-buttonPA">                      
                             <img src="images/postApoGame/start.png" alt="Start" >
                     </li>         
                     <li class="info-item">Time: <span id="time">00:00</span></li>
                     <li class="info-item">Score: <span id="score">0</span></li>
-                    <li class="info-item">Hit: <span id="hit">0</span></li>
+                    <li class="info-item">Hits: <span id="hit">0</span></li>
                     <li class="info-item">Live: <span id="live">3</span></li>
 
                     <li class="stop-item">
-                        <button id="start-button" class="image-buttonPA">                      
+                        <button id="stop-button" class="image-buttonPA">                      
                            <img src="images/postApoGame/stop.png" alt="Stop" />
                        </button>
                     </li> 

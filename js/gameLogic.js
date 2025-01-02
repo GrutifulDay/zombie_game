@@ -1,134 +1,126 @@
+// gameLogic.js
+let timer = 10;
+let moveIntervalImg = 1000;
 
-// GAME 
-let timer = 10
-let moveIntervalImg = 2000
-
-
-// seznam obrazku + score
+// Seznam obrázků + skóre
 const imageConfigs = [
     { "src": "images/pixelGame/img1.png", "score": 10 },
     { "src": "images/pixelGame/img2.png", "score": 20 },
     { "src": "images/pixelGame/img3.png", "score": -10 },
 ];
 
+let currentImage = null;
+let gameInterval = null;
+let timerInterval = null;
+let isPaused = false;
+let isStart = false;
+let timeRemaining = timer;
 
-let currentImage = null
-let gameInterval = null
-let timerInterval = null
-let isPaused = false
-let isStart = false
-let timeRemaining = timer
-
-
-
-// fce pro pridani random img
+// Funkce pro přidání náhodného obrázku
 function addRandomImage() {
-    const gameArea = document.getElementById('gameArea')
+    const gameArea = document.getElementById('gameArea');
 
-    
     if (currentImage) {
-        gameArea.removeChild(currentImage)
-        currentImage = null
+        gameArea.removeChild(currentImage);
+        currentImage = null;
     }
 
-    
-    const randomIndex = Math.floor(Math.random() * imageConfigs.length)
-    const config = imageConfigs[randomIndex]
+    const randomIndex = Math.floor(Math.random() * imageConfigs.length);
+    const config = imageConfigs[randomIndex];
 
-    const img = document.createElement('img')
-    img.src = config.src
-    img.classList.add('gamePicture')
+    const img = document.createElement('img');
+    img.src = config.src;
+    img.classList.add('gamePicture');
 
-
-    gameArea.appendChild(img)
-    currentImage = img
+    gameArea.appendChild(img);
+    currentImage = img;
 
     img.addEventListener('click', () => {
         if (config.score > 0) {
-            scoreShoot(config.score)
+            scoreShoot(config.score);
         } else {
-            resetScore()
+            resetScore();
         }
-    })
+    });
 
-    movePicture(img, gameArea)
+    movePicture(img, gameArea);
 }
 
-// pohyb obrazku v gameArea
+// Pohyb obrázku v gameArea
 function movePicture(img, gameArea) {
-    const gameAreaRect = gameArea.getBoundingClientRect()
+    const gameAreaRect = gameArea.getBoundingClientRect();
 
-    const randomX = Math.random() * (gameAreaRect.width - img.width)
-    const randomY = Math.random() * (gameAreaRect.height - img.height)
+    const randomX = Math.random() * (gameAreaRect.width - img.width);
+    const randomY = Math.random() * (gameAreaRect.height - img.height);
 
-    img.style.position = 'absolute'
-    img.style.left = randomX + 'px'
-    img.style.top = randomY + 'px'
+    img.style.position = 'absolute';
+    img.style.left = randomX + 'px';
+    img.style.top = randomY + 'px';
 }
 
-// casovac
+// Časovač
 function startTimer() {
-    const timeItem = document.getElementById('time')
-    timeItem.innerText = timeRemaining
+    const timeItem = document.getElementById('time');
+    timeItem.innerText = timeRemaining;
 
     timerInterval = setInterval(() => {
         if (!isPaused) {
-            timeRemaining--
-            timeItem.innerText = timeRemaining
+            timeRemaining--;
+            timeItem.innerText = timeRemaining;
 
             if (timeRemaining <= 0) {
-                clearInterval(timerInterval)
-                clearInterval(gameInterval)
-                alert('Game over')
+                clearInterval(timerInterval);
+                clearInterval(gameInterval);
+                alert('Game over');
             }
         }
-    }, 1000)
+    }, 1000);
 }
 
-// pricteni score
+// Přičtení skóre
 function scoreShoot(points) {
-    const scoreItem = document.getElementById('score')
-    let actualScore = parseInt(scoreItem.textContent) || 0
+    const scoreItem = document.getElementById('score');
+    let actualScore = parseInt(scoreItem.textContent) || 0;
 
-    actualScore += points
-    scoreItem.textContent = actualScore
+    actualScore += points;
+    scoreItem.textContent = actualScore;
 }
 
-// reset score
+// Reset skóre
 function resetScore() {
-    const scoreItem = document.getElementById('score')
-    scoreItem.textContent = 0
+    const scoreItem = document.getElementById('score');
+    scoreItem.textContent = 0;
 }
 
-// fce pro spusteni hry
+// Funkce pro spuštění hry
 function startGame() {
+    if (isStart) {
+        // Pokud je hra již spuštěná a byla pauznutá, pokračuje
+        isPaused = false;
+        return;
+    }
+
+    isStart = true;
+
     gameInterval = setInterval(() => {
         if (!isPaused) {
-            addRandomImage()
+            addRandomImage();
         }
-    }, moveIntervalImg)
+    }, moveIntervalImg);
 
-    startTimer()
+    startTimer();
 }
 
-// fce pro pozastaveni/obnoveni hry
-function togglePause() {
-    isPaused = !isPaused // prepinac
-
-    const stopButton = document.querySelector('.stop-item button')
-    stopButton.textContent = isPaused // zmena textu na tlacitku
+// Funkce pro pozastavení hry
+function pauseGame() {
+    if (isStart) {
+        isPaused = true;
+        console.log('Hra pozastavena');
+    }
 }
 
-function toggleStart() {
-    isStart = !isStart // prepinac
+// Event Listeners pro tlačítka
+document.querySelector('.start-item button').addEventListener('click', startGame);
+document.querySelector('.stop-item button').addEventListener('click', pauseGame);
 
-    const stopButton = document.querySelector('.start-item button')
-    startButton.textContent = isStart // zmena textu na tlacitku
-}
-
-// pauza tlacitko
-document.querySelector('.stop-item button').addEventListener('click', togglePause)
-document.querySelector('.start-item button').addEventListener('click', toggleStart)
-
-startGame()
 
