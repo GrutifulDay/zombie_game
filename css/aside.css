@@ -65,15 +65,14 @@ h2 {
 #welcomeBtn {
     font-family: var(--fontUniversal);
     font-size: 5em;
+    color: var(--colorFont);
     border: none;
     background: none;
     /* text-transform: uppercase; */
 
 
     cursor: pointer;
-    transition: color 0.3s ease;
-
-    color: var(--colorFont);
+    transition: color 0.3s ease;   
 }
 
 #welcomeBtn:hover {

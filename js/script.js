@@ -1,4 +1,3 @@
-import '@js/gameLogic.js';
 import { gsap } from 'gsap'
 import '@fontsource/vt323'
 import '@fontsource/orbitron'
@@ -44,17 +43,24 @@ welcomeBtn.addEventListener("click", () => {
  * @param {HTMLElement} element 
  */
 function blinkElement(element) {
+    console.log("probliknuti sposteni", element);
     gsap.to(element, {
-        opacity: 1, 
+        opacity: 0.5, 
         duration: 1,
-        repeat: 3,
+        repeat: -1,
         color: "#ff007f",
         yoyo: true,
         ease: "power1.inOut"
     })
 }
 
-// ZASTAVENI PROBLIKNUTI 
+// spusteni animace probliknuti po nacteni stranky probliknuti
+window.addEventListener("load", () => {
+    stopAnimation = false
+    animateText("welcomeText", 0, welcomeBtn)
+});
+
+// zastavi se pri klinuti na button
 welcomeBtn.addEventListener("click", () => {
     gsap.killTweensOf(welcomeBtn)
     gsap.to(welcomeBtn, {opacity: 1, duration: .3 })
