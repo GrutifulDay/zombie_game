@@ -19,8 +19,9 @@ aside {
 
 #textHint {
     position: absolute;
-    top: 11px;
+    top: 9px;
     left: 117px;
+    font-size: 1.1em;
 
 }
 
