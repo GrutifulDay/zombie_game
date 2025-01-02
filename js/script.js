@@ -55,22 +55,26 @@ submitUsername.addEventListener("click", () => {
 })
 
 // VYBER HERNIHO MODU
-// Výběr módu
-modePixelButton.addEventListener('click', () => startGameMode('pixel'));
-modePostApoButton.addEventListener('click', () => startGameMode('postApo'));
+const modePixelButton = document.querySelector(".modePixel");
+const gamePixel = document.getElementById("gamePixel");
 
-function startGameMode(mode) {
-    currentMode = mode;
+const modePostApoButton = document.querySelector(".modePostApo")
+const gamePostApo = document.getElementById("gamePostApo")
 
-    // Nastavení herních obrázků a tlačítek
-    const config = gameConfigs[mode];
-    document.getElementById('start-image').src = config.startImage;
-    document.getElementById('stop-image').src = config.stopImage;
 
-    // Skryje výběr módu a zobrazí hru
-    modeSelection.style.display = 'none';
-    gameSection.style.display = 'block';
-}
+modePixelButton.addEventListener("click", () => {
+    // Skryje modeSelection
+    modeSelection.style.display = "none";
+    // Zobrazi gamePixel
+    gamePixel.style.display = "block";
+
+})
+
+modePostApoButton.addEventListener("click", () => {
+    modeSelection.style.display = "none"
+
+    gamePostApo.style.display = "block"
+})
 
 
 
