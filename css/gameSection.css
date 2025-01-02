@@ -9,7 +9,9 @@ section {
     padding: 0;
 }
 
-.gamePostApo {
+
+/* game PostApo */
+#gamePostApo {
     background-image: var(--BG_PostApoGame);
     font-family: var(--fontFamily_PostApo);
     display: flex;
@@ -17,7 +19,7 @@ section {
     
 }
 
-.gamePostApo li {
+#gamePostApo li {
    font-size: 1.5em;
     background: linear-gradient(45deg, #B8860B, #FFD700, #DAA520); /* Zlaty efekt */
     -webkit-background-clip: text;
@@ -26,47 +28,67 @@ section {
     text-align: center;
 }
 
-.gamePixel {
-    background-image: url(../images/pixelGame/bg-pixel.png);
+/* game pixel */
+#gamePixel {
+    background-image: var(--BG_PixelGame); /* zmenit na promennou/ 
+    upravit horniprostor  */
     font-family: var(--fontFamily_Pixel);
     display: flex;
     flex-direction: column; 
 }
 
-.gamePixel li {
+#gamePixel li {
     font-size: 2.5em;
-    color: #DDA0DD;
+    color: #1ee735; /* upravit finalni text */
     text-transform: uppercase;
-
-}
-
-.gamePixel li {
     /* background: linear-gradient(45deg, #9400D3, #DDA0DD, #8A2BE2); 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent; */
     text-align: center; /* Zarovnání */
     text-transform: uppercase;
+
 }
 
 
 /* HORNÍ PANEL */
-.image-button {
+/* button jako img */
+.image-buttonPX {
     background: none; 
     border: none; 
     padding: 0; 
   }
   
-  .image-button img {
+  .image-buttonPX img {
     margin-top: 16px;
     width: 65px;
     height: auto;
     display: block; 
   }
   
-.image-button:hover img {
+.image-buttonPX:hover img {
     transform: scale(1.1); 
     transition: transform 0.2s; 
 }
+
+
+.image-buttonPA {
+    background: none; 
+    border: none; 
+    padding: 0; 
+  }
+  
+  .image-buttonPA img {
+    margin-top: 25px;
+    width: 68px;
+    height: auto;
+    display: block; 
+  }
+  
+.image-buttonPA:hover img {
+    transform: scale(1.1); 
+    transition: transform 0.2s; 
+}
+
 
 header {
     display: flex; 
@@ -86,6 +108,11 @@ header {
     margin: 0;
 }
 
+.header-info li {
+    justify-content: center; /* na stred */
+    margin-top: 40px;
+}
+
 
 /* HERNÍ OBLAST */
 main#gameArea {
@@ -95,7 +122,7 @@ main#gameArea {
     align-items: center; 
 }
 
-/* RESPONZIVNI DIZAJN */
+/* RESPO DIZAJN */
 @media (max-width: 768px) {
     header {
         height: auto;

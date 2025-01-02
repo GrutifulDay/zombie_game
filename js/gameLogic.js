@@ -1,21 +1,22 @@
 
 // GAME 
-let timer = 20
-//let moveIntervalImg = 1000
+let timer = 10
+let moveIntervalImg = 2000
 
 
 // seznam obrazku + score
 const imageConfigs = [
-    { src: 'images/dyneHF.png', score: 10 }, 
-    { src: 'images/hezknet.png', score: -100 }, 
-    { src: 'images/pumpkin.png', score: 30 }, 
-]
+    { "src": "images/pixelGame/img1.png", "score": 10 },
+    { "src": "images/pixelGame/img2.png", "score": 20 },
+    { "src": "images/pixelGame/img3.png", "score": -10 },
+];
 
 
 let currentImage = null
 let gameInterval = null
 let timerInterval = null
 let isPaused = false
+let isStart = false
 let timeRemaining = timer
 
 
@@ -115,12 +116,19 @@ function togglePause() {
     isPaused = !isPaused // prepinac
 
     const stopButton = document.querySelector('.stop-item button')
-    stopButton.textContent = isPaused ? '▶️' : '||' // zmena textu na tlacitku
+    stopButton.textContent = isPaused // zmena textu na tlacitku
+}
+
+function toggleStart() {
+    isStart = !isStart // prepinac
+
+    const stopButton = document.querySelector('.start-item button')
+    startButton.textContent = isStart // zmena textu na tlacitku
 }
 
 // pauza tlacitko
 document.querySelector('.stop-item button').addEventListener('click', togglePause)
-
+document.querySelector('.start-item button').addEventListener('click', toggleStart)
 
 startGame()
 

@@ -55,26 +55,27 @@ submitUsername.addEventListener("click", () => {
 })
 
 // VYBER HERNIHO MODU
-const pixelButton = document.querySelectorAll(".modePixel")
-const postApoButton = document.querySelectorAll(".modePostApo")
+const modePixelButton = document.querySelector(".modePixel");
+const gamePixel = document.getElementById("gamePixel");
+
+const modePostApoButton = document.querySelector(".modePostApo")
+const gamePostApo = document.getElementById("gamePostApo")
 
 
-function chooseGame(mode) {
-    alert(`Herni mod ${mode} byl vybran!`)
+modePixelButton.addEventListener("click", () => {
+    // Skryje modeSelection
+    modeSelection.style.display = "none";
+    // Zobrazi gamePixel
+    gamePixel.style.display = "block";
 
-    if (mode === 'Pixel Scary World') {
-        startPixelGame()
-    } else if (mode === 'Post-Apocalyptic Adventure') {
-        startPostApoGame()
-    }
-}
-pixelButton.forEach(button => {
-    button.addEventListener("click", () => chooseGame('Pixel Scary World'))
 })
 
-postApoButton.forEach(button => {
-    button.addEventListener("click", () => chooseGame('Post-Apocalyptic Adventure'))
+modePostApoButton.addEventListener("click", () => {
+    modeSelection.style.display = "none"
+
+    gamePostApo.style.display = "block"
 })
+
 
 
 // FCE PRO POSTUPNE ZOBRAZENI TEXTU

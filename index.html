@@ -41,7 +41,7 @@
     </aside>
 
     <!-- VYBER ZE DVOU HERNICH MODU -->
-    <nav id="modeSelection" style="display: none;">
+    <nav id="modeSelection" style="display: none;" >
         <h2 id="greeting">Choose Your Game Mode:</h2>
         <div class="mode-container">
 
@@ -59,20 +59,25 @@
 
 
     <!-- HLAVNI HORNI PANEL -->
-    <section class="gamePixel">
+    <!-- game PIXEL -->
+    <section id="gamePixel">
         <header>
-            <ul class="header-info"> <li class="stop-item">
-                <button id="start-button" class="image-button">                      
+            <ul class="header-info"> 
+
+                <li class="start-item">
+                <button id="start-button" class="image-buttonPX">                      
                     <img src="images/pixelGame/startDuch.png" alt="Start" />
-                </button> </li>            
+                </button> </li> 
+
                 <li class="info-item">Time: <span id="time">00:00</span></li>
                 <li class="info-item">Score: <span id="score">0</span></li>
                 <li class="info-item">Hit: <span id="hit">0</span></li>
                 <li class="info-item">Live: <span id="live">3</span></li>
+
                 <li class="stop-item">
-                <button id="stop-button" class="image-button">                      
-                    <img src="images/pixelGame/duchstop.png" alt="Stop" />
-                </button> </li>
+                    <button id="stop-button" class="image-buttonPX">                      
+                        <img src="images/pixelGame/stopDuch.png" alt="Stop" />
+                    </button> </li>          
           </ul>
         </header>
 
@@ -84,15 +89,25 @@
     </section>
 
 
-
-    <section class="gamePostApo" style="display: none;">
+    <!-- game postApo -->
+    <section id="gamePostApo" style="display: none;">
         <header>
             <ul class="header-info">
-                <!-- <li class="stop-item"><button id="stop-button">||</button></li> -->
-                <li class="info-item">Time: <span id="time">00:00</span></li>
-               <li class="info-item">Score: <span id="score">0</span></li>
-               <li class="info-item">Hit: <span id="hit">0</span></li>
-               <li class="info-item">Live: <span id="live">3</span></li>
+                       
+                    <li class="start-item">
+                        <button id="stop-button" class="image-buttonPA">                      
+                            <img src="images/postApoGame/start.png" alt="Start" >
+                    </li>         
+                    <li class="info-item">Time: <span id="time">00:00</span></li>
+                    <li class="info-item">Score: <span id="score">0</span></li>
+                    <li class="info-item">Hit: <span id="hit">0</span></li>
+                    <li class="info-item">Live: <span id="live">3</span></li>
+
+                    <li class="stop-item">
+                        <button id="start-button" class="image-buttonPA">                      
+                           <img src="images/postApoGame/stop.png" alt="Stop" />
+                       </button>
+                    </li> 
           </ul>
         </header>
 
