@@ -1,3 +1,4 @@
+import '@js/gameLogic.js';
 import { gsap } from 'gsap'
 import '@fontsource/vt323'
 import '@fontsource/orbitron'
@@ -38,6 +39,28 @@ welcomeBtn.addEventListener("click", () => {
     gsap.from("#nameInput", { opacity: 0, duration: 0.8 }) 
 })
 
+// PROBLIKNUTI BUTTON PRI NECINOSTI
+/**
+ * @param {HTMLElement} element 
+ */
+function blinkElement(element) {
+    gsap.to(element, {
+        opacity: 1, 
+        duration: 1,
+        repeat: 3,
+        color: "#ff007f",
+        yoyo: true,
+        ease: "power1.inOut"
+    })
+}
+
+// ZASTAVENI PROBLIKNUTI 
+welcomeBtn.addEventListener("click", () => {
+    gsap.killTweensOf(welcomeBtn)
+    gsap.to(welcomeBtn, {opacity: 1, duration: .3 })
+})
+
+
 // PRESMEROVANI NA VYBER HERNIHO MODU
 submitUsername.addEventListener("click", () => {
     const username = document.getElementById("username").value.trim() 
@@ -72,14 +95,15 @@ modePostApoButton.addEventListener("click", () => {
 })
 
 
-
+// ANIMACE 
 // FCE PRO POSTUPNE ZOBRAZENI TEXTU
 /**
- * 
- * @param {string} elementId
- * @param {number} delay 
- */
-function animateText(elementId, delay = 0) {
+* 
+* @param {string} elementId
+* @param {number} delay 
+* @param {HTMLElement} blinkTarget
+*/
+function animateText(elementId, delay = 0, blinkTarget = null) {
     const element = document.getElementById(elementId)
     const textContent = element.textContent
     element.innerHTML = "" 
@@ -100,4 +124,12 @@ function animateText(elementId, delay = 0) {
             span.style.opacity = "1" 
         }, index * 100 + delay * 1000)
     })
+    
+    // po skonceni nastaveni probliknuti 
+    const animationDuration = spans.length * 100 + delay * 1000
+    if (blinkTarget) {
+        setTimeout(() => {
+            blinkElement(blinkTarget)
+        }, animationDuration)
+    } 
 }

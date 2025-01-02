@@ -28,7 +28,9 @@
 
 
     <!-- UVOD WELCOME + REGISTRACE -->
-    <aside id="welcomeSection" style="display: none;">
+    <aside id="welcomeSection">
+        <div id="escHint">esc</div>
+        <p id="textHint">Press ESC to cancel the animation</p>
 
         <h2 id="welcomeText">Welcome in the Game!</h2>
         <button id="welcomeBtn">What is your name?</button>
@@ -79,13 +81,14 @@
                 <button class="image-buttonPX">                      
                     <img src="images/pixelGame/stopDuch.png" alt="Stop" />
                 </button>
-            </li>          
+            </li> 
+            <li class="info-item">Player: <span class="Player"></span></li>         
         </ul>
     </header>
     <main class="gameArea"></main>
 </section>
 
-<section id="gamePostApo" data-game="postApo">
+<section id="gamePostApo" data-game="postApo" style="display: none;">
     <header>
         <ul class="header-info">
             <li class="start-item">
@@ -102,6 +105,8 @@
                     <img src="images/postApoGame/stop.png" alt="Stop" />
                 </button>
             </li> 
+            <li class="info-item">Player: <span class="Player"></span></li>         
+
         </ul>
     </header>
     <main class="gameArea"></main>

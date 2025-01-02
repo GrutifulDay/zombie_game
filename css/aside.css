@@ -1,3 +1,47 @@
+/* obecne */
+aside {
+    font-family: var(--fontUniversal);
+    color: var(--colorFont);
+}
+
+/* Dodatek k animaci - rada pro uzivatele */
+#escHint {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 12px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+#textHint {
+    position: absolute;
+    top: 11px;
+    left: 117px;
+
+}
+
+/* probliknuti - zvyrazneni pro uzivatele */
+/* .blink {
+    animation: blink-animation 1s infinite;
+    color: var(--highlightColor);
+}
+
+@keyframes blink-animation {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+} */
+
 /* WELCOME - uvodni cast */
 #welcomeSection {
     padding-top: 50px;
@@ -12,7 +56,6 @@
 }
 
 h2 {
-    font-family: var(--fontUniversal);
     font-size: 5em;
     border: none;
     background: none;
