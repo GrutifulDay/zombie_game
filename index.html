@@ -6,18 +6,16 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Destroyed+Font&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/gameSection.css">
-    <link rel="stylesheet" href="./css/modeSelection.css">
     <link rel="stylesheet" href="./css/aside.css">
-    <link rel="stylesheet" href="./css/header.css">
     <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/nav_mode.css">
+    <link rel="stylesheet" href="./css/section_game.css">
+    <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/variables.css">
 
-    <script type="module" src="./js/script.js"></script>
     <script type="module" src="./js/gameLogic.js"></script>
-    <script type="module" src="./js/pixelGame.js"></script>
-    <script type="module" src="./js/postApoGame.js"></script>
+    <script type="module" src="./js/script.js"></script>
+
 
     
     <title>GAME</title>
@@ -28,12 +26,13 @@
 
 
     <!-- UVOD WELCOME + REGISTRACE -->
-    <aside id="welcomeSection">
+    <aside id="welcomeSection" style="display: none;">
         <div id="escHint">esc</div>
         <p id="textHint">Press ESC to cancel the animation</p>
 
         <h2 id="welcomeText">Welcome in the Game!</h2>
         <button id="welcomeBtn">What is your name?</button>
+
 
         <div id="nameInput" style="display: none;">
 
@@ -44,15 +43,10 @@
 
     </aside>
 
-    
-
     <!-- VYBER ZE DVOU HERNICH MODU -->
-    <nav id="modeSelection">
-        <h2 id="greeting"></h2>
-
+    <nav id="modeSelection" style="display: none;">
      
-
-        <h2 id="greeting"></h2>
+        <h2 id="greeting">Choose Your Game Mode:</h2>
         <div class="mode-container">
 
             <div class="mode">
@@ -76,27 +70,33 @@
    <section id="gamePixel" data-game="pixel" style="display: none;">
     <header>
         <ul class="header-info">
+
             <li class="start-item">
                 <button class="image-buttonPX">                      
                     <img src="images/pixelGame/startDuch.png" alt="Start" />
                 </button>
             </li>
+
             <li class="info-item">Time: <span class="time">00:00</span></li>
             <li class="info-item">Score: <span class="score">0</span></li>
             <li class="info-item">Hits: <span class="hit">0</span></li>
             <li class="info-item">Live: <span class="live">3</span></li>
+
             <li class="stop-item">
                 <button class="image-buttonPX">                      
                     <img src="images/pixelGame/stopDuch.png" alt="Stop" />
                 </button>
             </li> 
+
             <li class="info-item">Player: <span class="Player"></span></li>         
         </ul>
     </header>
     <main class="gameArea"></main>
 </section>
 
-<section id="gamePostApo" data-game="postApo" style="display: none;">
+
+
+<section id="gamePostApo" data-game="postApo">
     <header>
         <ul class="header-info">
             <li class="start-item">
@@ -113,7 +113,7 @@
                     <img src="images/postApoGame/stop.png" alt="Stop" />
                 </button>
             </li> 
-            <li class="info-item">Player: <span class="Player"></span></li>         
+            <li class="info-item" id="player-item">Player: <span class="player">Andrej</span></li>         
 
         </ul>
     </header>

@@ -76,12 +76,14 @@ submitUsername.addEventListener("click", () => {
         modeSelection.style.display = "block"
 
         greeting.innerHTML = `Hello <span class="nameHL">${username}</span>,<br> Choose Your Game Mode:`;
-
-        // animateText("greeting", 0)
+        
+        animateText("greeting")
+        
     } else {
         alert("Please enter your name")
     }
 })
+
 
 // VYBER HERNIHO MODU
 const modePixelButton = document.querySelector(".modePixel");
@@ -107,7 +109,6 @@ modePostApoButton.addEventListener("click", () => {
 * 
 * @param {string} elementId
 * @param {number} delay 
-* @param {HTMLElement} blinkTarget
 */
 function animateText(elementId, delay = 0, blinkTarget = null) {
     const element = document.getElementById(elementId)
