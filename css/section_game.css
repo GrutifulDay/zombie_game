@@ -9,7 +9,82 @@ section {
     padding: 0;
 }
 
+/* HORNÍ PANEL */
+header {
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    height: 100px; 
+    width: 100%;
+}
 
+.header-info {
+    display: flex;
+    justify-content: center; /* na stred */
+    align-items: center; /* vertikálni zarovnani */
+    gap: 20px; /* mezera mezi polozkami */
+    list-style-type: none; 
+    padding: 0;
+    margin: 0;
+}
+
+.header-info li {
+    justify-content: center; /* na stred */
+    margin-top: 40px;
+}
+
+/* PLAYER */
+
+
+
+/* button jako img */
+.image-buttonPX {
+    background: none; 
+    border: none; 
+    padding: 0; 
+  }
+  
+  .image-buttonPX img {
+    margin-top: 16px;
+    width: 65px;
+    height: auto;
+    display: block; 
+  }
+  
+.image-buttonPX:hover img {
+    transform: scale(1.1); 
+    transition: transform 0.2s; 
+}
+
+
+.image-buttonPA {
+    cursor: url(../images/postApoGame/curPA.png), auto;
+    background: none; 
+    border: none; 
+    padding: 0; 
+  }
+  
+  .image-buttonPA img {
+    margin-top: 25px;
+    width: 68px;
+    height: auto;
+    display: block; 
+  }
+  
+.image-buttonPA:hover img {
+    transform: scale(1.1); 
+    transition: transform 0.2s; 
+}
+
+/* ROZDELENI DLE HERNIHO PROSTREDI */
+
+/* HERNÍ OBLAST */
+main#gameArea {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
 /* game PostApo */
 #gamePostApo {
     background-image: var(--BG_PostApoGame);
@@ -50,82 +125,8 @@ section {
     -webkit-text-fill-color: transparent; */
     text-align: center; /* Zarovnání */
     text-transform: uppercase;
-
 }
 
-
-/* HORNÍ PANEL */
-/* button jako img */
-.image-buttonPX {
-    background: none; 
-    border: none; 
-    padding: 0; 
-  }
-  
-  .image-buttonPX img {
-    margin-top: 16px;
-    width: 65px;
-    height: auto;
-    display: block; 
-  }
-  
-.image-buttonPX:hover img {
-    transform: scale(1.1); 
-    transition: transform 0.2s; 
-}
-
-
-.image-buttonPA {
-    cursor: url(../images/postApoGame/curPA.png), auto;
-    background: none; 
-    border: none; 
-    padding: 0; 
-  }
-  
-  .image-buttonPA img {
-    margin-top: 25px;
-    width: 68px;
-    height: auto;
-    display: block; 
-  }
-  
-.image-buttonPA:hover img {
-    transform: scale(1.1); 
-    transition: transform 0.2s; 
-}
-
-
-header {
-    display: flex; 
-    justify-content: center;
-    align-items: center; 
-    height: 100px; 
-    width: 100%;
-}
-
-.header-info {
-    display: flex;
-    justify-content: center; /* na stred */
-    align-items: center; /* vertikálni zarovnani */
-    gap: 20px; /* mezera mezi polozkami */
-    list-style-type: none; 
-    padding: 0;
-    margin: 0;
-}
-
-.header-info li {
-    justify-content: center; /* na stred */
-    margin-top: 40px;
-}
-
-
-/* HERNÍ OBLAST */
-main#gameArea {
-    flex: 1; 
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-}
 
 /* RESPO DIZAJN */
 @media (max-width: 768px) {

@@ -15,15 +15,11 @@
 
     <script type="module" src="./js/gameLogic.js"></script>
     <script type="module" src="./js/script.js"></script>
-
-
     
     <title>GAME</title>
-
 </head>
 
 <body>
-
 
     <!-- UVOD WELCOME + REGISTRACE -->
     <aside id="welcomeSection" style="display: none;">
@@ -33,7 +29,6 @@
         <h2 id="welcomeText">Welcome in the Game!</h2>
         <button id="welcomeBtn">What is your name?</button>
 
-
         <div id="nameInput" style="display: none;">
 
             <input type="text" id="username" placeholder="Your username">
@@ -42,6 +37,7 @@
         </div>
 
     </aside>
+
 
     <!-- VYBER ZE DVOU HERNICH MODU -->
     <nav id="modeSelection" style="display: none;">
@@ -61,13 +57,10 @@
         </div>
     </nav>
 
-  
-      
-
 
     <!-- HLAVNI HRA -->
+   <!-- <section id="gamePixel" data-game="pixel" style="display: none;">
 
-   <section id="gamePixel" data-game="pixel" style="display: none;">
     <header>
         <ul class="header-info">
 
@@ -88,17 +81,21 @@
                 </button>
             </li> 
 
-            <li class="info-item">Player: <span class="Player"></span></li>         
+            <li class="info-item">Player: <span class="Player"></span></li> 
+
         </ul>
     </header>
+
     <main class="gameArea"></main>
-</section>
+
+</section> -->
 
 
 
 <section id="gamePostApo" data-game="postApo">
     <header>
         <ul class="header-info">
+            <li class="info-item" id="player-item">Player: <span class="player">Andrej</span></li>
             <li class="start-item">
                 <button class="image-buttonPA">                      
                     <img src="images/postApoGame/start.png" alt="Start" />
@@ -112,10 +109,10 @@
                 <button class="image-buttonPA">                      
                     <img src="images/postApoGame/stop.png" alt="Stop" />
                 </button>
-            </li> 
-            <li class="info-item" id="player-item">Player: <span class="player">Andrej</span></li>         
-
+            </li>
+            <li class="info-item info-level">Level: <span class="level">0</span></li>
         </ul>
+        
     </header>
     <main class="gameArea"></main>
 </section>
