@@ -1,0 +1,19 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "indentation": [2, { "ignore": ["value"] }],
+    "max-empty-lines": 1,
+    "custom-property-pattern": "^--[a-z0-9-]+$",
+    "selector-id-pattern": "^[a-z0-9-]+$",
+    "declaration-empty-line-before": "never",
+    
+    "declaration-block-no-duplicate-properties": true,
+    
+    "no-descending-specificity": true,
+    
+    "selector-no-vendor-prefix": true
+  }
+}
+
+
+  

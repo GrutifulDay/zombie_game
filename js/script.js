@@ -112,7 +112,6 @@ modePostApoButton.addEventListener("click", () => {
 */
 function animateText(elementId, delay = 0, blinkTarget = null) {
     const element = document.getElementById(elementId)
-    const htmlContent = element.innerHTML //oprava pro vlozeni <br>
     const textContent = element.textContent
     element.innerHTML = "" 
 
