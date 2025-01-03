@@ -75,9 +75,9 @@ submitUsername.addEventListener("click", () => {
         welcomeSection.style.display = "none" 
         modeSelection.style.display = "block"
 
-        greeting.innerHTML = `Hello <span class="nameHL">${username}</span>, <br>Choose Your Game Mode:` 
+        greeting.innerHTML = `Hello <span class="nameHL">${username}</span>,<br> Choose Your Game Mode:`;
 
-        animateText("greeting", 0)
+        // animateText("greeting", 0)
     } else {
         alert("Please enter your name")
     }
@@ -111,6 +111,7 @@ modePostApoButton.addEventListener("click", () => {
 */
 function animateText(elementId, delay = 0, blinkTarget = null) {
     const element = document.getElementById(elementId)
+    const htmlContent = element.innerHTML //oprava pro vlozeni <br>
     const textContent = element.textContent
     element.innerHTML = "" 
 

@@ -1,7 +1,12 @@
-#greeting {
-    display: block;
-    white-space: normal;
+.nameHL {
+    color: blue;
 }
+
+
+
+
+
+
 
 #modeSelection {
     font-family: var(--fontUniversal);
