@@ -36,6 +36,7 @@ welcomeBtn.addEventListener("click", () => {
     nameInput.style.display = "block"
     
     gsap.from("#nameInput", { opacity: 0, duration: 0.8 }) 
+    
 })
 
 // PROBLIKNUTI BUTTON PRI NECINOSTI
@@ -67,22 +68,42 @@ welcomeBtn.addEventListener("click", () => {
 })
 
 
-// PRESMEROVANI NA VYBER HERNIHO MODU
-submitUsername.addEventListener("click", () => {
-    const username = document.getElementById("username").value.trim() 
+// PRESMEROVANI NA VYBER HERNIHO MODU (kliknutim nebo "enter")
+nameInput.addEventListener("submit", (event) => {
+    event.preventDefault()
+
+    const username = document.getElementById("username").value.trim()
 
     if (username) {
-        welcomeSection.style.display = "none" 
+        welcomeSection.style.display = "none"
         modeSelection.style.display = "block"
 
-        greeting.innerHTML = `Hello <span class="nameHL">${username}</span>,<br> Choose Your Game Mode:`;
-        
+        greeting.innerHTML = `Hello <span class="nameHL">${username}</span>,<br> Choose Your Game Mode:`
+
         animateText("greeting")
-        
+
+        insertPlayerNamePA(username)
+        insertPlayerNamePX(username)
     } else {
-        alert("Please enter your name")
+        alert("please enter your name")
     }
 })
+
+// ZOBRAZENI herni sekci: PLAYER JMENA 
+function insertPlayerNamePA(username) {
+    let playerSpan = document.querySelector("#player-itemPA .playerPA")
+    if (playerSpan) {
+        playerSpan.textContent = username
+    }
+}
+
+function insertPlayerNamePX(username) {
+    let playerSpan = document.querySelector("#player-itemPX .playerPX")
+    if (playerSpan) {
+        playerSpan.textContent = username
+    }
+}
+
 
 
 // VYBER HERNIHO MODU
@@ -101,6 +122,8 @@ modePostApoButton.addEventListener("click", () => {
     modeSelection.style.display = "none"
     gamePostApo.style.display = "block"
 })
+
+
 
 
 // ANIMACE 

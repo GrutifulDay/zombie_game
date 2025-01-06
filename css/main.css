@@ -1,32 +1,104 @@
-/* HERNI PLOCHA */
-.gameArea {
-    position: relative;
-    width: 95%;
-    height: 90vh;
-    margin: 20px auto;
-    border: 5px solid; */ pak smazat
-}
+/* TABULKA PRO ZAPAMATOVANI IMG PRO SCORE */
 
-.gamePicture {
-    width: 10%;
+/* celek tabulky */
+#visualChartPixel {
+    font-family: var(--fontFamily_Pixel);
+    text-shadow: var(--textShadow_PixelGame);
+    text-transform: uppercase;
+
+    color: var(--colorFont_PixelGame);
+
+    background: #C084FC;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
     height: auto;
-    max-width: 91px;
+    text-align: center;
+
+    padding: 10px;
+    border: 3px solid #ff9e6f;
+    border-radius: 8px;
 }
 
+/* nadpis */
+#visualChartPixel h4 {
+    margin-top: -5px;
+
+    font-size: 2.5em;
+    letter-spacing: 2px;
+    text-decoration: underline;
+    
+}
+
+/* img k zapamatovani */
+.memory-gridPX img {
+    width: 70px;
+    height: auto;
+}
+
+/* odpocet k zapamtovani TIME */
+.timeRememberPX {
+    font-size: 1.7em;
+
+    position: absolute;
+    top: -11px;
+    left: 5px;
+    margin-left: 5px;
+}
+
+/* CISLOVKA vedle Time */
+.timeRememberSpanPX {
+    color: var(--colorPumpkin);
+    font-size: 3em;
+    top: 12px;
+}
+
+/* start game BUTTON */
+#startGamePX {
+    background-color: var(--colorPumpkin); 
+    color: var(--colorFont_PixelGame);
+    border: 3px solid #ff9e6f; 
+    border-radius: 8px;      
+
+    font-family: var(--fontFamily_Pixel);
+    font-size: 1.4em; 
+    text-transform: uppercase;
+        
+    margin-top: 5px;
+    padding: 10px 20px;      
+    cursor: pointer;    
+    text-shadow: 2px 2px 0px #000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    transition: all 0.3s ease; 
+}
+
+#startGamePX:hover {
+    background-color: #ff9e6f; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
+    transform: translateY(-2px); 
+}
+
+#startGamePX:active {
+    background-color: #ff6f3f; 
+    transform: translateY(2px); 
+}
+
+/* respo dizajn */
 @media (max-width: 768px) {
-    .gameArea {
-        width: 100%;
-        height: 80vh; 
-        margin: 10px auto;
+    #visualChartPixel {
+        width: 90%;
+        padding: 15px;
     }
-
-    .gamePicture {
-        width: 15%; 
+    #visualChartPixel h4 {
+        font-size: 2em;
     }
-}
-
-@media (max-width: 480px) {
-    .gamePicture {
-        width: 20%; 
+    .memory-gridPX img {
+        width: 50px;
+    }
+    #startGamePX {
+        font-size: 1.2em;
+        padding: 8px 15px;
     }
 }

@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Destroyed+Font&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./css/aside.css">
+    <link rel="stylesheet" href="./css/div_gameArea.css">
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/nav_mode.css">
     <link rel="stylesheet" href="./css/section_game.css">
@@ -29,29 +30,27 @@
         <h2 id="welcomeText">Welcome in the Game!</h2>
         <button id="welcomeBtn">What is your name?</button>
 
-        <div id="nameInput" style="display: none;">
-
-            <input type="text" id="username" placeholder="Your username">
-            <button id="submitUsername">Submit</button>
-
-        </div>
-
+        
+        <form id="nameInput" style="display: none;">
+                <input type="text" id="username" placeholder="Your username">
+                <button id="submitUsername">Submit</button>
+        </form>
     </aside>
 
 
     <!-- VYBER ZE DVOU HERNICH MODU -->
     <nav id="modeSelection" style="display: none;">
      
-        <h2 id="greeting">Choose Your Game Mode:</h2>
+        <h2 id="greeting"></h2>
         <div class="mode-container">
 
             <div class="mode">
-                <h3>Pixel World (Kids Friendly):</h3>
+                <h4>Zapomatuj si Pixel World (Kids Friendly):</h4> 
                 <button class="modePixel"></button>
             </div>
 
             <div class="mode">
-                <h3>Post-Apocalyptic Adventure:</h3>
+                <h4>Zapomatuj si Post-Apocalyptic Adventure:</h4> 
                 <button class="modePostApo"></button>
             </div>
         </div>
@@ -59,10 +58,13 @@
 
 
     <!-- HLAVNI HRA -->
-   <!-- <section id="gamePixel" data-game="pixel" style="display: none;">
+
+    <!-- PIXEL -->
+   <section id="gamePixel" data-game="pixel" style="display: none;">
 
     <header>
         <ul class="header-info">
+            <li class="info-item" id="player-itemPX">Player: <span class="playerPX"></span></li>
 
             <li class="start-item">
                 <button class="image-buttonPX">                      
@@ -73,50 +75,77 @@
             <li class="info-item">Time: <span class="time">00:00</span></li>
             <li class="info-item">Score: <span class="score">0</span></li>
             <li class="info-item">Hits: <span class="hit">0</span></li>
-            <li class="info-item">Live: <span class="live">3</span></li>
+            <li class="info-item">Live: <span class="live">1</span></li>
 
             <li class="stop-item">
                 <button class="image-buttonPX">                      
                     <img src="images/pixelGame/stopDuch.png" alt="Stop" />
                 </button>
+                <li class="info-item info-level">Level: <span class="level">1</span></li>
+
             </li> 
 
-            <li class="info-item">Player: <span class="Player"></span></li> 
 
         </ul>
     </header>
 
     <div class="gameArea"></div>
 
-</section> -->
+</section>
 
 
-
-<section id="gamePostApo" data-game="postApo">
+<!-- POST-APO -->
+<section id="gamePostApo" data-game="postApo" style="display: none;">
     <header>
         <ul class="header-info">
-            <li class="info-item" id="player-item">Player: <span class="player">Andrej</span></li>
+            <li class="info-item" id="player-itemPA">Player: <span class="playerPA"></span></li>
             <li class="start-item">
                 <button class="image-buttonPA">                      
-                    <img src="images/postApoGame/start.png" alt="Start" />
+                    <img src="images/postApoGame/startt.png" alt="Start" />
                 </button>
             </li>
             <li class="info-item">Time: <span class="time">00:00</span></li>
             <li class="info-item">Score: <span class="score">0</span></li>
             <li class="info-item">Hits: <span class="hit">0</span></li>
-            <li class="info-item">Live: <span class="live">3</span></li>
+            <li class="info-item">Live: <span class="live">1</span></li>
             <li class="stop-item">
                 <button class="image-buttonPA">                      
-                    <img src="images/postApoGame/stop.png" alt="Stop" />
+                    <img src="images/postApoGame/stopumg.png" alt="Stop" />
                 </button>
             </li>
             <li class="info-item info-level">Level: <span class="level">0</span></li>
         </ul>
-        
     </header>
     <div class="gameArea"></div>
 </section>
 
+<main id="visualChartPixel" style="display: none;">
+    <h4>Remember:</h4>
+    <p class="timeRememberPX">Time: <span class="timeRememberSpanPX">5</span></p>
+    <div class="memory-gridPX">
+        <img src="./images/pixelGame/img1.png" alt="">
+        <img src="./images/pixelGame/img2.png" alt="">
+        <img src="./images/pixelGame/img3.png" alt="">
+        <img src="./images/pixelGame/img4.png" alt="">
+        <img src="./images/pixelGame/img5.png" alt="">
+        <img src="./images/pixelGame/img6.png" alt="">
+        <img src="./images/pixelGame/img7.png" alt="">
+        <img src="./images/pixelGame/img8.png" alt="">
+        <img src="./images/pixelGame/img9.png" alt="">
+    </div>
+    <button id="startGamePX">Start Game</button>
+</main>
+
+
+
+<main id="visualChartPostApo">
+    <h4>Remember:</h4>
+    <div class="memory-gridPA">
+      
+       
+    </div>
+    <button id="startGamePA">Start Game</button>
+</main>
       
 </body>
 </html>

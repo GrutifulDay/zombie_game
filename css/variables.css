@@ -16,6 +16,12 @@
 
     --BG_PixelGame:url(../images/pixelGame/bg-pixel.png);
     --BG_PostApoGame:url(../images/postApoGame/bg-postApo.png);
+
+    --textShadow_PixelGame: 2px 2px 0px #000;
+    --colorFont_PixelGame: #F5F5DC;
+    --colorPumpkin: #e9c808;
+
+
 }
 
 
