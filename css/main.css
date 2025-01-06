@@ -89,7 +89,7 @@
     font-size: 1.7em;
 
     position: absolute;
-    top: -11px;
+    top: 15px;
     left: 5px;
     margin-left: 5px;
 }
@@ -104,8 +104,7 @@
 
 .timeRememberSpanPA {
     color: #c6ad1a;
-    font-size: 3em;
-    top: 12px;
+    font-size: 2.4em;
 }
 
 /* START GAME BUTTON */
@@ -143,7 +142,7 @@
 #startGamePA {
     background-color: #c6ad1a; /* STEJNA BARVA JAKO CISLOVKA */
     color: var(--colorFont_Box);
-    border: 3px solid #04350670; /* stjena barva jako u vsechn ramecku */
+    border: 3px solid #04350670; 
     border-radius: 8px;      
 
     font-family: var(--fontFamily_PostApo);
@@ -159,13 +158,13 @@
 }
 
 #startGamePA:hover {
-    background-color: #c6ad1a; /* stjena barva jako u vsechn ramecku */
+    background-color: #04350670; 
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
     transform: translateY(-2px); 
 }
 
 #startGamePA:active {
-    background-color: #090806; /* zvýraznění aktivního tlačítka */
+    background-color: #57c25b70; 
     transform: translateY(2px); 
 }
 
@@ -187,7 +186,7 @@
     }
 }
 
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
     #visualChartPostApo {
         width: 90%;
         padding: 15px;
@@ -202,4 +201,12 @@
         font-size: 1.2em;
         padding: 8px 15px;
     }
-} */
+
+    .timeRememberPA {
+        font-size: 1.4em;
+        top: 23px;
+    }
+    .timeRememberSpanPA {
+        font-size: 2em;
+    }
+}
