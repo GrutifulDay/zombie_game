@@ -117,11 +117,14 @@ modePixelButton.addEventListener("click", () => {
 
 const modePostApoButton = document.querySelector(".modePostApo")
 const gamePostApo = document.getElementById("gamePostApo")
+const visualChartPostApo = document.getElementById("visualChartPostApo")
 
 modePostApoButton.addEventListener("click", () => {
     modeSelection.style.display = "none"
     gamePostApo.style.display = "block"
     visualChartPostApo.style.display = "block"
+    gsap.to(visualChartPostApo, {opacity: 1, duration: .3 })
+
 })
 
 // PRIDANI IMG PRES FETCH UPRAVIT 
@@ -191,7 +194,6 @@ function displayImagesSequentially(images, container, interval = 1000) {
         }
     }, interval);
     console.log(`Displaying image: ${images[index].src}`);
-
 }
 
 
