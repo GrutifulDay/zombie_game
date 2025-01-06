@@ -44,7 +44,6 @@ welcomeBtn.addEventListener("click", () => {
  * @param {HTMLElement} element 
  */
 function blinkElement(element) {
-    console.log("probliknuti sposteni", element);
     gsap.to(element, {
         opacity: 0.5, 
         duration: 1,
@@ -125,11 +124,90 @@ modePostApoButton.addEventListener("click", () => {
     visualChartPostApo.style.display = "block"
 })
 
+// PRIDANI IMG PRES FETCH UPRAVIT 
+function fetchJSONData() {
+    return fetch("./data/images.json")
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! Status: ${res.status}`);
+            }
+            return res.json();
+        })
+        .then((data) => {
+            console.log("JSON data loaded:", data); // Kontrola načtených dat
+            return data;
+        })
+        .catch((error) => {
+            console.error("Unable to fetch data:", error); // Výpis chyby
+            return null;
+        });
+}
 
-startGamePX.addEventListener("click", (event) => {
-    const startGamePX = document.getElementById("startGamePX")
-    
-})
+document.getElementById("startGamePA").addEventListener("click", () => {
+    fetchJSONData()
+        .then((data) => {
+            if (data && data.postApoGame) {
+                const images = data.postApoGame.filter((image) => image.level === 1);
+                console.log("Filtered images for level 1:", images); // Výpis obrázků
+                if (images.length > 0) {
+                    const container = document.querySelector(".memory-gridPA");
+                    displayImagesSequentially(images, container, 1000);
+                } else {
+                    console.error("No images found for level 1.");
+                    alert("No images to display.");
+                }
+            } else {
+                console.error("No images found in postApoGame.");
+                alert("No images to display.");
+            }
+        });
+});
+
+function displayImagesSequentially(images, container, interval = 1000) {
+    let index = 0;
+
+    container.innerHTML = ""; // Vyčistíme předchozí obsah
+
+    const intervalId = setInterval(() => {
+        if (index < images.length) {
+            const imgWrapper = document.createElement("div"); // Obal pro obrázek a text
+            imgWrapper.classList.add("image-wrapper");
+
+            const img = document.createElement("img");
+            img.src = images[index].src;
+            img.alt = `Image ${index + 1}`;
+            img.classList.add("game-image");
+
+            const description = document.createElement("p");
+            description.textContent = `Score: ${images[index].score}`; // Popis
+
+            imgWrapper.appendChild(img);
+            imgWrapper.appendChild(description);
+
+            container.appendChild(imgWrapper);
+            index++;
+        } else {
+            clearInterval(intervalId); // Zastavíme interval
+        }
+    }, interval);
+    console.log(`Displaying image: ${images[index].src}`);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
