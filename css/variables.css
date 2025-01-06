@@ -15,7 +15,9 @@
     --fontUniversal:'orbitron', monospace;
 
     --BG_PixelGame:url(../images/pixelGame/bg-pixel.png);
-    --BG_PostApoGame:url(../images/postApoGame/bg-postApo.png);
+    --BG_PostApoGame:url(../images/postApoGame/paBG.png);
+    /* --BG_PostApoGame:url(../images/postApoGame/bg-postApo.png); */
+
 
     --textShadow: 2px 2px 0px #000;
     --colorFont_Box: #F5F5DC;

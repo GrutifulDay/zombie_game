@@ -104,15 +104,16 @@ function insertPlayerNamePX(username) {
     }
 }
 
-
-
 // VYBER HERNIHO MODU
-const modePixelButton = document.querySelector(".modePixel");
-const gamePixel = document.getElementById("gamePixel");
+const modePixelButton = document.querySelector(".modePixel")
+const gamePixel = document.getElementById("gamePixel")
+const visualChartPixel = document.getElementById("visualChartPixel")
+const visualChartPostApo = document.getElementById("visualChartPostApo")
 
 modePixelButton.addEventListener("click", () => {
-    modeSelection.style.display = "none";
-    gamePixel.style.display = "block";
+    modeSelection.style.display = "none"
+    gamePixel.style.display = "block"
+    visualChartPixel.style.display = "block"
 })
 
 const modePostApoButton = document.querySelector(".modePostApo")
@@ -121,7 +122,17 @@ const gamePostApo = document.getElementById("gamePostApo")
 modePostApoButton.addEventListener("click", () => {
     modeSelection.style.display = "none"
     gamePostApo.style.display = "block"
+    visualChartPostApo.style.display = "block"
 })
+
+
+startGamePX.addEventListener("click", (event) => {
+    const startGamePX = document.getElementById("startGamePX")
+    
+})
+
+
+
 
 
 
@@ -163,3 +174,10 @@ function animateText(elementId, delay = 0, blinkTarget = null) {
         }, animationDuration)
     } 
 }
+
+
+// document.body.addEventListener("keyup", function (event) {
+//     console.log(event);
+//     addMessage("user", event.key)
+
+// })

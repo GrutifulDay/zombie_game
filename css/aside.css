@@ -26,26 +26,9 @@ aside {
 
 }
 
-/* probliknuti - zvyrazneni pro uzivatele jina metoda (pouzit gsap)*/
-/* .blink {
-    animation: blink-animation 1s infinite;
-    color: var(--highlightColor);
-}
-
-@keyframes blink-animation {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-} */
-
 /* WELCOME - uvodni cast */
 #welcomeSection {
+    flex-wrap: wrap;
     padding-top: 50px;
     display: flex;
     justify-content: flex-start;
@@ -74,7 +57,6 @@ h2 {
     background: none;
     /* text-transform: uppercase; */
 
-
     cursor: pointer;
     transition: color 0.3s ease;   
 }
@@ -82,7 +64,6 @@ h2 {
 #welcomeBtn:hover {
     color: var(--highlightColor);
 }
-
 
 /* INPUT */
 #nameInput {
@@ -135,4 +116,23 @@ h2 {
     color: var(--highlightColor);
     transform: scale(1.05);
 }
+
+/* @media (max-width: 1165px) {
+    h2 {
+        font-size: 3em;
+    }
+    #welcomeBtn {
+        font-size: 3em;
+    }
+    #escHint {
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+    #textHint {
+        top: 7px;
+        left: 100px;
+        font-size: 1em;
+    }
+} */
+
 

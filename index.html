@@ -23,7 +23,7 @@
 <body>
 
     <!-- UVOD WELCOME + REGISTRACE -->
-    <aside id="welcomeSection" style="display: none;">
+    <aside id="welcomeSection">
         <div id="escHint">esc</div>
         <p id="textHint">Press ESC to cancel the animation</p>
 
@@ -84,8 +84,6 @@
                 <li class="info-item info-level">Level: <span class="level">1</span></li>
 
             </li> 
-
-
         </ul>
     </header>
 
@@ -95,7 +93,7 @@
 
 
 <!-- POST-APO -->
-<section id="gamePostApo" data-game="postApo">
+<section id="gamePostApo" data-game="postApo" style="display: none;">
     <header>
         <ul class="header-info">
             <li class="info-item" id="player-itemPA">Player: <span class="playerPA"></span></li>
@@ -119,36 +117,23 @@
     <div class="gameArea"></div>
 </section>
 
-<main id="visualChartPixel">
+<!-- SEKCE PRO ZAPAMATOVANI OBRAZKU-->
+<!-- Pixel game -->
+<main id="visualChartPixel" style="display: none;">
     <h4>Remember:</h4>
     <p class="timeRememberPX">Time: <span class="timeRememberSpanPX">5</span></p>
     <div class="memory-gridPX">
-        <img src="./images/pixelGame/img1.png" alt="">
-        <img src="./images/pixelGame/img2.png" alt="">
-        <img src="./images/pixelGame/img3.png" alt="">
-        <img src="./images/pixelGame/img4.png" alt="">
-        <img src="./images/pixelGame/img5.png" alt="">
-        <img src="./images/pixelGame/img6.png" alt="">
-        <img src="./images/pixelGame/img7.png" alt="">
-        <img src="./images/pixelGame/img8.png" alt="">
-        <img src="./images/pixelGame/img9.png" alt="">
+        
     </div>
     <button id="startGamePX">Start Game</button>
 </main>
 
-
-
-<main id="visualChartPostApo">
+<!-- Post Apo Game -->
+<main id="visualChartPostApo" style="display: none;">
     <h4>Remember:</h4>
     <p class="timeRememberPA">Time: <span class="timeRememberSpanPA">5</span></p>
     <div class="memory-gridPA">
-        <img src="./images/postApoGame/img1.png" alt="">
-      <img src="./images/postApoGame/img2.png" alt="">
-      <img src="./images/postApoGame/img3.png" alt="">
-      <img src="./images/postApoGame/img4.png" alt="">
-      <img src="./images/postApoGame/img5.png" alt="">
-      <img src="./images/postApoGame/img6.png" alt="">
-      <img src="./images/postApoGame/img7.png" alt="">
+      
     </div>
     <button id="startGamePA">Start Game</button>
 </main>
