@@ -1,73 +1,65 @@
-/* TABULKA PRO ZAPAMATOVANI IMG PRO SCORE */
-
-
 /* celek tabulky */
-#visualChartPixel {
-    font-family: var(--fontFamily_Pixel);
+/* display: flex; /* Flexbox pro zarovnání obsahu */
+/* flex-direction: column; Obsah pod sebou */
+/* align-items: center; Horizontální zarovnání */
+/* justify-content: space-between; Rovnoměrné rozložení obsahu vertikálně */
+/* box-sizing: border-box; Zahrnout padding do rozměrů */
+/* overflow: hidden; Skryje přetékající obsah */ 
+
+/* SPOLECNE PRO HLAVNI OBSAH */
+#visualChartPixel,
+#visualChartPostApo {
     text-shadow: var(--textShadow);
     text-transform: uppercase;
+    text-align: center;
 
-    color: var(--colorFont_Box);
-
-    background: #C084FC;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 50%;
-    height: auto;
-    text-align: center;
+
+    border-radius: 8px;
+
+    width: 650px; 
+    height: 500px; 
+}
+
+#visualChartPixel {
+    font-family: var(--fontFamily_Pixel);
+    color: var(--colorFont_Box);
+    background: var(--colorPurple_box);
 
     padding: 10px;
     border: 3px solid #ff9e6f;
-    border-radius: 8px;
 }
 
 #visualChartPostApo {
     font-family: var(--fontFamily_PostApo);
-    text-shadow: var(--textShadow);
-
     color: var(--colorFont_Box);
-    background: #5C6E76;
-
-    position: absolute; /* Pridat i PX */
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    width: 800px; /* Pevná šířka */
-    height: 700px; /* Pevná výška */
-
-    padding: 20px; /* Vnitřní odsazení */
+    background: var(--colorGray_box);
+    padding: 20px;
     border: 4px solid #04350670;
-    border-radius: 8px;
+    cursor: var(--cursorPixelGame); 
 
-    display: flex; /* Flexbox pro zarovnání obsahu */
-    flex-direction: column; /* Obsah pod sebou */
-    align-items: center; /* Horizontální zarovnání */
-    justify-content: space-between; /* Rovnoměrné rozložení obsahu vertikálně */
-    box-sizing: border-box; /* Zahrnout padding do rozměrů */
-    overflow: hidden; /* Skryje přetékající obsah */
 }
 
-
 /* nadpis */
-#visualChartPixel h4 {
+#visualChartPixel h4,
+#visualChartPostApo h4 {
     margin-top: -5px;
-
-    font-size: 2.5em;
     letter-spacing: 2px;
-    text-decoration: underline;   
+    text-decoration: underline;  
+}
+
+#visualChartPixel h4 {
+    font-size: 2.5em;     
 }
 
 #visualChartPostApo h4 {
-    margin-top: -5px;
-
-    font-size: 2.5em;
-    letter-spacing: 2px;
-    text-decoration: underline;   
-
+    font-size: 2em;     
 }
+
+
 
 /* IMG K ZAPAMATOVANI */
 /* class, ktera je pridana ve fci "displayImagesSequentially" */
@@ -78,152 +70,142 @@
     text-align: center;
 }
 
+/* velikost img */
 .memory-gridPX img {
-    width: 70px;
-    height: auto;
+	width: 60px;
+	height: auto;
 }
 
 .memory-gridPA img {
-    width: 60px;
+    width: 50px;
     height: auto;
 }
 
+/* cela cast pro TIME: */
 .image-wrapper p {
     margin: 5px 0 0;
-    font-size: 1.5em;
+    font-size: 1.2em;
     text-shadow: var(--textShadow);
     text-transform: uppercase;
     color:var(--colorFont_Box);
-    font-stretch: 90%; 
-    font-weight: 300;
 }
 
+/* pridane obrazky nastaveni */
+.memory-gridPX,
 .memory-gridPA {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Mřížka pro obrázky */
-    gap: 10px; /* Mezera mezi položkami */
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     justify-items: center; 
-    align-items: start; 
+    align-items: center; 
 }
 
-/* odpocet k zapamtovani TIME */
-.timeRememberPX {
-    font-size: 1.7em;
+.memory-gridPX {
+    padding-top: 10px;
+    gap: 3px; 
+}
 
+/* ODPOCET k zapamtovani TIME */
+.timeRememberPX, 
+.timeRememberPA {
     position: absolute;
-    top: -11px;
     left: 5px;
     margin-left: 5px;
+}
+
+.timeRememberPX {
+    top: 30px;  
+    font-size: 1.7em;
 }
 
 .timeRememberPA {
-    font-size: 1.7em;
-
-    position: absolute;
-    top: 15px;
-    left: 5px;
-    margin-left: 5px;
+    top: 20px;  
+    font-size: 1.3em;  
 }
+
+
 
 /* CISLOVKA vedle Time */
 .timeRememberSpanPX {
     color: var(--colorPumpkin);
-    font-size: 3em;
+    font-size: 2em;
     top: 12px;
 }
 
 .timeRememberSpanPA {
-    color: #c6ad1a;
+    color: var(--colorYellow_boxPA);
     font-size: 2.4em;
 }
 
-/* START GAME BUTTON */
-/* Pixel */
-#startGamePX {
-    background-color: var(--colorPumpkin); 
+/* BUTTON */
+#startGamePX, 
+#startGamePA {
+    position: absolute;
+    bottom: 20px; 
+    left: 50%; 
+    transform: translateX(-50%);
     color: var(--colorFont_Box);
-    border: 3px solid #ff9e6f; 
     border-radius: 8px;      
-
-    font-family: var(--fontFamily_Pixel);
-    font-size: 1.4em; 
     text-transform: uppercase;
-        
-    margin-top: 5px;
-    padding: 10px 20px;      
-    cursor: pointer;    
-    text-shadow: 2px 2px 0px #000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); 
+    padding: 10px 20px;
+    text-shadow: var(--textShadow);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
     transition: all 0.3s ease; 
 }
 
-#startGamePX:hover {
-    background-color: #ff9e6f; 
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
-    transform: translateY(-2px); 
+#startGamePX {
+    background-color: var(--colorPumpkin); 
+    border: 3px solid #ff9e6f; 
+    font-family: var(--fontFamily_Pixel);
+    font-size: 1.6em;   
+    cursor: url(../images/pixelGame/cursorHand.png), auto;      
 }
 
-#startGamePX:active {
-    background-color: #ff6f3f; 
-    transform: translateY(2px); 
-}
-
-/* post-apo */
 #startGamePA {
-    position: absolute; /* Absolutní pozice v rámci #visualChartPostApo */
-    bottom: 20px; /* Umístění 20px od spodního okraje */
-    left: 50%; /* Horizontálně na střed */
-    transform: translateX(-50%); /* Posun pro zarovnání na střed */
-    background-color: #c6ad1a; /* STEJNÁ BARVA JAKO ČÍSLOVKA */
-    color: var(--colorFont_Box);
+    background-color: var(--colorYellow_boxPA); 
     border: 3px solid #04350670;
-    border-radius: 8px;
-
     font-family: var(--fontFamily_PostApo);
     font-size: 1.4em;
-    text-transform: uppercase;
+    cursor: var(--cursorPixelGame); 
 
-    padding: 10px 20px;
-    cursor: pointer;
-    text-shadow: 2px 2px 0px #000;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    transition: all 0.3s ease;
 }
 
+/* HOOVER button */
+#startGamePX:hover, 
 #startGamePA:hover {
-    background-color: #04350670;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.6);
     transform: translate(-50%, -2px); 
 }
 
-#startGamePA:active {
-    background-color: #57c25b70;
+#startGamePX:hover {
+    background-color: #ff9e6f; 
+}
+
+#startGamePA:hover {
+    background-color: #04350670; 
+}
+
+/* ACTIVE button */
+#startGamePX:active,
+#startGamePA:active { 
     transform: translate(-50%, 2px);  
 }
 
-/* RESPO DIZAJN */
-
-/* Desktopní verze (výchozí) */
-#visualChartPixel,
-#visualChartPostApo {
-    width: 700px; /* Pevná šířka */
-    height: 600px; /* Pevná výška */
+#startGamePX:active {
+    background-color: #ff6f3f; 
 }
 
-/* Obrázky a mřížka */
-.memory-gridPX img,
-.memory-gridPA img {
-    width: 70px;
-    height: auto;
+#startGamePA:active {
+    background-color: #57c25b70;
 }
 
-.memory-gridPX,
-.memory-gridPA {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Dlaždicová mřížka */
-}
 
-/* Responzivní pravidla pro tablety */
+
+
+
+
+
+
 
 
 

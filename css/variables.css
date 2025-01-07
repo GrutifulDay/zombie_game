@@ -11,6 +11,8 @@
 
     --fontFamily_Pixel:'VT323', monospace;
     --fontFamily_PostApo:'Destroyed Font', monospace;
+
+    --cursorPixelGame: url(../images/postApoGame/curPA.png), auto;
     
     --fontUniversal:'orbitron', monospace;
 
@@ -20,8 +22,11 @@
 
 
     --textShadow: 2px 2px 0px #000;
+    --colorPurple_box: #C084FC;
+    --colorGray_box: #5C6E76;
     --colorFont_Box: #F5F5DC;
     --colorPumpkin: #e9c808;
+    --colorYellow_boxPA: #c6ad1a;
 
 
 }
