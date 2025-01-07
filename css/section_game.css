@@ -91,8 +91,7 @@ div#gameArea {
     font-family: var(--fontFamily_PostApo);
     display: flex;
     flex-direction: column; 
-    cursor: url(../images/postApoGame/curPA.png), auto;
-    
+    cursor: url(../images/postApoGame/curPA.png), auto; 
 }
 
 #gamePostApo li {

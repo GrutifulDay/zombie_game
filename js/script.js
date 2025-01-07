@@ -79,7 +79,7 @@ nameInput.addEventListener("submit", (event) => {
 
         greeting.innerHTML = `Hello <span class="nameHL">${username}</span>,<br> Choose Your Game Mode:`
 
-        animateText("greeting")
+        // animateText("greeting")
 
         insertPlayerNamePA(username)
         insertPlayerNamePX(username)
@@ -107,7 +107,6 @@ function insertPlayerNamePX(username) {
 const modePixelButton = document.querySelector(".modePixel")
 const gamePixel = document.getElementById("gamePixel")
 const visualChartPixel = document.getElementById("visualChartPixel")
-const visualChartPostApo = document.getElementById("visualChartPostApo")
 
 modePixelButton.addEventListener("click", () => {
     modeSelection.style.display = "none"
@@ -119,15 +118,15 @@ const modePostApoButton = document.querySelector(".modePostApo")
 const gamePostApo = document.getElementById("gamePostApo")
 const visualChartPostApo = document.getElementById("visualChartPostApo")
 
+
 modePostApoButton.addEventListener("click", () => {
     modeSelection.style.display = "none"
     gamePostApo.style.display = "block"
     visualChartPostApo.style.display = "block"
-    gsap.to(visualChartPostApo, {opacity: 1, duration: .3 })
-
 })
 
-// PRIDANI IMG PRES FETCH UPRAVIT 
+//IMG PRES FETCH z JSON
+// fce fetch vytahuje img z data/images.json
 function fetchJSONData() {
     return fetch("./data/images.json")
         .then((res) => {
@@ -146,34 +145,34 @@ function fetchJSONData() {
         });
 }
 
+//POST-APO po kliknuti na startGamePA zobrazeni IMG
 document.getElementById("startGamePA").addEventListener("click", () => {
-    fetchJSONData()
-        .then((data) => {
-            if (data && data.postApoGame) {
-                const images = data.postApoGame.filter((image) => image.level === 1);
-                console.log("Filtered images for level 1:", images); // Výpis obrázků
-                if (images.length > 0) {
-                    const container = document.querySelector(".memory-gridPA");
-                    displayImagesSequentially(images, container, 1000);
-                } else {
-                    console.error("No images found for level 1.");
-                    alert("No images to display.");
-                }
+    fetchJSONData().then((data) => {
+        if (data && data.postApoGame) {
+            const images = data.postApoGame.filter(image => image.level === 1);
+            if (images.length > 0) {
+                const container = document.querySelector(".memory-gridPA");
+                processGame(images, container, 1000);
             } else {
-                console.error("No images found in postApoGame.");
                 alert("No images to display.");
             }
-        });
+        }
+    });
 });
 
-function displayImagesSequentially(images, container, interval = 1000) {
+
+// OBECNA fce pro pridavani IMG - PRO OBA 
+function processGame(images, container, interval = 1000) {
+    // Vyčisti předchozí obsah
+    container.innerHTML = "";
+
     let index = 0;
 
-    container.innerHTML = ""; // Vyčistíme předchozí obsah
-
+    // Zpracuj obrázky postupně
     const intervalId = setInterval(() => {
         if (index < images.length) {
-            const imgWrapper = document.createElement("div"); // Obal pro obrázek a text
+            // Vytvoř obal obrázku
+            const imgWrapper = document.createElement("div");
             imgWrapper.classList.add("image-wrapper");
 
             const img = document.createElement("img");
@@ -181,20 +180,53 @@ function displayImagesSequentially(images, container, interval = 1000) {
             img.alt = `Image ${index + 1}`;
             img.classList.add("game-image");
 
+            // Popis obrázku
             const description = document.createElement("p");
-            description.textContent = `Score: ${images[index].score}`; // Popis
+
+            // Přidání informací podle JSON
+            if (images[index].endGame) {
+                description.textContent = "End Game";
+            } else if (images[index].resetScore) {
+                description.textContent = "Reset Score";
+            } else {
+                description.textContent = `Score: ${images[index].score}`;
+            }
 
             imgWrapper.appendChild(img);
             imgWrapper.appendChild(description);
-
             container.appendChild(imgWrapper);
+
             index++;
         } else {
-            clearInterval(intervalId); // Zastavíme interval
+            clearInterval(intervalId);
         }
     }, interval);
-    console.log(`Displaying image: ${images[index].src}`);
 }
+
+
+
+
+// PIXEL po kliknuti na startGamePX zobrazeni IMG
+document.getElementById("startGamePX").addEventListener("click", () => {
+    fetchJSONData().then((data) => {
+        if (data && data.pixelGame) {
+            const images = data.pixelGame.filter(image => image.level === 1);
+            if (images.length > 0) {
+                const container = document.querySelector(".memory-gridPX");
+                processGame(images, container, 1000);
+            } else {
+                alert("No images to display.");
+            }
+        }
+    });
+});
+
+
+
+
+
+
+
 
 
 

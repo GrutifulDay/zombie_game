@@ -26,12 +26,11 @@
 #visualChartPostApo {
     font-family: var(--fontFamily_PostApo);
     text-shadow: var(--textShadow);
-    text-transform: uppercase;
 
     color: var(--colorFont_Box);
     background: #5C6E76;
 
-    position: relative; /* Pridat i PX */
+    position: absolute; /* Pridat i PX */
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -70,7 +69,7 @@
 
 }
 
-/* img k zapamatovani */
+/* IMG K ZAPAMATOVANI */
 /* class, ktera je pridana ve fci "displayImagesSequentially" */
 .image-wrapper {
     display: flex;
@@ -95,6 +94,8 @@
     text-shadow: var(--textShadow);
     text-transform: uppercase;
     color:var(--colorFont_Box);
+    font-stretch: 90%; 
+    font-weight: 300;
 }
 
 .memory-gridPA {
@@ -105,7 +106,6 @@
     justify-items: center; 
     align-items: start; 
 }
-
 
 /* odpocet k zapamtovani TIME */
 .timeRememberPX {
@@ -224,69 +224,7 @@
 }
 
 /* Responzivní pravidla pro tablety */
-@media (max-width: 768px) {
-    #visualChartPixel,
-    #visualChartPostApo {
-        width: 90%; /* Šířka zabere většinu obrazovky */
-        height: auto; /* Automatická výška */
-    }
 
-    #visualChartPixel h4,
-    #visualChartPostApo h4 {
-        font-size: 2em; /* Menší nadpisy */
-    }
-
-    .memory-gridPX img,
-    .memory-gridPA img {
-        width: 50px; /* Menší obrázky */
-    }
-
-    #startGamePX,
-    #startGamePA {
-        font-size: 1.2em; /* Menší text tlačítka */
-        padding: 8px 15px; /* Menší vnitřní odsazení */
-    }
-
-    .timeRememberPX,
-    .timeRememberPA {
-        font-size: 1.4em; /* Menší text časovače */
-    }
-
-    .timeRememberSpanPX,
-    .timeRememberSpanPA {
-        font-size: 2em; /* Menší čísla časovače */
-    }
-}
-
-/* Responzivní pravidla pro mobily */
-@media (max-width: 480px) {
-    #visualChartPixel,
-    #visualChartPostApo {
-        width: 100%; /* Zaberou celou šířku obrazovky */
-        padding: 10px; /* Menší odsazení */
-    }
-
-    .memory-gridPX img,
-    .memory-gridPA img {
-        width: 40px; /* Ještě menší obrázky */
-    }
-
-    #startGamePX,
-    #startGamePA {
-        font-size: 1em; /* Zmenšený text tlačítka */
-        padding: 6px 10px; /* Zmenšené vnitřní odsazení */
-    }
-
-    .timeRememberPX,
-    .timeRememberPA {
-        font-size: 1.2em; /* Menší časovač */
-    }
-
-    .timeRememberSpanPX,
-    .timeRememberSpanPA {
-        font-size: 1.8em; /* Menší čísla časovače */
-    }
-}
 
 
 
