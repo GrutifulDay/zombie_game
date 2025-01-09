@@ -139,150 +139,6 @@ setupGameMode(modePostApoButton, gamePostApo, visualChartPostApo);// modePixelBu
 
 // })
 
-//IMG PRES FETCH z JSON
-// fce fetch vytahuje img z data/images.json
-function fetchJSONData() {
-    return fetch("./data/images.json")
-        .then((res) => {
-            if (!res.ok) {
-                throw new Error(`HTTP error! Status: ${res.status}`);
-            }
-            return res.json();
-        })
-        .then((data) => {
-            console.log("JSON data loaded:", data); // Kontrola načtených dat
-            return data;
-        })
-        .catch((error) => {
-            console.error("Unable to fetch data:", error); // Výpis chyby
-            return null;
-        });
-}
-
-//POST-APO po kliknuti na startGamePA zobrazeni IMG
-document.getElementById("startGamePA").addEventListener("click", () => {
-    fetchJSONData().then((data) => {
-        if (data && data.postApoGame) {
-            const images = data.postApoGame.filter(image => image.level === 1);
-            if (images.length > 0) {
-                const container = document.querySelector(".memory-gridPA");
-
-                // Zpracování hry a přidání obrázků
-                processGame(images, container, 1000);
-            } else {
-                alert("No images to display.");
-            }
-        } else {
-            alert("Failed to load game data.");
-        }
-    });
-    console.log("Images loaded:", images)
-});
-
-// OBECNA fce pro pridavani IMG - PRO OBA 
-function processGame(images, container, interval = 1000, callback) {
-    container.innerHTML = "";
-
-    let index = 0;
-
-    // Zpracuj obrázky postupně
-    const intervalId = setInterval(() => {
-        if (index < images.length) {
-            // Vytvoř obal obrázku
-            const imgWrapper = document.createElement("div");
-            imgWrapper.classList.add("image-wrapper");
-
-            const img = document.createElement("img");
-            img.src = images[index].src;
-            img.alt = `Image ${index + 1}`;
-            img.classList.add("game-image");
-
-            // Popis obrázku
-            const description = document.createElement("p");
-            if (images[index].endGame) {
-                description.textContent = "End Game";
-            } else if (images[index].resetScore) {
-                description.textContent = "Reset Score";
-            } else {
-                description.textContent = `Score: ${images[index].score}`;
-            }
-
-            imgWrapper.appendChild(img);
-            imgWrapper.appendChild(description);
-            container.appendChild(imgWrapper);
-
-            // Animace zobrazení obrázku
-            gsap.set(imgWrapper, { opacity: 0 });
-            gsap.to(imgWrapper, { opacity: 1, duration: 0.5 });
-
-            index++;
-        } else {
-            clearInterval(intervalId); // Zastav interval po zpracování všech obrázků
-            startCountdown(callback); // Spusť odpočet po zobrazení obrázků
-        }
-    }, interval);
-}
-
-// Funkce pro odpočet
-function startCountdown(callback) {
-    const countdownElement = document.querySelector(".timeRememberSpanPX");
-    let timeLeft = parseInt(countdownElement.textContent, 10);
-
-    const countdownInterval = setInterval(() => {
-        if (timeLeft > 0) {
-            timeLeft--;
-            countdownElement.textContent = timeLeft;
-        } else {
-            clearInterval(countdownInterval);
-            visualChartPixel.style.display = "none";
-            if (callback) callback()
-        }
-    }, 1000);
-}
-
-// PIXEL po kliknuti na startGamePX zobrazeni IMG
-document.getElementById("startGamePX").addEventListener("click", () => {
-    fetchJSONData().then((data) => {
-        if (data && data.pixelGame) {
-            const images = data.pixelGame.filter(image => image.level === 1);
-            if (images.length > 0) {
-                const container = document.querySelector(".memory-gridPX");
-                processGame(images, container, 1000);
-            } else {
-                alert("No images to display.");
-            }
-        }
-    });
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // ANIMACE 
 // FCE PRO POSTUPNE ZOBRAZENI TEXTU
 /**
@@ -320,6 +176,141 @@ function animateText(elementId, delay = 0, blinkTarget = null) {
         }, animationDuration)
     } 
 }
+
+//IMG PRES FETCH z JSON
+// fce fetch vytahuje img z data/images.json
+function fetchJSONData() {
+    return fetch("./data/images.json")
+        .then((res) => {
+            if (!res.ok) {
+                throw new Error(`HTTP error! Status: ${res.status}`);
+            }
+            return res.json();
+        })
+        .then((data) => {
+            console.log("JSON data loaded:", data); // Kontrola načtených dat
+            return data;
+        })
+        .catch((error) => {
+            console.error("Unable to fetch data:", error); // Výpis chyby
+            return null;
+        });
+}
+
+/**
+ * Univerzální funkce pro odpočet
+ * @param {string} countdownSelector - Selektor elementu s časem odpočtu
+ * @param {string} chartSelector - Selektor sekce, která má být skryta po dokončení odpočtu
+ * @param {function} callback - Volitelná funkce, která se má spustit po skončení odpočtu
+ */
+function startCountdown(countdownSelector, chartSelector, callback) {
+    const countdownElement = document.querySelector(countdownSelector);
+    const chartElement = document.querySelector(chartSelector);
+
+    if (!countdownElement || !chartElement) {
+        console.error("Missing required elements for countdown.");
+        return;
+    }
+
+    let timeLeft = parseInt(countdownElement.textContent, 10);
+
+    const interval = setInterval(() => {
+        if (timeLeft > 0) {
+            timeLeft--;
+            countdownElement.textContent = timeLeft; // Aktualizace času v DOM
+        } else {
+            clearInterval(interval);
+            chartElement.style.display = "none"; // Skrytí sekce
+            if (callback) callback(); // Zavolání callbacku, pokud je definovaný
+        }
+    }, 1000);
+}
+
+function processGame(images, container, interval, countdownSelector, chartSelector, callback) {
+    container.innerHTML = "";
+
+    let index = 0;
+
+    // Zpracování obrázků postupně
+    const intervalId = setInterval(() => {
+        if (index < images.length) {
+            const imgWrapper = document.createElement("div");
+            imgWrapper.classList.add("image-wrapper");
+
+            const img = document.createElement("img");
+            img.src = images[index].src;
+            img.alt = `Image ${index + 1}`;
+            img.classList.add("game-image");
+
+            const description = document.createElement("p");
+            description.textContent = images[index].endGame
+                ? "End Game"
+                : images[index].resetScore
+                ? "Reset Score"
+                : `Score: ${images[index].score}`;
+
+            imgWrapper.appendChild(img);
+            imgWrapper.appendChild(description);
+            container.appendChild(imgWrapper);
+
+            gsap.set(imgWrapper, { opacity: 0 });
+            gsap.to(imgWrapper, { opacity: 1, duration: 0.5 });
+
+            index++;
+        } else {
+            clearInterval(intervalId);
+            startCountdown(countdownSelector, chartSelector, callback);
+        }
+    }, interval);
+}
+
+document.getElementById("startGamePX").addEventListener("click", () => {
+    fetchJSONData().then((data) => {
+        if (data && data.pixelGame) {
+            const images = data.pixelGame.filter(image => image.level === 1);
+            if (images.length > 0) {
+                const container = document.querySelector(".memory-gridPX");
+                processGame(images, container, 1000, ".timeRememberSpanPX", "#visualChartPixel", () => {
+                    console.log("Pixel Game countdown finished!");
+                    // Další logika po skončení odpočtu
+                });
+            } else {
+                alert("No images to display.");
+            }
+        } else {
+            alert("Failed to load game data.");
+        }
+    });
+});
+
+document.getElementById("startGamePA").addEventListener("click", () => {
+    fetchJSONData().then((data) => {
+        if (data && data.postApoGame) {
+            const images = data.postApoGame.filter(image => image.level === 1);
+            if (images.length > 0) {
+                const container = document.querySelector(".memory-gridPA");
+                processGame(images, container, 1000, ".timeRememberSpanPA", "#visualChartPostApo", () => {
+                    console.log("Post-Apocalyptic Game countdown finished!");
+                    // Další logika po skončení odpočtu
+                });
+            } else {
+                alert("No images to display.");
+            }
+        } else {
+            alert("Failed to load game data.");
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+
 
 
 // document.body.addEventListener("keyup", function (event) {
