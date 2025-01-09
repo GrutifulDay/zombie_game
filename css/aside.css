@@ -3,7 +3,6 @@ aside {
     font-family: var(--fontUniversal);
     color: var(--colorFont);
     letter-spacing: 2px;
-
 }
 
 /* Dodatek k animaci - rada pro uzivatele */
@@ -18,12 +17,12 @@ aside {
     text-transform: uppercase;
 }
 
+/* text vedle ESC */
 #textHint {
     position: absolute;
     top: 9px;
     left: 117px;
     font-size: 1.1em;
-
 }
 
 /* WELCOME - uvodni cast */
@@ -40,13 +39,15 @@ aside {
     flex-direction: column;
 }
 
-h2 {
+/* uvitaci text */
+#welcomeText {
     font-size: 5em;
     border: none;
     background: none;
     color: var(--colorFont);
 }
 
+/* klikaci cast pro zadani jmena */
 #welcomeBtn {
     letter-spacing: 2px;
 
@@ -66,6 +67,7 @@ h2 {
 }
 
 /* INPUT */
+/* formular pro zadani jmena */
 #nameInput {
     display: flex;
     flex-direction: column;
@@ -117,22 +119,80 @@ h2 {
     transform: scale(1.05);
 }
 
-/* @media (max-width: 1165px) {
-    h2 {
+/* Respo */
+@media (max-width: 1200px) {
+    #welcomeText {
+        font-size: 4em;
+    }
+    #welcomeBtn {
+        font-size: 4em;
+    }
+}
+
+@media (max-width: 768px) {
+    #escHint {
+        font-size: 1.2rem;
+        padding: 8px;
+    }
+    #textHint {
+        font-size: 0.9em;
+        left: 100px;
+    }
+    #welcomeText {
         font-size: 3em;
     }
     #welcomeBtn {
         font-size: 3em;
     }
+    #nameInput input {
+        font-size: 1em;
+        width: 200px;
+    }
+    #nameInput button {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 480px) {
     #escHint {
-        font-size: 1.2rem;
-        padding: 10px;
+        font-size: 1rem;
+        padding: 6px;
+        display: block; /* Text se zobrazí pod sebou */
+        text-align: center; /* Zarovnáno na střed */
     }
     #textHint {
-        top: 7px;
-        left: 100px;
-        font-size: 1em;
+        font-size: 0.8em;
+        top: auto; /* Odstranění pevné pozice */
+        left: auto; /* Odstranění pevné pozice */
+        display: block; /* Text pod sebou */
+        margin-top: 10px; /* Mezera mezi texty */
+        text-align: center; /* Zarovnáno na střed */
     }
-} */
+    #welcomeText {
+        font-size: 2em;
+        display: block;
+        text-align: center;
+        margin-bottom: 10px; /* Mezera pod textem */
+    }
+    #welcomeBtn {
+        font-size: 2em;
+        display: block; /* Zajištění textu na nový řádek */
+        text-align: center;
+    }
+    #nameInput {
+        flex-direction: column; /* Formulářové prvky pod sebou */
+    }
+    #nameInput input {
+        font-size: 0.9em;
+        width: 180px;
+        margin-bottom: 10px; /* Mezera mezi políčkem a tlačítkem */
+    }
+    #nameInput button {
+        font-size: 1em;
+        padding: 8px 20px;
+        text-align: center;
+    }
+}
+
 
 
