@@ -5,7 +5,6 @@ import '@fontsource/orbitron'
 // WELCOME + REGISTRACE
 const welcomeBtn = document.getElementById("welcomeBtn")
 const nameInput = document.getElementById("nameInput")
-const submitUsername = document.getElementById("submitUsername")
 const welcomeSection = document.getElementById("welcomeSection")
 const modeSelection = document.getElementById("modeSelection")
 const greeting = document.getElementById("greeting")
@@ -35,8 +34,7 @@ welcomeBtn.addEventListener("click", () => {
     stopAnimation = false 
     nameInput.style.display = "block"
     
-    gsap.from("#nameInput", { opacity: 0, duration: 0.8 }) 
-    
+    gsap.from("#nameInput", { opacity: 0, duration: 0.8 })  
 })
 
 // PROBLIKNUTI BUTTON PRI NECINOSTI
@@ -88,7 +86,7 @@ nameInput.addEventListener("submit", (event) => {
     }
 })
 
-// ZOBRAZENI herni sekci: PLAYER JMENA 
+// ZOBRAZENI herni sekci: PLAYER JMENA -zeptat se na duplicitu 
 function insertPlayerNamePA(username) {
     let playerSpan = document.querySelector("#player-itemPA .playerPA")
     if (playerSpan) {
@@ -108,22 +106,38 @@ const modePixelButton = document.querySelector(".modePixel")
 const gamePixel = document.getElementById("gamePixel")
 const visualChartPixel = document.getElementById("visualChartPixel")
 
-modePixelButton.addEventListener("click", () => {
-    modeSelection.style.display = "none"
-    gamePixel.style.display = "block"
-    visualChartPixel.style.display = "block"
-})
-
 const modePostApoButton = document.querySelector(".modePostApo")
 const gamePostApo = document.getElementById("gamePostApo")
 const visualChartPostApo = document.getElementById("visualChartPostApo")
 
+// VYBER HERNIHO MODU (spojeni fci)
+function setupGameMode(modeButton, gameSection, visualChart) {
+    modeButton.addEventListener("click", () => {
+        modeSelection.style.display = "none";
+        gameSection.style.display = "block";
+        visualChart.style.display = "block";
 
-modePostApoButton.addEventListener("click", () => {
-    modeSelection.style.display = "none"
-    gamePostApo.style.display = "block"
-    visualChartPostApo.style.display = "block"
-})
+        gsap.to(visualChart, { opacity: 1, duration: 0.5 });
+    });
+}
+setupGameMode(modePixelButton, gamePixel, visualChartPixel);
+setupGameMode(modePostApoButton, gamePostApo, visualChartPostApo);// modePixelButton.addEventListener("click", () => {
+
+//     modeSelection.style.display = "none"
+//     gamePixel.style.display = "block"
+//     visualChartPixel.style.display = "block"
+
+//     gsap.to(visualChartPixel, {opacity: 1, duration: .8 })
+
+// })
+// modePostApoButton.addEventListener("click", () => {
+//     modeSelection.style.display = "none"
+//     gamePostApo.style.display = "block"
+//     visualChartPostApo.style.display = "block"
+
+//     gsap.to(visualChartPostApo, {opacity: 1, duration: 2 })
+
+// })
 
 //IMG PRES FETCH z JSON
 // fce fetch vytahuje img z data/images.json
@@ -152,18 +166,21 @@ document.getElementById("startGamePA").addEventListener("click", () => {
             const images = data.postApoGame.filter(image => image.level === 1);
             if (images.length > 0) {
                 const container = document.querySelector(".memory-gridPA");
+
+                // Zpracování hry a přidání obrázků
                 processGame(images, container, 1000);
             } else {
                 alert("No images to display.");
             }
+        } else {
+            alert("Failed to load game data.");
         }
     });
+    console.log("Images loaded:", images)
 });
 
-
 // OBECNA fce pro pridavani IMG - PRO OBA 
-function processGame(images, container, interval = 1000) {
-    // Vyčisti předchozí obsah
+function processGame(images, container, interval = 1000, callback) {
     container.innerHTML = "";
 
     let index = 0;
@@ -182,8 +199,6 @@ function processGame(images, container, interval = 1000) {
 
             // Popis obrázku
             const description = document.createElement("p");
-
-            // Přidání informací podle JSON
             if (images[index].endGame) {
                 description.textContent = "End Game";
             } else if (images[index].resetScore) {
@@ -196,15 +211,34 @@ function processGame(images, container, interval = 1000) {
             imgWrapper.appendChild(description);
             container.appendChild(imgWrapper);
 
+            // Animace zobrazení obrázku
+            gsap.set(imgWrapper, { opacity: 0 });
+            gsap.to(imgWrapper, { opacity: 1, duration: 0.5 });
+
             index++;
         } else {
-            clearInterval(intervalId);
+            clearInterval(intervalId); // Zastav interval po zpracování všech obrázků
+            startCountdown(callback); // Spusť odpočet po zobrazení obrázků
         }
     }, interval);
 }
 
+// Funkce pro odpočet
+function startCountdown(callback) {
+    const countdownElement = document.querySelector(".timeRememberSpanPX");
+    let timeLeft = parseInt(countdownElement.textContent, 10);
 
-
+    const countdownInterval = setInterval(() => {
+        if (timeLeft > 0) {
+            timeLeft--;
+            countdownElement.textContent = timeLeft;
+        } else {
+            clearInterval(countdownInterval);
+            visualChartPixel.style.display = "none";
+            if (callback) callback()
+        }
+    }, 1000);
+}
 
 // PIXEL po kliknuti na startGamePX zobrazeni IMG
 document.getElementById("startGamePX").addEventListener("click", () => {
