@@ -38,6 +38,8 @@ header {
 
 /* button jako img */
 .image-buttonPX {
+    cursor: var(--cursorPixelGame); 
+
     background: none; 
     border: none; 
     padding: 0; 
@@ -90,7 +92,7 @@ div#gameArea {
     font-family: var(--fontFamily_PostApo);
     display: flex;
     flex-direction: column; 
-    cursor: var(--cursorPixelGame); 
+    cursor: var(--cursorPostApoGame); 
 }
 
 #gamePostApo li {
@@ -98,10 +100,8 @@ div#gameArea {
     flex-direction: column;
     letter-spacing: 2px;
     font-size: 1.5em;
-    background: linear-gradient(45deg, #B8860B, #FFD700, #DAA520); /* Zlaty efekt */
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8), 0 0 10px #FFD700;
+    color: #FFD700;;
+    text-shadow: var(--textShadow);
     text-align: center;
 }
 
@@ -112,29 +112,30 @@ div#gameArea {
     font-family: var(--fontFamily_Pixel);
     display: flex;
     flex-direction: column; 
+    cursor: var(--cursorPixelGame); 
 }
 
-
-
-/* upravit PostApo nekde se mele */
-.playerPA {
-    color: rebeccapurple;
+/* PLAYER */
+.playerPA,
+.playerPX {
+    color: var(--colorFont_Box);
 }
+
 
 #gamePixel li {
     display: flex;
     flex-direction: column;
     font-size: 2.5em;
-    color: #e6cce6; /* upravit finalni text */
-    text-shadow: var(--textShadow_PixelGame);
 
+    color: #b65eb6 ; 
+
+    text-shadow: var(--textShadow);
     text-transform: uppercase;
-    /* background: linear-gradient(45deg, #9400D3, #DDA0DD, #8A2BE2); 
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; */
-    text-align: center; /* Zarovnání */
+    text-align: center;
     text-transform: uppercase;
 }
+
+
 
 
 /* RESPO DIZAJN */

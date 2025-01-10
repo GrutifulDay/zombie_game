@@ -3,6 +3,7 @@
     src: url('../fonts/Broken-Detroit.ttf') format('truetype');
 }
 
+
 :root {
     --colorBG-Universal:#1a1a1a;
     --colorFont:#00d1b2;
@@ -12,16 +13,18 @@
     --fontFamily_Pixel:'VT323', monospace;
     --fontFamily_PostApo:'Destroyed Font', monospace;
 
-    --cursorPixelGame: url(../images/postApoGame/curPA.png), auto;
+    --cursorPostApoGame: url(../images/postApoGame/curPA.png), auto;
+    --cursorPixelGame: url(../images/pixelGame/cur6.png), auto;
+    
     
     --fontUniversal:'orbitron', monospace;
 
-    --BG_PixelGame:url(../images/pixelGame/bg4.png);
-    --BG_PostApoGame:url(../images/postApoGame/post-apo.png);
+    --BG_PixelGame:url(../images/pixelGame/bg5.png);
+    --BG_PostApoGame:url(../images/postApoGame/bg-postApo.png);
     /* --BG_PostApoGame:url(../images/postApoGame/bg-postApo.png); */
 
 
-    --textShadow: 2px 2px 0px #000;
+    --textShadow: 2px 2px 0px #000000;
     --colorPurple_box: #C084FC;
     --colorGray_box: #5C6E76;
     --colorFont_Box: #F5F5DC;

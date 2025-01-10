@@ -1,6 +1,8 @@
 import { gsap } from 'gsap'
 import '@fontsource/vt323'
 import '@fontsource/orbitron'
+import 'typeface-press-start-2p';
+
 
 // WELCOME + REGISTRACE
 const welcomeBtn = document.getElementById("welcomeBtn")
@@ -77,6 +79,7 @@ nameInput.addEventListener("submit", (event) => {
 
         greeting.innerHTML = `Hello <span class="nameHL">${username}</span>,<br> Choose Your Game Mode:`
 
+        // ANIMACE CO MI RUSI ZALOMENI
         // animateText("greeting")
 
         insertPlayerNamePA(username)
@@ -291,7 +294,6 @@ document.getElementById("startGamePA").addEventListener("click", () => {
                 const container = document.querySelector(".memory-gridPA");
                 processGame(images, container, 1000, ".timeRememberSpanPA", "#visualChartPostApo", () => {
                     console.log("Post-Apocalyptic Game countdown finished!");
-                    // Další logika po skončení odpočtu
                 });
             } else {
                 alert("No images to display.");
@@ -301,16 +303,6 @@ document.getElementById("startGamePA").addEventListener("click", () => {
         }
     });
 });
-
-
-
-
-
-
-
-
-
-
 
 
 // document.body.addEventListener("keyup", function (event) {

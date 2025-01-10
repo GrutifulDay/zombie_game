@@ -1,17 +1,32 @@
-let timer = 10
+let timer = 30
 let moveIntervalImg = 1000
 
 // VYBER IMG PODLE MODU 
 const imageConfigs = {
     pixel: [
-        { "src": "images/pixelGame/img1.png", "score": 10 },
-        { "src": "images/pixelGame/img2.png", "score": 20 },
-        { "src": "images/pixelGame/img3.png", "score": -10 },
+        { "src": "images/pixelGame/img1.png", "score": 10, "level": 1},
+        { "src": "images/pixelGame/img2.png", "score": -10, "level": 1},
+        { "src": "images/pixelGame/img3.png", "score": 30, "level": 1}, 
+        { "src": "images/pixelGame/img5.png", "score": -10, "level": 1},
+        { "src": "images/pixelGame/img6.png", "score": 60, "level": 1},
+        { "src": "images/pixelGame/img7.png", "score": 30, "level": 1},
+        { "src": "images/pixelGame/img8.png", "score": 100, "level": 1},
+        { "src": "images/pixelGame/img9.png", "score": -10, "level": 1},
+        { "src": "images/pixelGame/img11.png", "score": -10, "level": 1},
+        { "src": "images/pixelGame/img17.png", "score": 10, "level": 1}
     ],
+
     postApo: [
-        { "src": "images/postApoGame/img1.png", "score": 10 },
-        { "src": "images/postApoGame/img2.png", "score": 20 },
-        { "src": "images/postApoGame/img3.png", "score": -10 },
+        { "src": "images/postApoGame/img1.png", "score": 10, "level": 1},
+        { "src": "images/postApoGame/img2.png", "score": -10, "level": 1},
+        { "src": "images/postApoGame/img3.png", "score": 30, "level": 1},
+        { "src": "images/postApoGame/img4.png", "score": -10, "level": 1},
+        { "src": "images/postApoGame/img5.png", "score": 60, "level": 1},
+        { "src": "images/postApoGame/img6.png", "score": 30, "level": 1},
+        { "src": "images/postApoGame/img8.png", "score": 100, "level": 1},
+        { "src": "images/postApoGame/img7.png", "score": -10, "level": 1},
+        { "src": "images/postApoGame/img9.png", "score": -10, "level": 1},
+        { "src": "images/postApoGame/img10.png", "score": 10, "level": 1}
     ],
 }
 
@@ -57,13 +72,17 @@ function addRandomImage(gameSection) {
 // POHYB OBRAZKU V GAME-AREA
 function movePicture(img, gameArea) {
     const gameAreaRect = gameArea.getBoundingClientRect()
+    const imgWidth = img.offsetWidth
+    const imgHeight = img.offsetHeight
 
-    const randomX = Math.random() * (gameAreaRect.width - img.width)
-    const randomY = Math.random() * (gameAreaRect.height - img.height)
+    // Vypočítejte pozici tak, aby obrázek zůstal uvnitř gameArea
+    const randomX = Math.random() * (gameAreaRect.width - imgWidth)
+    const randomY = Math.random() * (gameAreaRect.height - imgHeight)
 
+    // Nastavte pozici obrázku
     img.style.position = 'absolute'
-    img.style.left = randomX + 'px'
-    img.style.top = randomY + 'px'
+    img.style.left = `${randomX}px`
+    img.style.top = `${randomY}px`
 }
 
 // START GAME S CASOVACEM
@@ -100,14 +119,30 @@ function resetScore(gameSection) {
     scoreItem.textContent = 0
 }
 
+// RESET GAME 
+function resetGame(gameSection) {
+    clearInterval(timerInterval)
+    clearInterval(gameInterval)
+    timeRemaining = timer
+
+    const gameArea = gameSection.querySelector('.gameArea')
+    if (currentImage) {
+        gameArea.removeChild(currentImage)
+        currentImage = null
+    }
+
+    const timeItem = gameSection.querySelector('.time')
+    timeItem.innerText = timeRemaining
+}
+
 // START GAME
 function startGame(gameSection) {
     if (isStart) {
-        isPaused = false
-        return
+        resetGame(gameSection) // Resetuje hru, pokud již běží
     }
 
     isStart = true
+    isPaused = false
 
     gameInterval = setInterval(() => {
         if (!isPaused) {
@@ -117,6 +152,7 @@ function startGame(gameSection) {
 
     startTimer(gameSection)
 }
+
 
 // PAUZA 
 function pauseGame(gameSection) {
@@ -131,10 +167,11 @@ document.querySelectorAll('section[data-game]').forEach((gameSection) => {
     const stopButton = gameSection.querySelector('.stop-item button')
 
     startButton.addEventListener('click', () => {
-        startGame(gameSection)
+        startGame(gameSection) // Spustí nebo restartuje hru
     })
 
     stopButton.addEventListener('click', () => {
         pauseGame(gameSection)
     })
 })
+

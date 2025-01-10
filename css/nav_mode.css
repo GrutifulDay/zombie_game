@@ -37,17 +37,20 @@
 
     width: 544px;
     height: 308px;
-    cursor: pointer;
     background-size: cover;
-}
+    cursor: pointer;
 
+}
 
 .modePixel {
     background-image:var(--BG_PixelGame);
+    cursor: var(--cursorPixelGame), auto;
+
 }
 
 .modePostApo {
     background-image: var(--BG_PostApoGame);
+
 }
 
 .modePixel:hover,
