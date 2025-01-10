@@ -75,11 +75,10 @@ function movePicture(img, gameArea) {
     const imgWidth = img.offsetWidth
     const imgHeight = img.offsetHeight
 
-    // Vypočítejte pozici tak, aby obrázek zůstal uvnitř gameArea
+    // pozice gameArea
     const randomX = Math.random() * (gameAreaRect.width - imgWidth)
     const randomY = Math.random() * (gameAreaRect.height - imgHeight)
 
-    // Nastavte pozici obrázku
     img.style.position = 'absolute'
     img.style.left = `${randomX}px`
     img.style.top = `${randomY}px`
@@ -138,7 +137,7 @@ function resetGame(gameSection) {
 // START GAME
 function startGame(gameSection) {
     if (isStart) {
-        resetGame(gameSection) // Resetuje hru, pokud již běží
+        resetGame(gameSection) // Resetuje hru, pokud bezi
     }
 
     isStart = true
@@ -161,13 +160,13 @@ function pauseGame(gameSection) {
     }
 }
 
-// Initialize event listeners for all game sections
+// funkcnost pro obe hry - vyber 
 document.querySelectorAll('section[data-game]').forEach((gameSection) => {
     const startButton = gameSection.querySelector('.start-item button')
     const stopButton = gameSection.querySelector('.stop-item button')
 
     startButton.addEventListener('click', () => {
-        startGame(gameSection) // Spustí nebo restartuje hru
+        startGame(gameSection) // spusti a restartuje hru 
     })
 
     stopButton.addEventListener('click', () => {
