@@ -1,7 +1,7 @@
 import { gsap } from 'gsap'
 import '@fontsource/vt323'
 import '@fontsource/orbitron'
-import 'typeface-press-start-2p';
+import 'typeface-press-start-2p'
 
 
 // WELCOME + REGISTRACE
@@ -58,7 +58,7 @@ function blinkElement(element) {
 window.addEventListener("load", () => {
     stopAnimation = false
     animateText("welcomeText", 0, welcomeBtn)
-});
+})
 
 // zastavi se pri klinuti na button
 welcomeBtn.addEventListener("click", () => {
@@ -116,16 +116,17 @@ const visualChartPostApo = document.getElementById("visualChartPostApo")
 // VYBER HERNIHO MODU (spojeni fci)
 function setupGameMode(modeButton, gameSection, visualChart) {
     modeButton.addEventListener("click", () => {
-        modeSelection.style.display = "none";
-        gameSection.style.display = "block";
-        visualChart.style.display = "block";
+        modeSelection.style.display = "none"
+        gameSection.style.display = "block"
+        visualChart.style.display = "block"
 
-        gsap.to(visualChart, { opacity: 1, duration: 0.5 });
-    });
+        gsap.to(visualChart, { opacity: 1, duration: 0.5 })
+    })
 }
-setupGameMode(modePixelButton, gamePixel, visualChartPixel);
-setupGameMode(modePostApoButton, gamePostApo, visualChartPostApo);// modePixelButton.addEventListener("click", () => {
+setupGameMode(modePixelButton, gamePixel, visualChartPixel)
+setupGameMode(modePostApoButton, gamePostApo, visualChartPostApo)
 
+// modePixelButton.addEventListener("click", () => {
 //     modeSelection.style.display = "none"
 //     gamePixel.style.display = "block"
 //     visualChartPixel.style.display = "block"
@@ -139,7 +140,6 @@ setupGameMode(modePostApoButton, gamePostApo, visualChartPostApo);// modePixelBu
 //     visualChartPostApo.style.display = "block"
 
 //     gsap.to(visualChartPostApo, {opacity: 1, duration: 2 })
-
 // })
 
 // ANIMACE 
@@ -186,127 +186,121 @@ function fetchJSONData() {
     return fetch("./data/images.json")
         .then((res) => {
             if (!res.ok) {
-                throw new Error(`HTTP error! Status: ${res.status}`);
+                throw new Error(`HTTP error! Status: ${res.status}`)
             }
-            return res.json();
+            return res.json()
         })
-        .then((data) => {
-            console.log("JSON data loaded:", data); // Kontrola načtených dat
-            return data;
-        })
-        .catch((error) => {
-            console.error("Unable to fetch data:", error); // Výpis chyby
-            return null;
-        });
+        // .then((data) => {
+        //     console.log("JSON data loaded:", data) // kontrola nactenych dat
+        //     return data
+        // })
+        // .catch((error) => {
+        //     console.error("Unable to fetch data:", error) // vypis chyby
+        //     return null
+        // })
 }
 
 /**
  * Univerzální funkce pro odpočet
- * @param {string} countdownSelector - Selektor elementu s časem odpočtu
+ * @param {string} countdownSelector - odecet
  * @param {string} chartSelector - Selektor sekce, která má být skryta po dokončení odpočtu
  * @param {function} callback - Volitelná funkce, která se má spustit po skončení odpočtu
  */
 function startCountdown(countdownSelector, chartSelector, callback) {
-    const countdownElement = document.querySelector(countdownSelector);
-    const chartElement = document.querySelector(chartSelector);
+    const countdownElement = document.querySelector(countdownSelector)
+    const chartElement = document.querySelector(chartSelector)
 
     if (!countdownElement || !chartElement) {
-        console.error("Missing required elements for countdown.");
-        return;
+        console.error("Missing required elements for countdown.")
+        return
     }
 
-    let timeLeft = parseInt(countdownElement.textContent, 10);
+    let timeLeft = parseInt(countdownElement.textContent, 10)
 
     const interval = setInterval(() => {
         if (timeLeft > 0) {
-            timeLeft--;
-            countdownElement.textContent = timeLeft; // Aktualizace času v DOM
+            timeLeft--
+            countdownElement.textContent = timeLeft // aktualizace casu
         } else {
-            clearInterval(interval);
-            chartElement.style.display = "none"; // Skrytí sekce
-            if (callback) callback(); // Zavolání callbacku, pokud je definovaný
+            clearInterval(interval)
+            chartElement.style.display = "none" 
+            if (callback) callback()
         }
-    }, 1000);
+    }, 1000)
 }
 
+// UNIVERZALNI FCE PRO NACTENI IMG V TABULCE
 function processGame(images, container, interval, countdownSelector, chartSelector, callback) {
-    container.innerHTML = "";
+    container.innerHTML = ""
 
-    let index = 0;
+    let index = 0
 
-    // Zpracování obrázků postupně
+    // zpracovani img postupne
     const intervalId = setInterval(() => {
         if (index < images.length) {
-            const imgWrapper = document.createElement("div");
-            imgWrapper.classList.add("image-wrapper");
+            const imgWrapper = document.createElement("div")
+            imgWrapper.classList.add("image-wrapper")
 
-            const img = document.createElement("img");
-            img.src = images[index].src;
-            img.alt = `Image ${index + 1}`;
-            img.classList.add("game-image");
+            const img = document.createElement("img")
+            img.src = images[index].src
+            img.alt = `Image ${index + 1}`
+            img.classList.add("game-image")
 
-            const description = document.createElement("p");
+            const description = document.createElement("p")
             description.textContent = images[index].endGame
                 ? "End Game"
                 : images[index].resetScore
                 ? "Reset Score"
-                : `Score: ${images[index].score}`;
+                : `Score: ${images[index].score}`
 
-            imgWrapper.appendChild(img);
-            imgWrapper.appendChild(description);
-            container.appendChild(imgWrapper);
+            imgWrapper.appendChild(img)
+            imgWrapper.appendChild(description)
+            container.appendChild(imgWrapper)
 
-            gsap.set(imgWrapper, { opacity: 0 });
-            gsap.to(imgWrapper, { opacity: 1, duration: 0.5 });
+            gsap.set(imgWrapper, { opacity: 0 })
+            gsap.to(imgWrapper, { opacity: 1, duration: 0.5 })
 
-            index++;
+            index++
         } else {
-            clearInterval(intervalId);
-            startCountdown(countdownSelector, chartSelector, callback);
+            clearInterval(intervalId)
+            startCountdown(countdownSelector, chartSelector, callback)
         }
-    }, interval);
+    }, interval)
 }
-
+// button PX 
 document.getElementById("startGamePX").addEventListener("click", () => {
     fetchJSONData().then((data) => {
         if (data && data.pixelGame) {
-            const images = data.pixelGame.filter(image => image.level === 1);
+            const images = data.pixelGame.filter(image => image.level === 1)
             if (images.length > 0) {
-                const container = document.querySelector(".memory-gridPX");
+                const container = document.querySelector(".memory-gridPX")
                 processGame(images, container, 1000, ".timeRememberSpanPX", "#visualChartPixel", () => {
-                    console.log("Pixel Game countdown finished!");
-                    // Další logika po skončení odpočtu
-                });
+                    // console.log("Pixel Game countdown finished!")
+                })
             } else {
-                alert("No images to display.");
+                alert("No images to display.")
             }
         } else {
-            alert("Failed to load game data.");
+            alert("Failed to load game data.")
         }
-    });
-});
+    })
+})
 
+// button PA
 document.getElementById("startGamePA").addEventListener("click", () => {
     fetchJSONData().then((data) => {
         if (data && data.postApoGame) {
-            const images = data.postApoGame.filter(image => image.level === 1);
+            const images = data.postApoGame.filter(image => image.level === 1)
             if (images.length > 0) {
-                const container = document.querySelector(".memory-gridPA");
+                const container = document.querySelector(".memory-gridPA")
                 processGame(images, container, 1000, ".timeRememberSpanPA", "#visualChartPostApo", () => {
-                    console.log("Post-Apocalyptic Game countdown finished!");
-                });
+                    // console.log("Post-Apocalyptic Game countdown finished!")
+                })
             } else {
-                alert("No images to display.");
+                alert("No images to display.")
             }
         } else {
-            alert("Failed to load game data.");
+            alert("Failed to load game data.")
         }
-    });
-});
-
-
-// document.body.addEventListener("keyup", function (event) {
-//     console.log(event);
-//     addMessage("user", event.key)
-
-// })
+    })
+})
