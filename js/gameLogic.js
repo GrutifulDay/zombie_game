@@ -160,7 +160,7 @@ function pauseGame(gameSection) {
     }
 }
 
-// funkcnost pro obe hry - vyber 
+// FUNKCNOST SPUSTENI PRO OBE HRY 
 document.querySelectorAll('section[data-game]').forEach((gameSection) => {
     const startButton = gameSection.querySelector('.start-item button')
     const stopButton = gameSection.querySelector('.stop-item button')
