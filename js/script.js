@@ -3,7 +3,6 @@ import '@fontsource/vt323'
 import '@fontsource/orbitron'
 import 'typeface-press-start-2p'
 
-
 // WELCOME + REGISTRACE
 const welcomeBtn = document.getElementById("welcomeBtn")
 const nameInput = document.getElementById("nameInput")

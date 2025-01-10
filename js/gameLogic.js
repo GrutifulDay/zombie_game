@@ -1,32 +1,57 @@
+import { supabase } from '../supabase.js'
+
 let timer = 30
 let moveIntervalImg = 1000
+
+// SUPABASE
+async function saveScoreToDatabase(userName, score) {
+    const { data, error } = await supabase
+        .from('zombie_game') // Název tabulky
+        .insert([{ user_name: userName, score: score }]) // Data pro uložení
+
+    if (error) {
+        console.error('Chyba při ukládání skóre do Supabase:', error)
+    } else {
+        console.log('Skóre bylo uloženo do Supabase:', data)
+    }
+}
+
+// Test připojení při načtení stránky
+(async () => {
+    const { data, error } = await supabase.from('zombie_game').select('*')
+    if (error) {
+        console.error('Chyba při připojení k Supabase:', error)
+    } else {
+        console.log('Supabase připojení funguje. Data:', data)
+    }
+})()
 
 // VYBER IMG PODLE MODU 
 const imageConfigs = {
     pixel: [
-        { "src": "images/pixelGame/img1.png", "score": 10, "level": 1},
-        { "src": "images/pixelGame/img2.png", "score": -10, "level": 1},
-        { "src": "images/pixelGame/img3.png", "score": 30, "level": 1}, 
-        { "src": "images/pixelGame/img5.png", "score": -10, "level": 1},
-        { "src": "images/pixelGame/img6.png", "score": 60, "level": 1},
-        { "src": "images/pixelGame/img7.png", "score": 30, "level": 1},
-        { "src": "images/pixelGame/img8.png", "score": 100, "level": 1},
-        { "src": "images/pixelGame/img9.png", "score": -10, "level": 1},
-        { "src": "images/pixelGame/img11.png", "score": -10, "level": 1},
-        { "src": "images/pixelGame/img17.png", "score": 10, "level": 1}
+        { "src": "images/pixelGame/img1.png", "score": 10, "level": 1 },
+        { "src": "images/pixelGame/img2.png", "score": -10, "level": 1 },
+        { "src": "images/pixelGame/img3.png", "score": 30, "level": 1 },
+        { "src": "images/pixelGame/img5.png", "score": -10, "level": 1 },
+        { "src": "images/pixelGame/img6.png", "score": 60, "level": 1 },
+        { "src": "images/pixelGame/img7.png", "score": 30, "level": 1 },
+        { "src": "images/pixelGame/img8.png", "score": 100, "level": 1 },
+        { "src": "images/pixelGame/img9.png", "score": -10, "level": 1 },
+        { "src": "images/pixelGame/img11.png", "score": -10, "level": 1 },
+        { "src": "images/pixelGame/img17.png", "score": 10, "level": 1 }
     ],
 
     postApo: [
-        { "src": "images/postApoGame/img1.png", "score": 10, "level": 1},
-        { "src": "images/postApoGame/img2.png", "score": -10, "level": 1},
-        { "src": "images/postApoGame/img3.png", "score": 30, "level": 1},
-        { "src": "images/postApoGame/img4.png", "score": -10, "level": 1},
-        { "src": "images/postApoGame/img5.png", "score": 60, "level": 1},
-        { "src": "images/postApoGame/img6.png", "score": 30, "level": 1},
-        { "src": "images/postApoGame/img8.png", "score": 100, "level": 1},
-        { "src": "images/postApoGame/img7.png", "score": -10, "level": 1},
-        { "src": "images/postApoGame/img9.png", "score": -10, "level": 1},
-        { "src": "images/postApoGame/img10.png", "score": 10, "level": 1}
+        { "src": "images/postApoGame/img1.png", "score": 10, "level": 1 },
+        { "src": "images/postApoGame/img2.png", "score": -10, "level": 1 },
+        { "src": "images/postApoGame/img3.png", "score": 30, "level": 1 },
+        { "src": "images/postApoGame/img4.png", "score": -10, "level": 1 },
+        { "src": "images/postApoGame/img5.png", "score": 60, "level": 1 },
+        { "src": "images/postApoGame/img6.png", "score": 30, "level": 1 },
+        { "src": "images/postApoGame/img8.png", "score": 100, "level": 1 },
+        { "src": "images/postApoGame/img7.png", "score": -10, "level": 1 },
+        { "src": "images/postApoGame/img9.png", "score": -10, "level": 1 },
+        { "src": "images/postApoGame/img10.png", "score": 10, "level": 1 }
     ],
 }
 
@@ -97,6 +122,13 @@ function startTimer(gameSection) {
             if (timeRemaining <= 0) {
                 clearInterval(timerInterval)
                 clearInterval(gameInterval)
+
+                const scoreItem = gameSection.querySelector('.score')
+                const userName = document.getElementById("username").value.trim() // Jméno hráče
+                const score = parseInt(scoreItem.textContent) || 0
+
+                saveScoreToDatabase(userName, score) // Uložení skóre do Supabase
+
                 alert('Game over')
             }
         }
@@ -112,7 +144,7 @@ function scoreShoot(gameSection, points) {
     scoreItem.textContent = actualScore
 }
 
-//RESET PRO SCORE
+// RESET PRO SCORE
 function resetScore(gameSection) {
     const scoreItem = gameSection.querySelector('.score')
     scoreItem.textContent = 0
@@ -152,7 +184,6 @@ function startGame(gameSection) {
     startTimer(gameSection)
 }
 
-
 // PAUZA 
 function pauseGame(gameSection) {
     if (isStart) {
@@ -173,4 +204,3 @@ document.querySelectorAll('section[data-game]').forEach((gameSection) => {
         pauseGame(gameSection)
     })
 })
-

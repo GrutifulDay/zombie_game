@@ -25,6 +25,7 @@
   "dependencies": {
     "@fontsource/orbitron": "^5.1.0",
     "@fontsource/vt323": "^5.1.0",
+    "@supabase/supabase-js": "^2.47.12",
     "gsap": "^3.12.5",
     "typeface-press-start-2p": "^1.1.13",
     "webfontloader": "^1.6.28"
