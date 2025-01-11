@@ -1,305 +1,175 @@
-import { gsap } from 'gsap'
-import '@fontsource/vt323'
-import '@fontsource/orbitron'
-import 'typeface-press-start-2p'
+let timer = 30
+let moveIntervalImg = 1000
 
-// WELCOME + REGISTRACE
-const welcomeBtn = document.getElementById("welcomeBtn")
-const nameInput = document.getElementById("nameInput")
-const welcomeSection = document.getElementById("welcomeSection")
-const modeSelection = document.getElementById("modeSelection")
-const greeting = document.getElementById("greeting")
+// VYBER IMG PODLE MODU 
+const imageConfigs = {
+    pixel: [
+        { "src": "images/pixelGame/img1.png", "score": 10, "level": 1},
+        { "src": "images/pixelGame/img2.png", "score": -10, "level": 1},
+        { "src": "images/pixelGame/img3.png", "score": 30, "level": 1}, 
+        { "src": "images/pixelGame/img5.png", "score": -10, "level": 1},
+        { "src": "images/pixelGame/img6.png", "score": 60, "level": 1},
+        { "src": "images/pixelGame/img7.png", "score": 30, "level": 1},
+        { "src": "images/pixelGame/img8.png", "score": 100, "level": 1},
+        { "src": "images/pixelGame/img9.png", "score": -10, "level": 1},
+        { "src": "images/pixelGame/img11.png", "score": -10, "level": 1},
+        { "src": "images/pixelGame/img17.png", "score": 10, "level": 1}
+    ],
 
-let stopAnimation = false
-
-// SPUSTENI PRO NACTENI STRANKY
-window.addEventListener("load", () => {
-    stopAnimation = false // Reset stop animace
-    animateText("welcomeText", 0)
-    animateText("welcomeBtn", 2) 
-})
-
-// ZASTAVENI ANIMACE pri stisku ESC
-document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-        stopAnimation = true // Zastaveni animace
-        const activeSpans = document.querySelectorAll("span") // Najde vsechny span prvky
-        activeSpans.forEach(span => {
-            span.style.opacity = "1" // Zobrazi vsechny span najednou
-        })
-    }
-})
-
-// FCE PRO ZOBRAZENI FORMULARE ANIMACE
-welcomeBtn.addEventListener("click", () => {
-    stopAnimation = false 
-    nameInput.style.display = "block"
-    
-    gsap.from("#nameInput", { opacity: 0, duration: 0.8 })  
-})
-
-// PROBLIKNUTI BUTTON PRI NECINOSTI
-/**
- * @param {HTMLElement} element 
- */
-function blinkElement(element) {
-    gsap.to(element, {
-        opacity: 0.5, 
-        duration: 1,
-        repeat: -1,
-        color: "#ff007f",
-        yoyo: true,
-        ease: "power1.inOut"
-    })
+    postApo: [
+        { "src": "images/postApoGame/img1.png", "score": 10, "level": 1},
+        { "src": "images/postApoGame/img2.png", "score": -10, "level": 1},
+        { "src": "images/postApoGame/img3.png", "score": 30, "level": 1},
+        { "src": "images/postApoGame/img4.png", "score": -10, "level": 1},
+        { "src": "images/postApoGame/img5.png", "score": 60, "level": 1},
+        { "src": "images/postApoGame/img6.png", "score": 30, "level": 1},
+        { "src": "images/postApoGame/img8.png", "score": 100, "level": 1},
+        { "src": "images/postApoGame/img7.png", "score": -10, "level": 1},
+        { "src": "images/postApoGame/img9.png", "score": -10, "level": 1},
+        { "src": "images/postApoGame/img10.png", "score": 10, "level": 1}
+    ],
 }
 
-// spusteni animace probliknuti po nacteni stranky probliknuti
-window.addEventListener("load", () => {
-    stopAnimation = false
-    animateText("welcomeText", 0, welcomeBtn)
-})
+let currentImage = null
+let gameInterval = null
+let timerInterval = null
+let isPaused = false
+let isStart = false
+let timeRemaining = timer
 
-// zastavi se pri klinuti na button
-welcomeBtn.addEventListener("click", () => {
-    gsap.killTweensOf(welcomeBtn)
-    gsap.to(welcomeBtn, {opacity: 1, duration: .3 })
-})
+// FCE PRO PRIDANI NAHODNEHO OBRAZKU
+function addRandomImage(gameSection) {
+    const gameArea = gameSection.querySelector('.gameArea')
+    const gameType = gameSection.dataset.game
+    const configs = imageConfigs[gameType]
 
-
-// PRESMEROVANI NA VYBER HERNIHO MODU (kliknutim nebo "enter")
-nameInput.addEventListener("submit", (event) => {
-    event.preventDefault()
-
-    const username = document.getElementById("username").value.trim()
-
-    if (username) {
-        welcomeSection.style.display = "none"
-        modeSelection.style.display = "block"
-
-        greeting.innerHTML = `Hello <span class="nameHL">${username}</span>,<br> Choose Your Game Mode:`
-
-        // ANIMACE CO MI RUSI ZALOMENI
-        // animateText("greeting")
-
-        insertPlayerNamePA(username)
-        insertPlayerNamePX(username)
-    } else {
-        alert("please enter your name")
-    }
-})
-
-// ZOBRAZENI herni sekci: PLAYER JMENA -zeptat se na duplicitu 
-function insertPlayerNamePA(username) {
-    let playerSpan = document.querySelector("#player-itemPA .playerPA")
-    if (playerSpan) {
-        playerSpan.textContent = username
-    }
-}
-
-function insertPlayerNamePX(username) {
-    let playerSpan = document.querySelector("#player-itemPX .playerPX")
-    if (playerSpan) {
-        playerSpan.textContent = username
-    }
-}
-
-// VYBER HERNIHO MODU
-const modePixelButton = document.querySelector(".modePixel")
-const gamePixel = document.getElementById("gamePixel")
-const visualChartPixel = document.getElementById("visualChartPixel")
-
-const modePostApoButton = document.querySelector(".modePostApo")
-const gamePostApo = document.getElementById("gamePostApo")
-const visualChartPostApo = document.getElementById("visualChartPostApo")
-
-// VYBER HERNIHO MODU (spojeni fci)
-function setupGameMode(modeButton, gameSection, visualChart) {
-    modeButton.addEventListener("click", () => {
-        modeSelection.style.display = "none"
-        gameSection.style.display = "block"
-        visualChart.style.display = "block"
-
-        gsap.to(visualChart, { opacity: 1, duration: 0.5 })
-    })
-}
-setupGameMode(modePixelButton, gamePixel, visualChartPixel)
-setupGameMode(modePostApoButton, gamePostApo, visualChartPostApo)
-
-// modePixelButton.addEventListener("click", () => {
-//     modeSelection.style.display = "none"
-//     gamePixel.style.display = "block"
-//     visualChartPixel.style.display = "block"
-
-//     gsap.to(visualChartPixel, {opacity: 1, duration: .8 })
-
-// })
-// modePostApoButton.addEventListener("click", () => {
-//     modeSelection.style.display = "none"
-//     gamePostApo.style.display = "block"
-//     visualChartPostApo.style.display = "block"
-
-//     gsap.to(visualChartPostApo, {opacity: 1, duration: 2 })
-// })
-
-// ANIMACE 
-// FCE PRO POSTUPNE ZOBRAZENI TEXTU
-/**
-* 
-* @param {string} elementId
-* @param {number} delay 
-*/
-function animateText(elementId, delay = 0, blinkTarget = null) {
-    const element = document.getElementById(elementId)
-    const textContent = element.textContent
-    element.innerHTML = "" 
-
-    // Rozdeleni textu na jednotliva pismena
-    textContent.split("").forEach(letter => {
-        const span = document.createElement("span")
-        span.textContent = letter === " " ? "\u00A0" : letter // Zachovani mezer
-        span.style.opacity = "0" 
-        element.appendChild(span)
-    })
-
-    // Animace jednotlivych pismen
-    const spans = element.querySelectorAll("span")
-    spans.forEach((span, index) => {
-        setTimeout(() => {
-            if (stopAnimation) return
-            span.style.opacity = "1" 
-        }, index * 100 + delay * 1000)
-    })
-    
-    // po skonceni nastaveni probliknuti 
-    const animationDuration = spans.length * 100 + delay * 1000
-    if (blinkTarget) {
-        setTimeout(() => {
-            blinkElement(blinkTarget)
-        }, animationDuration)
-    } 
-}
-
-//IMG PRES FETCH z JSON
-// fce fetch vytahuje img z data/images.json
-function fetchJSONData() {
-    return fetch("./data/images.json")
-        .then((res) => {
-            if (!res.ok) {
-                throw new Error(`HTTP error! Status: ${res.status}`)
-            }
-            return res.json()
-        })
-        // .then((data) => {
-        //     console.log("JSON data loaded:", data) // kontrola nactenych dat
-        //     return data
-        // })
-        // .catch((error) => {
-        //     console.error("Unable to fetch data:", error) // vypis chyby
-        //     return null
-        // })
-}
-
-/**
- * Univerzální funkce pro odpočet
- * @param {string} countdownSelector - odecet
- * @param {string} chartSelector - Selektor sekce, která má být skryta po dokončení odpočtu
- * @param {function} callback - Volitelná funkce, která se má spustit po skončení odpočtu
- */
-function startCountdown(countdownSelector, chartSelector, callback) {
-    const countdownElement = document.querySelector(countdownSelector)
-    const chartElement = document.querySelector(chartSelector)
-
-    if (!countdownElement || !chartElement) {
-        console.error("Missing required elements for countdown.")
-        return
+    if (currentImage) {
+        gameArea.removeChild(currentImage)
+        currentImage = null
     }
 
-    let timeLeft = parseInt(countdownElement.textContent, 10)
+    const randomIndex = Math.floor(Math.random() * configs.length)
+    const config = configs[randomIndex]
 
-    const interval = setInterval(() => {
-        if (timeLeft > 0) {
-            timeLeft--
-            countdownElement.textContent = timeLeft // aktualizace casu
+    const img = document.createElement('img')
+    img.src = config.src
+    img.classList.add('gamePicture')
+
+    gameArea.appendChild(img)
+    currentImage = img
+
+    img.addEventListener('click', () => {
+        if (config.score > 0) {
+            scoreShoot(gameSection, config.score)
         } else {
-            clearInterval(interval)
-            chartElement.style.display = "none" 
-            if (callback) callback()
+            resetScore(gameSection)
+        }
+    })
+
+    movePicture(img, gameArea)
+}
+
+// POHYB OBRAZKU V GAME-AREA
+function movePicture(img, gameArea) {
+    const gameAreaRect = gameArea.getBoundingClientRect()
+    const imgWidth = img.offsetWidth
+    const imgHeight = img.offsetHeight
+
+    // pozice gameArea
+    const randomX = Math.random() * (gameAreaRect.width - imgWidth)
+    const randomY = Math.random() * (gameAreaRect.height - imgHeight)
+
+    img.style.position = 'absolute'
+    img.style.left = `${randomX}px`
+    img.style.top = `${randomY}px`
+}
+
+// START GAME S CASOVACEM
+function startTimer(gameSection) {
+    const timeItem = gameSection.querySelector('.time')
+    timeItem.innerText = timeRemaining
+
+    timerInterval = setInterval(() => {
+        if (!isPaused) {
+            timeRemaining--
+            timeItem.innerText = timeRemaining
+
+            if (timeRemaining <= 0) {
+                clearInterval(timerInterval)
+                clearInterval(gameInterval)
+                alert('Game over')
+            }
         }
     }, 1000)
 }
 
-// UNIVERZALNI FCE PRO NACTENI IMG V TABULCE
-function processGame(images, container, interval, countdownSelector, chartSelector, callback) {
-    container.innerHTML = ""
+// UPDATE PRO SCORE
+function scoreShoot(gameSection, points) {
+    const scoreItem = gameSection.querySelector('.score')
+    let actualScore = parseInt(scoreItem.textContent) || 0
 
-    let index = 0
-
-    // zpracovani img postupne
-    const intervalId = setInterval(() => {
-        if (index < images.length) {
-            const imgWrapper = document.createElement("div")
-            imgWrapper.classList.add("image-wrapper")
-
-            const img = document.createElement("img")
-            img.src = images[index].src
-            img.alt = `Image ${index + 1}`
-            img.classList.add("game-image")
-
-            const description = document.createElement("p")
-            description.textContent = images[index].endGame
-                ? "End Game"
-                : images[index].resetScore
-                ? "Reset Score"
-                : `Score: ${images[index].score}`
-
-            imgWrapper.appendChild(img)
-            imgWrapper.appendChild(description)
-            container.appendChild(imgWrapper)
-
-            gsap.set(imgWrapper, { opacity: 0 })
-            gsap.to(imgWrapper, { opacity: 1, duration: 0.5 })
-
-            index++
-        } else {
-            clearInterval(intervalId)
-            startCountdown(countdownSelector, chartSelector, callback)
-        }
-    }, interval)
+    actualScore += points
+    scoreItem.textContent = actualScore
 }
-// button PX 
-document.getElementById("startGamePX").addEventListener("click", () => {
-    fetchJSONData().then((data) => {
-        if (data && data.pixelGame) {
-            const images = data.pixelGame.filter(image => image.level === 1)
-            if (images.length > 0) {
-                const container = document.querySelector(".memory-gridPX")
-                processGame(images, container, 1000, ".timeRememberSpanPX", "#visualChartPixel", () => {
-                    // console.log("Pixel Game countdown finished!")
-                })
-            } else {
-                alert("No images to display.")
-            }
-        } else {
-            alert("Failed to load game data.")
-        }
-    })
-})
 
-// button PA
-document.getElementById("startGamePA").addEventListener("click", () => {
-    fetchJSONData().then((data) => {
-        if (data && data.postApoGame) {
-            const images = data.postApoGame.filter(image => image.level === 1)
-            if (images.length > 0) {
-                const container = document.querySelector(".memory-gridPA")
-                processGame(images, container, 1000, ".timeRememberSpanPA", "#visualChartPostApo", () => {
-                    // console.log("Post-Apocalyptic Game countdown finished!")
-                })
-            } else {
-                alert("No images to display.")
-            }
-        } else {
-            alert("Failed to load game data.")
+//RESET PRO SCORE
+function resetScore(gameSection) {
+    const scoreItem = gameSection.querySelector('.score')
+    scoreItem.textContent = 0
+}
+
+// RESET GAME 
+function resetGame(gameSection) {
+    clearInterval(timerInterval)
+    clearInterval(gameInterval)
+    timeRemaining = timer
+
+    const gameArea = gameSection.querySelector('.gameArea')
+    if (currentImage) {
+        gameArea.removeChild(currentImage)
+        currentImage = null
+    }
+
+    const timeItem = gameSection.querySelector('.time')
+    timeItem.innerText = timeRemaining
+}
+
+// START GAME
+function startGame(gameSection) {
+    if (isStart) {
+        resetGame(gameSection) // Resetuje hru, pokud bezi
+    }
+
+    isStart = true
+    isPaused = false
+
+    gameInterval = setInterval(() => {
+        if (!isPaused) {
+            addRandomImage(gameSection)
         }
+    }, moveIntervalImg)
+
+    startTimer(gameSection)
+}
+
+
+// PAUZA 
+function pauseGame(gameSection) {
+    if (isStart) {
+        isPaused = true
+    }
+}
+
+// FUNKCNOST SPUSTENI PRO OBE HRY 
+document.querySelectorAll('section[data-game]').forEach((gameSection) => {
+    const startButton = gameSection.querySelector('.start-item button')
+    const stopButton = gameSection.querySelector('.stop-item button')
+
+    startButton.addEventListener('click', () => {
+        startGame(gameSection) // spusti a restartuje hru 
+    })
+
+    stopButton.addEventListener('click', () => {
+        pauseGame(gameSection)
     })
 })

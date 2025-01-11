@@ -2,6 +2,8 @@ Název projektu: "Interactive Game Platform"
 
 Popis:
 
+Původně tato hra měla mít jeden herní mód, ale v průběhu vývoje jsem přidávala další vylepšení a jeden z nich je další hení mód.  
+
 Tento projekt je interaktivní herní platforma, která nabízí dva různé herní módy:
 
 1. Pixel World (Kids Friendly) - Jednoduchá a barevná hra vhodná pro děti.
@@ -22,6 +24,11 @@ Technologie
     Frontend: HTML, CSS, JavaScript
     Knihovny: GSAP, Google Fonts, Fontsource
     Data: JSON pro obrázky a jejich atributy
+
+Zdroje: 
+    YouTube
+    chatGPT
+    Google
 
 Jak spustit:
 
