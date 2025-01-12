@@ -29,6 +29,8 @@ Zdroje:
     YouTube
     chatGPT
     Google
+    IMG - chatGPT
+    GIMP -úprava img
 
 Jak spustit:
 
@@ -42,4 +44,4 @@ Požadavky:
 
 
 Autor
-Vytvořil: [Tereza]
+Vytvořila: [Tereza]
